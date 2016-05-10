@@ -19,3 +19,28 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de profesores
+|----------------------------------------------------------------------------
+*/
+
+Route::resource('profesores', 'TeacherController');
+
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de cursos
+|----------------------------------------------------------------------------
+*/
+
+Route::resource('cursos', 'CourseController');
+
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de profesores
+|----------------------------------------------------------------------------
+*/
+
+Route::resource('alumnos', 'StudentController');
