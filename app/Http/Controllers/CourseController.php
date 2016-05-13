@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CourseRequest;
 
 use App\Models\Course;
 
@@ -26,7 +27,7 @@ class CourseController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('courses.create');
 	}
 
 	/**
@@ -34,9 +35,16 @@ class CourseController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CourseRequest $request)
 	{
-		//
+			$course = Course::create([
+				'name'			=>	$request['name'],
+				'description'	=>	$request['description'],
+				'start_date'	=>	$request['start_date'],
+				'end_date' 		=>	$request['end_date'],
+				'active'		=>	FALSE
+			]);
+			return $course;
 	}
 
 	/**
