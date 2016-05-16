@@ -17,7 +17,8 @@ class CourseController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$courses = Course::all();
+		return view('courses.index', ['courses' => $courses]);
 	}
 
 	/**
@@ -44,7 +45,7 @@ class CourseController extends Controller {
 				'end_date' 		=>	$request['end_date'],
 				'active'		=>	FALSE
 			]);
-			return $course;
+			return view('courses.show', $course);
 	}
 
 	/**
@@ -55,7 +56,8 @@ class CourseController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$course = Course::findOrFail($id);
+		return view('courses.show', $course);
 	}
 
 	/**
