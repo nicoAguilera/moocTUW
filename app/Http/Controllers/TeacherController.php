@@ -4,8 +4,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
-use App\Models\Teacher;
+use Illuminate\Support\Facades\Crypt;
+
+use App\Models\User;
 
 class TeacherController extends Controller {
 
@@ -26,7 +29,7 @@ class TeacherController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('teachers.create');
 	}
 
 	/**
@@ -34,9 +37,15 @@ class TeacherController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(UserRequest $request)
 	{
-		//
+		$teacher = User::create([
+				'name'		=>	$request['name'],
+				'surname'	=>	$request['surname'],
+				'email'		=>	$request['email'],
+				'password'	=>	Crypt::encrypt($request['password'])
+			]);
+		return $teacher;
 	}
 
 	/**
