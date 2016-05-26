@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
+//use Request;
+
+use Illuminate\Http\Response;
 
 use App\Models\Course;
 
@@ -93,4 +96,27 @@ class CourseController extends Controller {
 		//
 	}
 
+	public function showEditor($id)
+	{
+		$course = Course::find($id);
+		return view('courses.showEditor', $course);
+	}
+
+	public function saveChanges(Request $request)
+	{
+		/*return response()->json([
+				"mje" => Request::input('main-content')
+			]);*/
+		/*if($request->ajax()){
+			return response()->json([
+					"mensaje" => $request->all()
+				]);
+		}else{
+			return response()->json([
+					"mensaje" => $request
+				]);
+		}*/
+		return response()->json(['response'=> $request->all()]);
+		//return Request::input('main-content');
+	}
 }

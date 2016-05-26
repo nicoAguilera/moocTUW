@@ -20,6 +20,16 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+/*
+|---------------------------------------------------------------------------
+|Rutas adiconales
+|---------------------------------------------------------------------------
+*/
+Route::post('cursos/guardar', 'CourseController@saveChanges');
+
+Route::get('cursos/{id}/contenido', 'CourseController@showEditor');
+
+
 
 /*
 |----------------------------------------------------------------------------
