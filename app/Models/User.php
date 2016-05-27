@@ -2,13 +2,18 @@
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+//use Illuminate\Auth\Passwords\CanResetPassword;
+//use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-	use Authenticatable, CanResetPassword;
+//Facades
+use Hash;
+
+class User extends Model implements AuthenticatableContract {
+
+	use Authenticatable, SoftDeletes;
 
 	/**
 	 * The database table used by the model.
@@ -22,7 +27,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'surname', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -31,4 +36,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	/**
+	* The attributes that be mutated to dates
+	*
+	* @var string
+	*/
+	protected $dates = ['deleted_at'];
+
+	/**
+	* Set the hash for the password
+	*
+	* @param 	string $value
+	* @return 	void
+	*/
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
+	}
+
+	
 }
