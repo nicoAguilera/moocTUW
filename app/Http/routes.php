@@ -11,14 +11,27 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'home']);
 
-Route::get('home', 'HomeController@index');
+Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
+{
+	//Login
+	Route::get('login', ['uses' => 'AuthController@getLogin', 'as' => 'login']);
+	Route::post('login', ['uses' => 'AuthController@postLogin', 'as' => 'login']);
+
+	//Signup
+	Route::get('signup', ['uses' => 'AuthController@getSignup', 'as' => 'signup']);
+	Route::post('signup', ['uses' => 'AuthController@postSignup', 'as' => 'signup']);
+});
+
+
+
+/*Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-]);
+]);*/
 
 /*
 |---------------------------------------------------------------------------

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 
+//Facades
+use Config;
+
 class AppServiceProvider extends ServiceProvider {
 
 	/**
@@ -11,7 +14,8 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		view()->share('app_name', 			Config::get('brand.name'));
+		view()->share('app_description', 	Config::get('brand.description'));
 	}
 
 	/**
