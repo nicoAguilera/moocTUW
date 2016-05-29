@@ -3,10 +3,10 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">{{ Lang::get('auth.signup_panel_title') }}</div>
-				<div class="panel-body">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="card">
+				<h2 class="card-header">{{ Lang::get('auth.signup_panel_title') }}</h2>
+				<div class="card-block">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -18,47 +18,54 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					{!! Form::open([
+							'url' 		=> URL::route('signup'),
+							'method'	=>'post', 
+							'class'		=>'form-horizontal', 
+							'role'		=>'form'
+					]) !!}
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
+						<!-- Name -->
+						<div class="md-form">
+							{!! Form::label('name', 'Nombre') !!}
+							{!! Form::text('name', old('name'), [
+								'class'			=> 'form-control',
+								//'placeholder'	=> '',
+							]) !!}
+						</div>
+						<!-- /Name -->
+
+						<div class="md-form">
+							{!! Form::label('email', 'Dirección de Email') !!}
+							{!! Form::email('email', old('email'), [
+								'class'			=> 'form-control',
+								//'placeholder'	=> '',
+							]) !!}
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
+						<div class="md-form">
+							{!! Form::label('password', 'Contraseña') !!}
+							{!! Form::password('password', old('password'), [
+								'class'			=> 'form-control',
+								//'placeholder'	=> '',
+							]) !!}
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
+						<div class="md-form">
+							{!! Form::label('password_confirmation', 'Confirmar Contraseña') !!}
+							{!! Form::password('password_confirmation', old('password'), [
+								'class'			=> 'form-control',
+								//'placeholder'	=> '',
+							]) !!}
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
+						<div class="md-form">
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-primary btn-lg btn-block">
+									Regístrate
 								</button>
 							</div>
 						</div>
-					</form>
-
-					{!! Form::open(array('url' => 'foo/bar')) !!}
 					{!! Form::close()!!}
 				</div>
 			</div>

@@ -12,15 +12,19 @@
 		@endif
 	</title>
 
-	<!--  CSS -->
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<!--  Bootstrap -->
+	<link href="{{ asset('MDB/css/bootstrap.min.css') }}" rel="stylesheet">
 	<!-- Material Design Bootstrap -->
     <link href="{{ asset('MDB/css/mdb.min.css') }}" rel="stylesheet">
+    <!--link href="{{ asset('css/app.css') }}" rel="stylesheet"-->
 
     <style type="text/css">
-    	.btn-navbar{
-    		color:#fff;
-    	}
+    	@media (min-width: 544px) {
+			.navbar-right {
+				float: right !important;
+				margin-right: -15px;
+			}
+		}
     </style>
 
 	<!-- /CSS -->
