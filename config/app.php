@@ -145,6 +145,11 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/*
+		 * Third Party Services Providers...
+		 */
+		'Collective\Html\HtmlServiceProvider',
+
 	],
 
 	/*
@@ -193,6 +198,10 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		/*
+		 * Third Party Facades...
+		 */
+		'Form'		=> 'Collective\Html\FormFacade',
 	],
 
 ];

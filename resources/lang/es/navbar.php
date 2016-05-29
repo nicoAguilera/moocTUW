@@ -3,6 +3,6 @@
 return [
 	
 	'login_btn'		=> 'Ingresa',
-	'signup_btn'	=> 'Crea tu cuenta',
+	'signup_btn'	=> 'Regístrate',
 
 ];
