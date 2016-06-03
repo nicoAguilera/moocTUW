@@ -1,14 +1,19 @@
 @extends('layouts.master')
 
-@section('contenido')
+@section('content')
 <div class="card">
     <div class="card-content">
-        <span class="card-title">{{$name}}</span>
+        <h2 class="card-title">{{$name}}</h2>
         <p>
             <label>Descripción: </label>{{$description}}<br>
 			<label>Fecha de Inicio: </label>{{$start_date}}<br>
 			<label>Fecha de finalización: </label>{{$end_date}}
 		</p>
+
+        <!-- Modulos -->
+        <h3>Modulos</h3>
+
+        <!-- /Modulos-->
     </div>
     <div class="card-action">
         <a href="{{action('TeacherController@create')}}">Agregar profesores</a>

@@ -5,10 +5,14 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
-//use Request;
 
 use Illuminate\Http\Response;
 
+//Facades
+use Form;
+use Lang;
+
+//Models
 use App\Models\Course;
 
 class CourseController extends Controller {
@@ -31,7 +35,9 @@ class CourseController extends Controller {
 	 */
 	public function create()
 	{
-		return view('courses.create');
+		$title = Lang::get('course.create_browser_title');
+
+		return view('courses.create', compact('title'));
 	}
 
 	/**
