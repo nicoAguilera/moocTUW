@@ -4,9 +4,10 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
-//use Redirect;
+//Facades
+use Redirect;
 
-class RedirectIfAuthenticated {
+class RedirectIfNotAuthenticated {
 
 	/**
 	 * The Guard implementation.
@@ -35,9 +36,9 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check())
+		if (! $this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			return Redirect::route('welcome');
 		}
 
 		return $next($request);

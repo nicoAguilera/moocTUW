@@ -54,5 +54,17 @@ class User extends Model implements AuthenticatableContract {
 		$this->attributes['password'] = Hash::make($value);
 	}
 
-	
+	/**
+	* Remove white spaces adjacent for the name
+	*
+	* @param 	string $value
+	* @return 	void
+	*/
+	public function setNameAttribute($value)
+	{
+		$name = trim($value);
+		$name = preg_replace('/\s\s+/', ' ', $name);
+
+		$this->attributes['name'] = $name;
+	}
 }

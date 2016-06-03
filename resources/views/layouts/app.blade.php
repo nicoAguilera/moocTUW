@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		@if (Route::currentRouteNamed('home'))
+		@if (Route::currentRouteNamed('welcome'))
 			{{ $app_name }} | {{ $app_description }}
 		@else
 			{{ $title }} - {{ $app_name }}

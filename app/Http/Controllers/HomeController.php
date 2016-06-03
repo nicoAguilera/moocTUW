@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+//Facades
+use Lang;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$title = Lang::get('auth.home_browser_title');
+
+		return view('home', compact('title'));
 	}
 
 }

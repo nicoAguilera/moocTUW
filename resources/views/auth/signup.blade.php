@@ -9,7 +9,7 @@
 				<div class="card-block">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							{!! Lang::get('auth.error_message_signup') !!}
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -27,47 +27,83 @@
 
 						<!-- Name -->
 						<div class="md-form">
-							{!! Form::label('name', 'Nombre') !!}
+							{!! Form::label('name', Lang::get('auth.name_label')) !!}
 							{!! Form::text('name', old('name'), [
 								'class'			=> 'form-control',
-								//'placeholder'	=> '',
+								'maxlength'		=> Config::get('user.name_max_length'),
 							]) !!}
+
+							@if ($errors->has('name'))
+								<p class="text-danger">
+									<i class="fa fa-exclamation-circle"></i>
+									{{ $errors->first('name') }}
+								</p>
+							@endif
 						</div>
 						<!-- /Name -->
 
-						<div class="md-form">
-							{!! Form::label('email', 'Dirección de Email') !!}
+						<!-- Email -->
+						<div class="md-form {{ $errors->has('name') ? 'has-error' : '' }}">
+							{!! Form::label('email', Lang::get('auth.email_label')) !!}
 							{!! Form::email('email', old('email'), [
 								'class'			=> 'form-control',
-								//'placeholder'	=> '',
+								'maxlength'		=> Config::get('user.email_max_length'),
 							]) !!}
-						</div>
 
-						<div class="md-form">
-							{!! Form::label('password', 'Contraseña') !!}
-							{!! Form::password('password', old('password'), [
-								'class'			=> 'form-control',
-								//'placeholder'	=> '',
-							]) !!}
+							@if ($errors->has('email'))
+								<p class="text-danger">
+									<i class="fa fa-exclamation-circle"></i>
+									{{ $errors->first('email') }}
+								</p>
+							@endif
 						</div>
+						<!-- /Email -->
 
+						<!-- Password -->
 						<div class="md-form">
-							{!! Form::label('password_confirmation', 'Confirmar Contraseña') !!}
-							{!! Form::password('password_confirmation', old('password'), [
+							{!! Form::label('password', Lang::get('auth.password_label')) !!}
+							{!! Form::password('password', [
 								'class'			=> 'form-control',
-								//'placeholder'	=> '',
+								'min'			=> Config::get('user.password_min_length'),
+								'maxlength'		=> Config::get('user.password_max_length'),
 							]) !!}
+
+							@if ($errors->has('password'))
+								<p class="text-danger">
+									<i class="fa fa-exclamation-circle"></i>
+									{{ $errors->first('password') }}
+								</p>
+							@endif
 						</div>
+						<!-- /Password -->
+
+						<!-- Password Confirmation -->
+						<div class="md-form">
+							{!! Form::label('password_confirmation', Lang::get('auth.password_confirmation_label')) !!}
+							{!! Form::password('password_confirmation', [
+								'class'			=> 'form-control',
+								'maxlength'		=> Config::get('user.password_max_length'),
+							]) !!}
+
+							@if ($errors->has('password_confirmation'))
+								<p class="text-danger">
+									<i class="fa fa-exclamation-circle"></i>
+									{{ $errors->first('password_confirmation') }}
+								</p>
+							@endif
+						</div>
+						<!-- /Password Confirmation -->
 
 						<div class="md-form">
 							<div class="col-md-12">
 								<button type="submit" class="btn btn-primary btn-lg btn-block">
-									Regístrate
+									{{ Lang::get('auth.signup_submit_btn') }}
 								</button>
 							</div>
 						</div>
 					{!! Form::close()!!}
 				</div>
+				<a href="{{ URL::route('login') }}">{{ Lang::get('auth.login_call_to_action') }}</a>
 			</div>
 		</div>
 	</div>

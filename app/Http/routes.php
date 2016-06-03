@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'home']);
+Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'welcome']);
+
+Route::get('home', ['uses' => 'HomeController@index', 'as' => 'home']);
 
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
 {
@@ -22,6 +24,9 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
 	//Signup
 	Route::get('signup', ['uses' => 'AuthController@getSignup', 'as' => 'signup']);
 	Route::post('signup', ['uses' => 'AuthController@postSignup', 'as' => 'signup']);
+
+	//Logout
+	Route::get('logout', ['uses' => 'AuthController@getLogout', 'as' => 'logout']);
 });
 
 

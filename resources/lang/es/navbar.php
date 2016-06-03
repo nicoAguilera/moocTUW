@@ -2,7 +2,7 @@
 
 return [
 	
-	'login_btn'		=> 'Ingresa',
-	'signup_btn'	=> 'Regístrate',
-
+	'login_btn'		=> 'Iniciar Sesión',
+	'signup_btn'	=> 'Regístrarte',
+	'logout_btn'	=> 'Cerrar Sesión',
 ];
