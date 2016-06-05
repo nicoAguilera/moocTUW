@@ -15,6 +15,13 @@
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+      <!-- Estilos para todo el proyecto -->
+      <style type="text/css">
+        body{
+          background: #eee;
+        }
+      </style>
+
       <title>
         @if (Route::currentRouteNamed('welcome'))
           {{ $app_name }} | {{ $app_description }}

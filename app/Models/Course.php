@@ -6,6 +6,6 @@ class Course extends Model {
 
 	protected $guarded = ['id'];
 
-	protected $fillable = ['name', 'description', 'start_date', 'end_date', 'active'];
+	protected $fillable = ['name', 'description', 'start_date', 'end_date'];
 
 }

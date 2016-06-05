@@ -2,6 +2,9 @@
 
 use App\Http\Requests\Request;
 
+//Facades
+use Lang;
+
 class CourseRequest extends Request {
 
 	/**
@@ -23,6 +26,18 @@ class CourseRequest extends Request {
 	{
 		return [
 			'name'	=> 'required'
+		];
+	}
+
+	/**
+	 * Translate the names of the attributes
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return [
+			'name'	=> Lang::get('course.create_name_label'),
 		];
 	}
 

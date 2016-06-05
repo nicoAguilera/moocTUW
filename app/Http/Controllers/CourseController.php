@@ -11,6 +11,7 @@ use Illuminate\Http\Response;
 //Facades
 use Form;
 use Lang;
+use Redirect;
 
 //Models
 use App\Models\Course;
@@ -24,8 +25,10 @@ class CourseController extends Controller {
 	 */
 	public function index()
 	{
+		$title = Lang::get('course.index_browser_title');
+
 		$courses = Course::all();
-		return view('courses.index', ['courses' => $courses]);
+		return view('courses.index', ['title' => $title, 'courses' => $courses]);
 	}
 
 	/**
@@ -43,18 +46,14 @@ class CourseController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @param CourseRequest $request
+	 * @return Redirect
 	 */
 	public function store(CourseRequest $request)
 	{
-			$course = Course::create([
-				'name'			=>	$request['name'],
-				'description'	=>	$request['description'],
-				'start_date'	=>	$request['start_date'],
-				'end_date' 		=>	$request['end_date'],
-				'active'		=>	FALSE
-			]);
-			return view('courses.show', $course);
+		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
+
+		return Redirect::route('cursos.show', $course->id)->with('alert.success', Lang::get('course.create_success_alert'));
 	}
 
 	/**
@@ -66,7 +65,8 @@ class CourseController extends Controller {
 	public function show($id)
 	{
 		$course = Course::findOrFail($id);
-		return view('courses.show', $course);
+		$title = $course->name;
+		return view('courses.show', ['course' => $course, 'title' => $title]);
 	}
 
 	/**
