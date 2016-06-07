@@ -15,18 +15,18 @@
 			<div class="collection">
 			@foreach($courses as $course)
 				@if($course->active === NULL)
-				<a href="{{ URL::route('cursos.show', $course['id']) }}" class="collection-item red-text text-darken-1">
+				<a href="{{ URL::route('courses.show', $course['id']) }}" class="collection-item red-text text-darken-1">
 					{{$course->name}}
 				</a>
 				@else
-				<a href="{{ URL::route('cursos.show', $course['id']) }}" class="collection-item green-text">
+				<a href="{{ URL::route('courses.show', $course['id']) }}" class="collection-item green-text">
 					{{$course->name}}
 				</a>
 				@endif
 			@endforeach
 			</div>
 
-			<a href="{{ URL::route('cursos.create') }}">{{ Lang::get('course.create_call_to_action') }}</a>
+			<a href="{{ URL::route('courses.create') }}">{{ Lang::get('course.create_call_to_action') }}</a>
 		</div>
 	</div>
 </div>

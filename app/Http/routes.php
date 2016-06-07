@@ -47,7 +47,37 @@ Route::post('cursos/guardar', 'CourseController@saveChanges');
 
 Route::get('cursos/{id}/contenido', 'CourseController@showEditor');
 
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de modulos
+|----------------------------------------------------------------------------
+*/
 
+Route::get('courses/{id}/modules/create', [
+		'uses'	=> 	'ModuleController@create', 
+		'as'	=> 	'modules.create'
+	]);
+
+Route::get('courses/{courseName}/modules/{moduleId}', [
+		'uses'	=>	'ModuleController@show',
+		'as'	=>	'modules.show'
+	]);
+
+Route::get('modules/{id}/edit', [
+		'uses'	=>	'ModuleController@edit',
+		'as'	=>	'modules.edit'
+	]);
+
+Route::post('modules', [
+		'uses'	=>	'ModuleController@store',
+		'as'	=>	'modules.store'
+	]);
+
+
+Route::get('activities', [
+		'uses'	=>	'ActivityController@create',
+		'as'	=>	'activities.create'
+	]);
 
 /*
 |----------------------------------------------------------------------------
@@ -63,11 +93,11 @@ Route::resource('profesores', 'TeacherController');
 |----------------------------------------------------------------------------
 */
 
-Route::resource('cursos', 'CourseController');
+Route::resource('courses', 'CourseController');
 
 /*
 |----------------------------------------------------------------------------
-|Rutas del controlador de profesores
+|Rutas del controlador de alumnos
 |----------------------------------------------------------------------------
 */
 

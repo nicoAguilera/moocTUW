@@ -66,6 +66,7 @@ class CourseController extends Controller {
 	{
 		$course = Course::findOrFail($id);
 		$title = $course->name;
+
 		return view('courses.show', ['course' => $course, 'title' => $title]);
 	}
 

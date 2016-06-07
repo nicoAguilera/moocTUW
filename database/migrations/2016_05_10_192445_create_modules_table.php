@@ -17,8 +17,10 @@ class CreateModulesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('description');
-			$table->dateTime('start_date');
-			$table->dateTime('end_date');
+			$table->timestamp('start_date');
+			$table->timestamp('end_date');
+
+			//Adds created_at and updated_at columns
 			$table->timestamps();
 		});
 	}

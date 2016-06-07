@@ -1,12 +1,12 @@
 @extends('layouts._form')
 
 @section('form_title')
-	{{ Lang::get('course.create_panel_title') }}
+	{{ Lang::get('module.create_panel_title') }}
 @stop
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	'cursos.store',
+			'route' 	=> 	'modules.store',
 			'method'	=>	'post',
 			'class'		=>	'col s12'
 	]) !!}
@@ -45,6 +45,10 @@
 			{!! Form::text('end_date', Config::get('course.default_date')) !!}
 		</div>
 		<!-- /Fecha de finalización -->
+
+		<!-- Id del curso al que corresponde -->
+		<input type="hidden" name="course_id" value="{{ $courseId }}">
+		<!-- /Id del curso al que corresponde -->
 
 		<!-- Boton de crear curso -->
 		<button class="btn waves-effect waves-light col s12 m4 offset-m8" type="submit" name="action">
