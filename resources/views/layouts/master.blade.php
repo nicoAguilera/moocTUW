@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
       <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
 
       <!-- Font Awesome -->
       <script src="https://use.fontawesome.com/0f001b167c.js"></script>
@@ -19,6 +19,11 @@
       <style type="text/css">
         body{
           background: #eee;
+        }
+        @media only screen and (min-width: 601px){
+          nav .nav-wrapper i {
+            line-height: inherit;
+          } 
         }
       </style>
 

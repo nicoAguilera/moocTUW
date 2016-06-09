@@ -6,7 +6,7 @@
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	'cursos.store',
+			'route' 	=> 	'courses.store',
 			'method'	=>	'post',
 			'class'		=>	'col s12'
 	]) !!}

@@ -12,6 +12,7 @@ use Redirect;
 use View;
 
 //Models
+use App\Models\Course;
 use App\Models\Module;
 
 class ModuleController extends Controller {
@@ -64,19 +65,28 @@ class ModuleController extends Controller {
 	 * @param  string  $courseId, int $moduleId
 	 * @return Response
 	 */
-	public function show($courseName, $moduleId)
+	public function show($courseId, $moduleId)
 	{
-		$module = Module::findOrFail($moduleId);
+		$course = Course::findOrFail($courseId);
 
-		$course_name = strtr($courseName, '-', ' ');
+		// Recupero de la relación solamente el modulo solicitado
+		$module = $course->modules()->where('id', '=', $moduleId)->first();
 
-		$title = $course_name .' - '. $module->name;
+		// Si el modulo no existe o se elimino se retorna un error 404 Not found
+		if($module === null)
+		{
+			abort(404);
+		}
+		else
+		{
+			$title = $course->name .' - '. $module->name;
 
-		return view('modules.show', [
-			'module' 		=> $module, 
-			'title' 		=> $title, 
-			'courseName' 	=> $course_name,
-		]);
+			return view('modules.show', [
+				'module' 		=> $module, 
+				'title' 		=> $title, 
+				'courseName' 	=> $course->name,
+			]);		
+		}
 	}
 
 	/**

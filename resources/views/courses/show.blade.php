@@ -27,7 +27,8 @@
 @section('list')
     @foreach($course->modules as $module)
         <li>
-            <a href="{{ URL::route('modules.show', [str_slug($course->name, '-'), $module->id]) }}">
+            <!--a href="{{ URL::route('modules.show', [str_slug($course->name, '-'), $module->id]) }}"-->
+            <a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}">
                 {{ $module->name }}
             </a>
         </li>
@@ -40,9 +41,5 @@
     </a>
     <a href="{{ URL::route('courses.edit', $course->id) }}">
         {{ Lang::get('course.edit_call_to_action') }}
-    </a>
-
-    <a href="{{ URL::route('courses.create') }}" class="waves-effect waves-light btn">
-        {{ Lang::get('course.create_call_to_action') }}
     </a>
 @stop

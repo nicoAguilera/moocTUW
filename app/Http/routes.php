@@ -58,7 +58,7 @@ Route::get('courses/{id}/modules/create', [
 		'as'	=> 	'modules.create'
 	]);
 
-Route::get('courses/{courseName}/modules/{moduleId}', [
+Route::get('courses/{courseId}/modules/{moduleId}', [
 		'uses'	=>	'ModuleController@show',
 		'as'	=>	'modules.show'
 	]);
@@ -73,6 +73,11 @@ Route::post('modules', [
 		'as'	=>	'modules.store'
 	]);
 
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de actividades
+|----------------------------------------------------------------------------
+*/
 
 Route::get('activities', [
 		'uses'	=>	'ActivityController@create',
