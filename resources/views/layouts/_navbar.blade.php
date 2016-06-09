@@ -6,7 +6,7 @@
 			@else
 				<a class="brand-logo" href="{{ URL::route('home') }}">{{ $app_name }}</a>
 			@endif
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars"></i></a>
 
 			<ul class="right hide-on-med-and-down">
 				@if (Auth::guest())
