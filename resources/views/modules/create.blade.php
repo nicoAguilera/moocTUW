@@ -8,7 +8,8 @@
 	{!! Form::open([
 			'route' 	=> 	'modules.store',
 			'method'	=>	'post',
-			'class'		=>	'col s12'
+			'class'		=>	'col s12',
+			'role'		=>	'search'
 	]) !!}
 
 		<!-- Nombre -->

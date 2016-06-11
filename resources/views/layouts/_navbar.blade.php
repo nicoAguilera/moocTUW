@@ -6,7 +6,9 @@
 			@else
 				<a class="brand-logo" href="{{ URL::route('home') }}">{{ $app_name }}</a>
 			@endif
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars"></i></a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</a>
 
 			<ul class="right hide-on-med-and-down">
 				@if (Auth::guest())
@@ -23,9 +25,8 @@
 				@else
 					<li>
 						<a href="#" class='dropdown-button btn' data-activates="dropdownLogout">
-							<!--i class="fa fa-user"></i-->
 							{{ Auth::user()->name }}
-							<i class="fa fa-caret-down"></i>
+							<i class="fa fa-caret-down" aria-hidden="true"></i>
 						</a>
 						<ul id="dropdownLogout" class="dropdown-content">
 							<li>

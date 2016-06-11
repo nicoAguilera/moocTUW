@@ -1,11 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
+@include('layouts._breadcrumbs')
+
 <div class="container">
     <div class="card">
         <div class="card-content">
-            <h4>@yield('course_title')</h4>
-            @yield('module_name')
+            @yield('title')
+
             <p>
                 <label>{{ Lang::get('course.show_description_label') }} </label>@yield('description')<br>
     			<label>{{ Lang::get('course.show_start_date_label') }} </label>@yield('start_date')<br>

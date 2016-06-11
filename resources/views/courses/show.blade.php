@@ -1,7 +1,14 @@
 @extends('layouts._showCourse')
 
-@section('course_title')
-    {{$course->name}}
+@section('breadcrumb')
+    <a href="{{ URL::route('courses.index') }}" class="breadcrumb">
+        {{ Lang::get('course.breadcrumb_name') }}
+    </a>
+    <a href="" class="breadcrumb">{{ $course->name }}</a>
+@stop
+
+@section('title')
+    <h4>{{$course->name}}</h4>
 @stop
 
 @section('description')

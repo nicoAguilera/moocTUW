@@ -5,6 +5,13 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+//Facades
+use Lang;
+use View;
+
+//Models
+use App\Models\Course;
+
 class ActivityController extends Controller {
 
 	/**
@@ -20,11 +27,30 @@ class ActivityController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
+	 * @param int $courseId, $moduleId
 	 * @return Response
 	 */
-	public function create()
+	public function create($courseId, $moduleId)
 	{
-		//
+
+		$course = Course::findOrFail($courseId);
+
+		$module = $course->modules()->where('id', '=', $moduleId)->first();
+
+		if($module === null)
+		{
+			abort(404);
+		}
+		else
+		{
+			$title = Lang::get('activity.create_browser_title');	
+			
+			return View::make('activities.create', [
+										'title' 	=> $title,
+										'course' 	=> $course,
+										'module' 	=> $module
+										]);
+		}
 	}
 
 	/**

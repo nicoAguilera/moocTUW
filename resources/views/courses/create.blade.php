@@ -1,5 +1,11 @@
 @extends('layouts._form')
 
+@section('breadcrumb')
+	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
+		{{ Lang::get('course.breadcrumb_name') }}
+	</a>
+@stop
+
 @section('form_title')
 	{{ Lang::get('course.create_panel_title') }}
 @stop

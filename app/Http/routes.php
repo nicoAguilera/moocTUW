@@ -79,9 +79,14 @@ Route::post('modules', [
 |----------------------------------------------------------------------------
 */
 
-Route::get('activities', [
+Route::get('courses/{courseId}/modules/{moduleId}/activities/create', [
 		'uses'	=>	'ActivityController@create',
 		'as'	=>	'activities.create'
+	]);
+
+Route::post('activities', [
+		'uses'	=>	'ActivityController@store',
+		'as'	=>	'activities.store'
 	]);
 
 /*

@@ -1,17 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
+
+@include('layouts._breadcrumbs')
+
 <div class="container">
 	<div class="row">
 		<div class="col s12 m8 l6 offset-m2 offset-l3">
 			<div class="card">
 				<div class="card-content">
 
-					<!-- Titulo -->
-					<h3 class="card-title">
-						@yield('form_title')
-					</h3>
-					<!-- /Titulo -->
+					<!-- Titulo-->
+					@yield('form_title')
+					<!-- /Titulo-->
 
 					<!-- Panel de errores -->
 					@if (count($errors) > 0)

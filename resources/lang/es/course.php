@@ -29,4 +29,7 @@ return [
 
 	'create_teacher_call_to_action'		=>	'Agregar profesor',
 	'edit_call_to_action'				=>	'Modificar datos del curso',
+
+	//breadcrumb
+	'breadcrumb_name'					=>	'Cursos',
 ];
