@@ -23,9 +23,13 @@
         }
 
         .breadcrumb:before{
-          content:'\f054';
+          content: '\/';
           font-family: FontAwesome;
           font-size: 20px;
+        }
+
+        .secondary-text{
+          color: #727272;
         }
       </style>
 

@@ -10,9 +10,12 @@
             @yield('title')
 
             <p>
-                <label>{{ Lang::get('course.show_description_label') }} </label>@yield('description')<br>
-    			<label>{{ Lang::get('course.show_start_date_label') }} </label>@yield('start_date')<br>
-    			<label>{{ Lang::get('course.show_end_date_label') }} </label>@yield('end_date')
+                <span class="secondary-text">{{ Lang::get('course.show_description_label') }} </span>
+                @yield('description')<br>
+    			<span class="secondary-text">{{ Lang::get('course.show_start_date_label') }} </span>
+                @yield('start_date')<br>
+    			<span class="secondary-text">{{ Lang::get('course.show_end_date_label') }} </span>
+                @yield('end_date')
     		</p><br><br>
 
             <!-- Sección subcontenido -->

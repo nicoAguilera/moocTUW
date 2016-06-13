@@ -18,6 +18,13 @@ use App\Models\Course;
 
 class CourseController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('admin', ['only' => 'index']);
+
+		//$this->middleware('auth.strict', ['only' => 'getLogout']);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

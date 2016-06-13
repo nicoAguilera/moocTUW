@@ -84,7 +84,7 @@ class ModuleController extends Controller {
 			return view('modules.show', [
 				'module' 		=> $module, 
 				'title' 		=> $title, 
-				'courseName' 	=> $course->name,
+				'course' 		=> $course,
 			]);		
 		}
 	}

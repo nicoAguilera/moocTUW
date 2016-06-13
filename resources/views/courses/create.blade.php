@@ -7,7 +7,7 @@
 @stop
 
 @section('form_title')
-	{{ Lang::get('course.create_panel_title') }}
+	<h4>{{ Lang::get('course.create_panel_title') }}</h4>
 @stop
 
 @section('form')

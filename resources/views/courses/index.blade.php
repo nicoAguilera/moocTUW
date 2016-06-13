@@ -7,6 +7,20 @@
 	}*/
 </style>
 
+<nav  class="indigo">
+	<div class="container">
+		<div class="nav-wrapper">
+			<div class="row">
+				<div class="col s12">
+				    <a href="{{ URL::route('courses.index') }}" class="breadcrumb">
+				        {{ Lang::get('course.breadcrumb_name') }}
+				    </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
 <div class="container">
 	<div class="card">
 		<div class="card-content">

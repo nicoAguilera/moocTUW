@@ -1,11 +1,29 @@
 @extends('layouts._form')
 
 @section('breadcrumb')
+	<!-- Cursos -->
 	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
 		{{ Lang::get('course.breadcrumb_name') }}
 	</a>
-    <a href="#!" class="breadcrumb">{{ $course->name }}</a>
-    <a href="#!" class="breadcrumb">{{ $module->name }}</a>
+	<!-- /Cursos -->
+
+	<!-- Nombre del curso -->
+    <a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
+    	{{ $course->name }}
+    </a>
+    <!-- /Nombre del curso -->
+
+    <!-- Nombre del modulo -->
+    <a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}" class="breadcrumb">
+    	{{ $module->name }}
+    </a>
+    <!-- /Nombre del modulo -->
+
+    <!-- Agregar actividad -->
+    <a href="" class="breadcrumb">
+    	{{ Lang::get('activity.create_breadcrumb_name') }}
+    </a>
+    <!-- Agregar actividad -->
 @stop
 
 @section('form_title')

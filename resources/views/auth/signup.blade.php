@@ -1,7 +1,7 @@
 @extends('layouts._form')
 
 @section('form_title')
-	{{ Lang::get('auth.signup_panel_title') }}</h2>
+	<h4>{{ Lang::get('auth.signup_panel_title') }}</h4>
 @stop
 
 @section('form')
@@ -80,7 +80,7 @@
 		</div>
 		<!-- /Password Confirmation -->
 
-		<button type="submit" class="btn waves-effect waves-light col s12 m4 offset-m8">
+		<button type="submit" class="btn waves-effect waves-light col s12 m6 offset-m6">
 			{{ Lang::get('auth.signup_submit_btn') }}
 		</button>
 	{!! Form::close()!!}

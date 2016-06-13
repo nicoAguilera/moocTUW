@@ -34,7 +34,6 @@
 @section('list')
     @foreach($course->modules as $module)
         <li>
-            <!--a href="{{ URL::route('modules.show', [str_slug($course->name, '-'), $module->id]) }}"-->
             <a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}">
                 {{ $module->name }}
             </a>

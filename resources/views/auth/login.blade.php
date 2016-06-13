@@ -1,7 +1,7 @@
 @extends('layouts._form')
 
 @section('form_title')
-	{{ Lang::get('auth.login_panel_title') }}
+	<h4>{{ Lang::get('auth.login_panel_title') }}</h4>
 @stop
 
 @section('form')

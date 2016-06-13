@@ -4,8 +4,10 @@
     <a href="{{ URL::route('courses.index') }}" class="breadcrumb">
         {{ Lang::get('course.breadcrumb_name') }}
     </a>
-    <a href="#!" class="breadcrumb">{{ $courseName }}</a>
-    <a href="#!" class="breadcrumb">{{ $module->name }}</a>
+    <a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
+        {{ $course->name }}
+    </a>
+    <a href="" class="breadcrumb">{{ $module->name }}</a>
 @stop
 
 @section('title')
@@ -29,7 +31,7 @@
 @stop
 
 @section('resource_route')
-    {{ URL::route('activities.create', [10, $module->id]) }}
+    {{ URL::route('activities.create', [$course->id, $module->id]) }}
 @stop
 
 @section('list')
