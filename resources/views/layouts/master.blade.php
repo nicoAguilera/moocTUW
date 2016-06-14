@@ -34,11 +34,9 @@
 
       <main>
 
-        <!--div class="container"-->
-          @include ('layouts._alerts')
+        @include ('layouts._alerts')
 
-          @yield ('content')
-        <!--/div-->
+        @yield ('content')
       
       </main>
 
