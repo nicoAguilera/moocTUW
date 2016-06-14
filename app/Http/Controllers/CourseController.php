@@ -61,7 +61,7 @@ class CourseController extends Controller {
 	{
 		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
 
-		return Redirect::route('cursos.show', $course->id)->with('alert.success', Lang::get('course.create_success_alert'));
+		return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('course.create_success_alert'));
 	}
 
 	/**
@@ -86,18 +86,30 @@ class CourseController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$course = Course::findOrFail($id);
+
+		$title = Lang::get('course.edit_browser_title');
+
+		return view('courses.edit', ['course' => $course, 'title' => $title]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $id, CourseRequest $request
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, CourseRequest $request)
 	{
-		//
+		$course = Course::findOrFail($id);
+
+		$result = $course->update($request->only('name', 'description', 'start_date', 'end_date'));
+		
+		if($result === true){
+			return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('course.update_success_alert'));
+		}else{
+			return Redirect::route('courses.edit', $course->id)->with('alert.danger', Lang::get('course.update_danger_alert'));
+		}
 	}
 
 	/**

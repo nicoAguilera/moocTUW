@@ -13,9 +13,9 @@ return [
 	'create_panel_title'				=>	'Nuevo curso',
 	'create_name_label'					=>	'Nombre',
 	'create_description_label'			=>	'Descripción',
-	'create_start_date_label'			=>	'Fecha y hora de inicio',
-	'create_end_date_label'				=>	'Fecha y hora de finalización',
-	'create_submit_btn'					=>	'Crear',
+	'create_start_date_label'			=>	'Fecha y hora de inicio (Formato: Año-Mes-Día Hora-Minuto-Segundo)',
+	'create_end_date_label'				=>	'Fecha y hora de finalización (Formato: Año-Mes-Día Hora-Minuto-Segundo)',
+	'create_submit_btn'					=>	'Crear curso',
 
 	'create_success_alert'				=>	'El curso se ha creado correctamente.',
 
@@ -32,4 +32,13 @@ return [
 
 	//breadcrumb
 	'breadcrumb_name'					=>	'Cursos',
+
+	//edit
+	'edit_browser_title'				=>	'Editar curso',
+	'edit_panel_title'					=>	'Editar curso',
+	'edit_submit_btn'					=>	'Actualizar curso',
+
+	//update
+	'update_success_alert'				=>	'El curso se actualizo correctamente.',
+	'update_danger_alert'				=>	'No se realizo correctamente la actualización del curso',
 ];
