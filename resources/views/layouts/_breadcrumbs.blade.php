@@ -1,11 +1,9 @@
-<nav  class="indigo">
-	<div class="container">
+<div class="container-fluid">	
+	<nav  class="indigo">
 		<div class="nav-wrapper">
-			<div class="row">
-				<div class="col s12">
-					@yield('breadcrumb')
-				</div>
+			<div class="col s12">
+				@yield('breadcrumb')
 			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
+</div>

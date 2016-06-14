@@ -11,27 +11,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
       <!-- Estilos para todo el proyecto -->
-      <style type="text/css">
-        body{
-          background: #eee;
-        }
-
-        @media only screen and (min-width: 601px){
-          nav .nav-wrapper i {
-            line-height: inherit;
-          } 
-        }
-
-        .breadcrumb:before{
-          content: '\/';
-          font-family: FontAwesome;
-          font-size: 20px;
-        }
-
-        .secondary-text{
-          color: #727272;
-        }
-      </style>
+      <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
       <title>
         @if (Route::currentRouteNamed('welcome'))
@@ -50,12 +30,17 @@
     </head>
 
     <body>
-      @include ('layouts._navbar')
+      @include ('layouts._header')
 
-      @include ('layouts._alerts')
+      <main>
 
-      @yield ('content')
+        <!--div class="container"-->
+          @include ('layouts._alerts')
 
+          @yield ('content')
+        <!--/div-->
+      
+      </main>
 
       <!-- SCRIPT -->
       <!-- jQuery -->

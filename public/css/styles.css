@@ -1,0 +1,65 @@
+body{
+    background: #eee;
+}
+
+@media only screen and (min-width: 601px){
+    nav .nav-wrapper i {
+        line-height: inherit;
+    } 
+}
+
+/* Breadcrumb */
+
+.breadcrumb:before{
+    content: '\/';
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+nav .nav-wrapper{
+    padding-left: 15px;
+}
+
+.secondary-text{
+    color: #727272;
+}
+
+/* 
+ * Barra de navegación lateral
+ */
+
+
+ul.side-nav.fixed:hover{
+    overflow-y: auto;
+}
+
+.bold>a{
+    font-weight: bold;
+}
+@media only screen and (max-width: 992px){
+    .side-nav.fixed{
+        transform: translateX(-100%);
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .side-nav.fixed{
+        transform: translateX(0%);
+    }
+    .side-nav{
+        margin-top: 64px;
+    }
+}
+
+/*
+ * Main
+ */
+main{
+    padding-left: 240px;
+}
+@media only screen and (max-width: 992px){
+    main{
+        padding-left: 0;
+    }
+}
+
