@@ -4,7 +4,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
-class Admin {
+class IsStudent {
 
 	/**
 	 * The Guard implementation.
@@ -33,7 +33,7 @@ class Admin {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check() && $this->auth->user()->role === 'teacher')
+		if ($this->auth->check() && $this->auth->user()->role === 'student')
 		{
 			return $next($request);
 		}
