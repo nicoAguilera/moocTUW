@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\CourseRequest;
+use App\Http\Requests\CourseAndModuleRequest;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -35,9 +35,11 @@ class ModuleController extends Controller {
 	 */
 	public function create($courseId)
 	{
+		$course = Course::findOrFail($courseId);
+
 		$title = Lang::get('module.create_browser_title');
 
-		return View::make('modules.create', ['title' => $title, 'courseId' => $courseId]);
+		return View::make('modules.create', ['title' => $title, 'course' => $course]);
 	}
 
 	/**
@@ -45,7 +47,7 @@ class ModuleController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(CourseRequest $request)
+	public function store(CourseAndModuleRequest $request)
 	{
 		$module = Module::create($request->only(
 									'name', 
@@ -92,12 +94,26 @@ class ModuleController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $courseId, $moduleId
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($courseId, $moduleId)
 	{
-		//
+		$course = Course::findOrFail($courseId);
+
+		$module = $course->modules()->where('id', '=', $moduleId)->first();
+
+		// Si el modulo no existe o se elimino se retorna un error 404 Not found
+		if($module === null)
+		{
+			abort(404);
+		}
+		else
+		{
+			$title = Lang::get('module.edit_browser_title');
+
+			return view('modules.edit', ['course' => $course, 'module' => $module, 'title' => $title]);
+		}
 	}
 
 	/**
@@ -106,9 +122,30 @@ class ModuleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($courseId, $moduleId, CourseAndModuleRequest $request)
 	{
-		//
+		$course = Course::findOrFail($courseId);
+
+		$module = $course->modules()->where('id', '=', $moduleId)->first();
+
+		// Si el modulo no existe o se elimino se redirije a la vista del curso informando la situación
+		if($module === null)
+		{
+			return Redirect::route('courses.show', $course->id)
+						->with('alert.danger', Lang::get('course.update_module_failed_danger_alert'));
+		}
+		else
+		{
+			$result = $module->update($request->only('name', 'description', 'start_date', 'end_date'));
+			
+			if($result === true){
+				return Redirect::route('modules.show', [$course->id, $module->id])
+						->with('alert.success', Lang::get('module.update_success_alert'));
+			}else{
+				return Redirect::route('modules.edit', [$course->id, $module->id])
+						->with('alert.danger', Lang::get('module.update_danger_alert'));
+			}
+		}
 	}
 
 	/**

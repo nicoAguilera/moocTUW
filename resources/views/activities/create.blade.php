@@ -1,4 +1,4 @@
-@extends('layouts._form')
+@extends('forms._form')
 
 @section('breadcrumb')
 	<!-- Cursos -->
@@ -53,7 +53,7 @@
 		<!-- /Nombre -->
 
 		<!-- Boton de crear actividad -->
-		<button class="btn waves-effect waves-light col s12 m4 offset-m8" type="submit">
+		<button class="btn waves-effect waves-light col s12" type="submit">
 			{{ Lang::get('activity.add_activity_btn')}}
 		</button>
 		<!-- /Boton de crear actividad -->

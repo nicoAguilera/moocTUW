@@ -37,7 +37,7 @@
 @section('list')
     @foreach($module->activities as $activity)
         <li>
-            <a href="{{ URL::route('activities.show', [$module->id, $module->id]) }}">
+            <a href="{{ URL::route('activities.show', [$module->id, $activity->id]) }}">
                 {{ $activity->name }}
             </a>
         </li>
@@ -45,7 +45,7 @@
 @stop
 
 @section('action')
-    <a href="{{ URL::route('modules.edit', $module->id) }}">
+    <a href="{{ URL::route('modules.edit', [$course->id, $module->id]) }}">
         {{ Lang::get('module.edit_call_to_action') }}
     </a>
 @stop

@@ -63,9 +63,14 @@ Route::get('courses/{courseId}/modules/{moduleId}', [
 		'as'	=>	'modules.show'
 	]);
 
-Route::get('modules/{id}/edit', [
+Route::get('courses/{courseId}/modules/{moduleId}/edit', [
 		'uses'	=>	'ModuleController@edit',
 		'as'	=>	'modules.edit'
+	]);
+
+Route::patch('courses/{courseId}/modules/{moduleId}', [
+		'uses'	=>	'ModuleController@update',
+		'as'	=>	'modules.update'
 	]);
 
 Route::post('modules', [

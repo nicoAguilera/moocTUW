@@ -1,4 +1,16 @@
-@extends('layouts._form')
+@extends('forms._form')
+
+@section('breadcrumb')
+	<a href="{{ URL::route('courses.index') }}">
+		{{ Lang::get('course.breadcrumb_name') }}
+	</a>
+	<a href="{{ URL::route('courses.show', $course->id) }}">
+		{{ $course->name }}
+	</a>
+	<a href="">
+		{{ Lang::get('module.create_breadcrumb') }}
+	</a>
+@stop
 
 @section('form_title')
 	<h4>{{ Lang::get('module.create_panel_title') }}</h4>
@@ -12,48 +24,15 @@
 			'role'		=>	'search'
 	]) !!}
 
-		<!-- Nombre -->
-		<div class="input-field">
-			{!! Form::label('name', Lang::get('course.create_name_label')) !!}
-			{!! Form::text('name', old('name'), ['class' => 'validate']) !!}
-
-			@if ($errors->has('name'))
-				<p class="red-text text-darken-2">
-					<i class="fa fa-exclamation-circle"></i>
-					{{ $errors->first('name') }}
-				</p>
-			@endif
-		</div>
-		<!-- /Nombre -->
-
-		<!-- Descripción -->
-		<div class="input-field">
-			{!! Form::label('description', Lang::get('course.create_description_label')) !!}
-			{!! Form::text('description', old('description'), ['class' => 'validate']) !!}
-		</div>
-		<!-- /Descripción -->
-
-		<!-- Fecha de inicio -->
-		{!! Form::label('start_date', Lang::get('course.create_start_date_label')) !!}
-		<div class="input-field">
-			{!! Form::text('start_date', Config::get('course.default_date')) !!}
-		</div>
-		<!-- /Fecha de inicio -->
-
-		<!-- Fecha de finalización -->
-		{!! Form::label('end_date', Lang::get('course.create_end_date_label')) !!}
-		<div class="input-field">
-			{!! Form::text('end_date', Config::get('course.default_date')) !!}
-		</div>
-		<!-- /Fecha de finalización -->
+		@include('forms._fields')
 
 		<!-- Id del curso al que corresponde -->
-		<input type="hidden" name="course_id" value="{{ $courseId }}">
+		<input type="hidden" name="course_id" value="{{ $course->id }}">
 		<!-- /Id del curso al que corresponde -->
 
 		<!-- Boton de crear curso -->
-		<button class="btn waves-effect waves-light col s12 m4 offset-m8" type="submit" name="action">
-			{{ Lang::get('course.create_submit_btn') }}
+		<button class="btn waves-effect waves-light col s12" type="submit" name="action">
+			{{ Lang::get('module.create_submit_btn') }}
 		</button>
 		<!-- /Boton de crear curso -->
 

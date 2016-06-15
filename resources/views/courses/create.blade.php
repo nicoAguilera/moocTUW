@@ -1,4 +1,4 @@
-@extends('layouts._form')
+@extends('forms._form')
 
 @section('breadcrumb')
 	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
@@ -18,7 +18,7 @@
 			'role'		=>	'search'
 	]) !!}
 
-		@include('courses.partials.fields')
+		@include('forms._fields')
 
 		<!-- Boton de crear curso -->
 		<button class="btn waves-effect waves-light col s12" type="submit" name="action">

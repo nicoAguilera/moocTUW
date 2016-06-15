@@ -7,29 +7,32 @@
 	<a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
 		{{ $course->name }}
 	</a>
+	<a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}" class="breadcrumb">
+		{{ $module->name }}
+	</a>
 	<a href="" class="breadcrumb">
-		{{ Lang::get('course.edit_panel_title') }}
+		{{ Lang::get('module.edit_breadcrumb') }}
 	</a>
 @stop
 
 @section('form_title')
-	<h4>{{ Lang::get('course.edit_panel_title') }}</h4>
+	<h4>{{ Lang::get('module.edit_panel_title') }}</h4>
 @stop
 
 @section('form')
-	{!! Form::model($course, [
-			'route' 	=> 	['courses.update', $course->id],
+	{!! Form::model($module, [
+			'route' 	=> 	['modules.update', $course->id, $module->id],
 			'method'	=>	'patch',
 			'class'		=>	'col s12',
 			'role'		=>	'search'
 	]) !!}
 
 
-		@include('courses.partials.fields')
+		@include('forms._fields')
 
 		<!-- Boton de crear curso -->
 		<button class="btn waves-effect waves-light col s12" type="submit" name="action">
-			{{ Lang::get('course.edit_submit_btn') }}
+			{{ Lang::get('module.edit_submit_btn') }}
 		</button>
 		<!-- /Boton de crear curso -->
 

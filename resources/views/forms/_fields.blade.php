@@ -15,7 +15,7 @@
 <!-- Descripción -->
 <div class="input-field">
 	{!! Form::label('description', Lang::get('course.create_description_label')) !!}
-	{!! Form::text('description', old('description'), ['class' => 'validate']) !!}
+	{!! Form::text('description', old('description')) !!}
 </div>
 <!-- /Descripción -->
 
@@ -23,6 +23,13 @@
 {!! Form::label('start_date', Lang::get('course.create_start_date_label')) !!}
 <div class="input-field">
 	{!! Form::text('start_date', old('start_date'), ['placeholder' => Config::get('course.default_date')] ) !!}
+
+	@if ($errors->has('start_date'))
+		<p class="red-text text-darken-2">
+			<i class="fa fa-exclamation-circle"></i>
+			{{ $errors->first('start_date') }}
+		</p>
+	@endif
 </div>
 <!-- /Fecha de inicio -->
 
@@ -30,5 +37,12 @@
 {!! Form::label('end_date', Lang::get('course.create_end_date_label')) !!}
 <div class="input-field">
 	{!! Form::text('end_date', old('end_date'), ['placeholder' => Config::get('course.default_date')] ) !!}
+
+	@if ($errors->has('end_date'))
+		<p class="red-text text-darken-2">
+			<i class="fa fa-exclamation-circle"></i>
+			{{ $errors->first('end_date') }}
+		</p>
+	@endif
 </div>
 <!-- /Fecha de finalización -->

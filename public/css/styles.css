@@ -20,6 +20,10 @@ nav .nav-wrapper{
     padding-left: 15px;
 }
 
+.breadcrumb{
+    font-size: 15px;
+}
+
 .secondary-text{
     color: #727272;
 }

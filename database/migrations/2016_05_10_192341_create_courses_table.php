@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('description');
+			$table->string('description')->nullable();
 			$table->timestamp('start_date')->default('0000-00-00 00-00-00');
 			$table->timestamp('end_date')->default('0000-00-00 00-00-00');
 			$table->boolean('active')->default(0);

@@ -1,6 +1,10 @@
 <?php
 
 return [
+	//labels
+	'start_date_label'					=> 	'Fecha y hora de inicio',
+	'end_date_label'					=>	'Fecha y hora de finalización',
+
 	//index
 	'index_browser_title'				=>	'Cursos',
 	'index_panel_title'					=>	'Listado de cursos',
@@ -8,7 +12,7 @@ return [
 	'create_call_to_action'				=>	'Crear nuevo curso',
 	
 	//create
-	'create_browser_title'				=> 	'Crear un nuevo curso',
+	'create_browser_title'				=> 	'Crear nuevo curso',
 
 	'create_panel_title'				=>	'Nuevo curso',
 	'create_name_label'					=>	'Nombre',
@@ -41,4 +45,7 @@ return [
 	//update
 	'update_success_alert'				=>	'El curso se actualizo correctamente.',
 	'update_danger_alert'				=>	'No se realizo correctamente la actualización del curso',
+
+	//update of module failed
+	'update_module_failed_danger_alert'	=>	'La actualización sobre el modulo solicitado no puede llevarse a cabo.',
 ];

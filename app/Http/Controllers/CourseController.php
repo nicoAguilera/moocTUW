@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CourseRequest;
+use App\Http\Requests\CourseAndModuleRequest;
 
 use Illuminate\Http\Response;
 
@@ -57,7 +57,7 @@ class CourseController extends Controller {
 	 * @param CourseRequest $request
 	 * @return Redirect
 	 */
-	public function store(CourseRequest $request)
+	public function store(CourseAndModuleRequest $request)
 	{
 		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
 
@@ -99,7 +99,7 @@ class CourseController extends Controller {
 	 * @param  int  $id, CourseRequest $request
 	 * @return Response
 	 */
-	public function update($id, CourseRequest $request)
+	public function update($id, CourseAndModuleRequest $request)
 	{
 		$course = Course::findOrFail($id);
 

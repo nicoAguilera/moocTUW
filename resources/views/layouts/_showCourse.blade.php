@@ -25,13 +25,13 @@
                             <div class="row">
 
                                 <!-- Titulo -->
-                                <div class="col l2">
+                                <div class="col">
                                     <h5>@yield('resource_title')</h5>
                                 </div>
                                 <!-- /Titulo -->
 
                                 <!-- Boton Agregar -->
-                                <div class="col l10">
+                                <div class="col">
                                     <a href="@yield('resource_route')" class="waves-effect waves-light btn">
                                         {{ Lang::get('course.create_resource_call_to_action') }}
                                     </a>
