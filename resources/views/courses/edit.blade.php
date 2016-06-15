@@ -25,7 +25,7 @@
 	]) !!}
 
 
-		@include('courses.partials.fields')
+		@include('forms._fields')
 
 		<!-- Boton de crear curso -->
 		<button class="btn waves-effect waves-light col s12" type="submit" name="action">

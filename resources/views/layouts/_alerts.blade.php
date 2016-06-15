@@ -1,33 +1,36 @@
 <!-- alerts -->
 @if(Session::has('alert'))
-
-	<div class="content-alerts">
+	<div class="container">
 
 		@if(Session::has('alert.success'))
-			<div class="alert alert-success alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				{{ Session::get('alert.success') }}
+			<div class="card-panel green z-depth-2" role="alert">
+				<span class="white-text">
+					{{ Session::get('alert.success') }}
+				</span>
 			</div>
 		@endif
 
 		@if(Session::has('alert.info'))
-			<div class="alert alert-info alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				{{ Session::get('alert.info') }}
+			<div class="card-panel light-blue darken-1 z-depth-2" role="alert">
+				<span class="white-text">
+					{{ Session::get('alert.info') }}
+				</span>
 			</div>
 		@endif
 
 		@if(Session::has('alert.warning'))
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				{{ Session::get('alert.warning') }}
+			<div class="card-panel orange lighten-2 z-depth-2" role="alert">
+				<span class="white-text">
+					{{ Session::get('alert.warning') }}
+				</span>
 			</div>
 		@endif
 
 		@if(Session::has('alert.danger'))
-			<div class="alert alert-danger alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				{{ Session::get('alert.danger') }}
+			<div class="card-panel red darken-2 z-depth-2" role="alert">
+				<span class="white-text">
+					{{ Session::get('alert.danger') }}
+				</span>
 			</div>
 		@endif
 

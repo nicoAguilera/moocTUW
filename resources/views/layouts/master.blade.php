@@ -33,6 +33,7 @@
       @include ('layouts._header')
 
       <main>
+        @include('layouts._breadcrumbs')
 
         @include ('layouts._alerts')
 

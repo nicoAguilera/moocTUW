@@ -2,8 +2,6 @@
 
 @section('content')
 
-    @include('layouts._breadcrumbs')
-
     <div class="container">
         <div class="row">
             <div class="col s12 m8 l12 offset-m2">

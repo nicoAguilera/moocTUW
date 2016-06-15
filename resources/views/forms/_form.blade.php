@@ -2,7 +2,7 @@
 
 @section('content')
 
-	@include('layouts._breadcrumbs')
+	
 
 	<div class="container-fluid">
 		<div class="row">
