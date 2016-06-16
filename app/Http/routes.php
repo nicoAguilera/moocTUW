@@ -94,6 +94,10 @@ Route::post('activities', [
 		'as'	=>	'activities.store'
 	]);
 
+Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
+		'uses'	=>	'ActivityController@show',
+		'as'	=>	'activities.show'
+	]);
 /*
 |----------------------------------------------------------------------------
 |Rutas del controlador de profesores

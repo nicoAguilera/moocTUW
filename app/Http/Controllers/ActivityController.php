@@ -4,13 +4,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ActivityRequest;
 
 //Facades
 use Lang;
+use Redirect;
 use View;
 
 //Models
+use App\Models\Activity;
 use App\Models\Course;
+use App\Models\Module;
 
 class ActivityController extends Controller {
 
@@ -35,43 +39,60 @@ class ActivityController extends Controller {
 
 		$course = Course::findOrFail($courseId);
 
-		$module = $course->modules()->where('id', '=', $moduleId)->first();
+		$module = Module::findOrFail($moduleId);
 
-		if($module === null)
-		{
-			abort(404);
-		}
-		else
-		{
-			$title = Lang::get('activity.create_browser_title');	
-			
-			return View::make('activities.create', [
-										'title' 	=> $title,
-										'course' 	=> $course,
-										'module' 	=> $module
-										]);
-		}
+		$title = Lang::get('activity.create_browser_title');	
+		
+		return View::make('activities.create', [
+									'title' 	=> $title,
+									'course' 	=> $course,
+									'module' 	=> $module
+									]);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @param ActivityRequest $request
+	 * @return Redirect
 	 */
-	public function store()
+	public function store(ActivityRequest $request)
 	{
-		//
+		$activity = Activity::create($request->only('title', 'module_id'));
+
+		$module = Module::findOrFail($request->only('module_id'))->first();
+
+		//dd($module);
+
+		$courseId = $module->course->id;
+
+		return Redirect::route('activities.show', [$courseId, $module->id, $activity->id])
+							->with('alert.success', Lang::get('activity.create_success_alert'));
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $courseId, $moduleId, $activityId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($courseId, $moduleId, $activityId)
 	{
-		//
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$activity = Activity::findOrFail($activityId);
+
+		$title = $course->name." - ".$module->name." - ".$activity->title;
+
+		return View::make('activities.show', [
+							'title'		=>	$title,
+							'course'	=>	$course,
+							'module'	=>	$module,
+							'activity'	=>	$activity,
+						]);
+
 	}
 
 	/**

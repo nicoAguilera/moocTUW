@@ -38,19 +38,23 @@
 			'role'		=>	'search'
 	]) !!}
 
-		<!-- Nombre -->
+		<!-- Titulo de la actividad -->
 		<div class="input-field">
-			{!! Form::label('name', Lang::get('course.create_name_label')) !!}
-			{!! Form::text('name', old('name'), ['class' => 'validate']) !!}
+			{!! Form::label('title', Lang::get('activity.create_name_label')) !!}
+			{!! Form::text('title', old('title'), ['class' => 'validate']) !!}
 
-			@if ($errors->has('name'))
+			@if ($errors->has('title'))
 				<p class="red-text text-darken-2">
 					<i class="fa fa-exclamation-circle"></i>
-					{{ $errors->first('name') }}
+					{{ $errors->first('title') }}
 				</p>
 			@endif
 		</div>
-		<!-- /Nombre -->
+		<!-- /Titulo de la actividad -->
+
+		<!-- Id del modulo al que corresponde -->
+		<input type="hidden" name="module_id" value="{{ $module->id }}">
+		<!-- /Id del modulo al que corresponde -->
 
 		<!-- Boton de crear actividad -->
 		<button class="btn waves-effect waves-light col s12" type="submit">

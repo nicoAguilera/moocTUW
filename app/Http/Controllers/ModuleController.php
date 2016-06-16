@@ -45,7 +45,8 @@ class ModuleController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @param CourseAndModuleRequest $request
+	 * @return Redirect
 	 */
 	public function store(CourseAndModuleRequest $request)
 	{
@@ -71,24 +72,15 @@ class ModuleController extends Controller {
 	{
 		$course = Course::findOrFail($courseId);
 
-		// Recupero de la relación solamente el modulo solicitado
-		$module = $course->modules()->where('id', '=', $moduleId)->first();
+		$module = Module::findOrFail($moduleId);
 
-		// Si el modulo no existe o se elimino se retorna un error 404 Not found
-		if($module === null)
-		{
-			abort(404);
-		}
-		else
-		{
-			$title = $course->name .' - '. $module->name;
+		$title = $course->name .' - '. $module->name;
 
-			return view('modules.show', [
-				'module' 		=> $module, 
-				'title' 		=> $title, 
-				'course' 		=> $course,
-			]);		
-		}
+		return view('modules.show', [
+			'module' 		=> $module, 
+			'title' 		=> $title, 
+			'course' 		=> $course,
+		]);
 	}
 
 	/**
@@ -101,19 +93,11 @@ class ModuleController extends Controller {
 	{
 		$course = Course::findOrFail($courseId);
 
-		$module = $course->modules()->where('id', '=', $moduleId)->first();
+		$module = Module::findOrFail($moduleId);
 
-		// Si el modulo no existe o se elimino se retorna un error 404 Not found
-		if($module === null)
-		{
-			abort(404);
-		}
-		else
-		{
-			$title = Lang::get('module.edit_browser_title');
+		$title = Lang::get('module.edit_browser_title');
 
-			return view('modules.edit', ['course' => $course, 'module' => $module, 'title' => $title]);
-		}
+		return view('modules.edit', ['course' => $course, 'module' => $module, 'title' => $title]);
 	}
 
 	/**
@@ -126,25 +110,16 @@ class ModuleController extends Controller {
 	{
 		$course = Course::findOrFail($courseId);
 
-		$module = $course->modules()->where('id', '=', $moduleId)->first();
+		$module = Module::findOrFail($moduleId);
 
-		// Si el modulo no existe o se elimino se redirije a la vista del curso informando la situación
-		if($module === null)
-		{
-			return Redirect::route('courses.show', $course->id)
-						->with('alert.danger', Lang::get('course.update_module_failed_danger_alert'));
-		}
-		else
-		{
-			$result = $module->update($request->only('name', 'description', 'start_date', 'end_date'));
-			
-			if($result === true){
-				return Redirect::route('modules.show', [$course->id, $module->id])
-						->with('alert.success', Lang::get('module.update_success_alert'));
-			}else{
-				return Redirect::route('modules.edit', [$course->id, $module->id])
-						->with('alert.danger', Lang::get('module.update_danger_alert'));
-			}
+		$result = $module->update($request->only('name', 'description', 'start_date', 'end_date'));
+		
+		if($result === true){
+			return Redirect::route('modules.show', [$course->id, $module->id])
+					->with('alert.success', Lang::get('module.update_success_alert'));
+		}else{
+			return Redirect::route('modules.edit', [$course->id, $module->id])
+					->with('alert.danger', Lang::get('module.update_danger_alert'));
 		}
 	}
 

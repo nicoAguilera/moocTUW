@@ -11,7 +11,7 @@ class ActivityRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -21,9 +21,12 @@ class ActivityRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			//
+		$rules = [
+			'title'			=>	[
+				'required'
+			],
 		];
+		return $rules;
 	}
 
 }

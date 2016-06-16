@@ -37,8 +37,8 @@
 @section('list')
     @foreach($module->activities as $activity)
         <li>
-            <a href="{{ URL::route('activities.show', [$module->id, $activity->id]) }}">
-                {{ $activity->name }}
+            <a href="{{ URL::route('activities.show', [$course->id, $module->id, $activity->id]) }}">
+                {{ $activity->title }}
             </a>
         </li>
     @endforeach
