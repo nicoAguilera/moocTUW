@@ -2,6 +2,9 @@
 
 use App\Http\Requests\Request;
 
+//Facades
+use Lang;
+
 class ActivityRequest extends Request {
 
 	/**
@@ -29,4 +32,15 @@ class ActivityRequest extends Request {
 		return $rules;
 	}
 
+	/**
+	 * Translate the names of the attributes
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return [
+			'title'	=> 	Lang::get('activity.title_label'),
+		];
+	}
 }

@@ -18,7 +18,7 @@
 @stop
 
 @section('action')
-    <a href="{{ URL::route('modules.edit', [$course->id, $module->id]) }}">
+    <a href="{{ URL::route('activities.edit', [$course->id, $module->id, $activity->id]) }}">
         {{ Lang::get('activity.edit_call_to_action') }}
     </a>
     <a href="">

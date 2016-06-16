@@ -76,11 +76,11 @@ class ModuleController extends Controller {
 
 		$title = $course->name .' - '. $module->name;
 
-		return view('modules.show', [
-			'module' 		=> $module, 
-			'title' 		=> $title, 
-			'course' 		=> $course,
-		]);
+		return View::make('modules.show', [
+							'module' 	=> $module, 
+							'title' 	=> $title, 
+							'course' 	=> $course,
+						]);
 	}
 
 	/**
@@ -97,7 +97,11 @@ class ModuleController extends Controller {
 
 		$title = Lang::get('module.edit_browser_title');
 
-		return view('modules.edit', ['course' => $course, 'module' => $module, 'title' => $title]);
+		return View::make('modules.edit', [
+								'course' 	=> $course,
+								'module'	=> $module,
+								'title' 	=> $title
+							]);
 	}
 
 	/**
@@ -108,17 +112,15 @@ class ModuleController extends Controller {
 	 */
 	public function update($courseId, $moduleId, CourseAndModuleRequest $request)
 	{
-		$course = Course::findOrFail($courseId);
-
 		$module = Module::findOrFail($moduleId);
 
 		$result = $module->update($request->only('name', 'description', 'start_date', 'end_date'));
 		
 		if($result === true){
-			return Redirect::route('modules.show', [$course->id, $module->id])
+			return Redirect::route('modules.show', [$courseId, $module->id])
 					->with('alert.success', Lang::get('module.update_success_alert'));
 		}else{
-			return Redirect::route('modules.edit', [$course->id, $module->id])
+			return Redirect::route('modules.edit', [$courseId, $module->id])
 					->with('alert.danger', Lang::get('module.update_danger_alert'));
 		}
 	}

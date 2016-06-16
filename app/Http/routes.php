@@ -58,6 +58,11 @@ Route::get('courses/{id}/modules/create', [
 		'as'	=> 	'modules.create'
 	]);
 
+Route::post('modules', [
+		'uses'	=>	'ModuleController@store',
+		'as'	=>	'modules.store'
+	]);
+
 Route::get('courses/{courseId}/modules/{moduleId}', [
 		'uses'	=>	'ModuleController@show',
 		'as'	=>	'modules.show'
@@ -71,11 +76,6 @@ Route::get('courses/{courseId}/modules/{moduleId}/edit', [
 Route::patch('courses/{courseId}/modules/{moduleId}', [
 		'uses'	=>	'ModuleController@update',
 		'as'	=>	'modules.update'
-	]);
-
-Route::post('modules', [
-		'uses'	=>	'ModuleController@store',
-		'as'	=>	'modules.store'
 	]);
 
 /*
@@ -97,6 +97,16 @@ Route::post('activities', [
 Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
 		'uses'	=>	'ActivityController@show',
 		'as'	=>	'activities.show'
+	]);
+
+Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}/edit',[
+		'uses'	=>	'ActivityController@edit',
+		'as'	=>	'activities.edit'
+	]);
+
+Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
+		'uses'	=>	'ActivityController@update',
+		'as'	=>	'activities.update'
 	]);
 /*
 |----------------------------------------------------------------------------

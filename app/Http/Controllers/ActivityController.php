@@ -62,8 +62,6 @@ class ActivityController extends Controller {
 
 		$module = Module::findOrFail($request->only('module_id'))->first();
 
-		//dd($module);
-
 		$courseId = $module->course->id;
 
 		return Redirect::route('activities.show', [$courseId, $module->id, $activity->id])
@@ -98,23 +96,46 @@ class ActivityController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $courseId, $moduleId, $activityId
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($courseId, $moduleId, $activityId)
 	{
-		//
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$activity = Activity::findOrFail($activityId);
+
+		$title = Lang::get('activity.edit_browser_title');
+
+		return View::make('activities.edit', [
+							'title' 	=> $title,
+							'course' 	=> $course,
+							'module' 	=> $module,
+							'activity'	=> $activity, 
+						]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  int  $courseId, $moduleId, $activityId, ActivityRequest $request
+	 * @return Redirect
 	 */
-	public function update($id)
+	public function update($courseId, $moduleId, $activityId, ActivityRequest $request)
 	{
-		//
+		$activity = Activity::findOrFail($activityId);
+
+		$result = $activity->update($request->only('title'));
+		
+		if($result === true){
+			return Redirect::route('activities.show', [$courseId, $moduleId, $activityId])
+					->with('alert.success', Lang::get('activity.update_success_alert'));
+		}else{
+			return Redirect::route('activities.edit', [$courseId, $moduleId, $activityId])
+					->with('alert.danger', Lang::get('activity.update_danger_alert'));
+		}
 	}
 
 	/**
