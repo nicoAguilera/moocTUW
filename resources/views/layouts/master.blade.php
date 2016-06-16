@@ -30,9 +30,11 @@
     </head>
 
     <body>
-      @include ('layouts._header')
+      
 
       <main>
+        @include ('layouts._header')
+        
         @include('layouts._breadcrumbs')
 
         @include ('layouts._alerts')

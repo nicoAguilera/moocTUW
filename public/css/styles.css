@@ -40,7 +40,18 @@ ul.side-nav.fixed:hover{
 .bold>a{
     font-weight: bold;
 }
-@media only screen and (max-width: 992px){
+
+ul.side-nav.fixed li a{
+    line-height: 44px;
+    height: 44px;
+}
+
+ul.side-nav.fixed li.logo{
+    margin-top: 38px;
+    margin-bottom: 45px;
+}
+
+/*@media only screen and (max-width: 992px){
     .side-nav.fixed{
         transform: translateX(-100%);
     }
@@ -53,7 +64,7 @@ ul.side-nav.fixed:hover{
     .side-nav{
         margin-top: 64px;
     }
-}
+}*/
 
 /*
  * Main

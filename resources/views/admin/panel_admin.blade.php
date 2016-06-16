@@ -4,6 +4,12 @@
 	@include('admin._menu')
 @stop
 
+@section('breadcrumb')
+	<a href="">
+		{{ Lang::get('admin.breadcrumb_name') }}
+	</a>
+@stop
+
 @section('content')
 	<h4>{{ Lang::get('admin.panel_admin_title') }}</h4>
 @stop

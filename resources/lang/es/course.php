@@ -13,7 +13,7 @@ return [
 	
 	//create
 	'create_browser_title'				=> 	'Crear nuevo curso',
-
+	'create_breadcrumb'					=>	'Nuevo curso',
 	'create_panel_title'				=>	'Nuevo curso',
 	'create_name_label'					=>	'Nombre',
 	'create_description_label'			=>	'Descripción',

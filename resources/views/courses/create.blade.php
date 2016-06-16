@@ -1,8 +1,15 @@
 @extends('forms._form')
 
+@section('menu')
+	@include('admin._menu')
+@stop
+
 @section('breadcrumb')
 	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
 		{{ Lang::get('course.breadcrumb_name') }}
+	</a>
+	<a href="" class="breadcrumb">
+		{{ Lang::get('course.create_breadcrumb') }}
 	</a>
 @stop
 

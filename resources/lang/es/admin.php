@@ -8,6 +8,8 @@ return [
 
 	//Panel de administración
 	'panel_admin_browser_title'	=>	'Panel de administración',
+	'breadcrumb_name'			=>	'Panel de administración',
 	'panel_admin_title'			=>	'Panel de administración',
+	'item_menu_panel_admin'		=>	'Panel de administración',
 
 ];

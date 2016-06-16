@@ -21,7 +21,7 @@ class CourseController extends Controller {
 	public function __construct()
 	{
 		//ver controllers controller-middleware de la documentación de laravel
-		$this->middleware('is.admin', ['only' => 'index']);
+		$this->middleware('is.admin', ['only' => ['index', 'create', 'store']]);
 
 		//$this->middleware('auth.strict', ['only' => 'getLogout']);
 	}

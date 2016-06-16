@@ -35,7 +35,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
 |---------------------------------------------------------------------------
 */
 
-Route::get('admin', 'AdminController@showPanelAdmin');
+Route::get('admin',[
+		'uses'	=>	'AdminController@showPanelAdmin',
+		'as'	=>	'admin.panel_admin'
+	]);
 
 /*Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -118,7 +121,7 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 |----------------------------------------------------------------------------
 */
 
-Route::resource('profesores', 'TeacherController');
+Route::resource('teachers', 'TeacherController');
 
 /*
 |----------------------------------------------------------------------------
@@ -134,4 +137,4 @@ Route::resource('courses', 'CourseController');
 |----------------------------------------------------------------------------
 */
 
-Route::resource('alumnos', 'StudentController');
+Route::resource('students', 'StudentController');
