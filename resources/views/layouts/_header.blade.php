@@ -69,5 +69,7 @@
 				</ul>
 			</li>
 		@endif
+
+		@yield('menu')
 	</ul>
 </header>

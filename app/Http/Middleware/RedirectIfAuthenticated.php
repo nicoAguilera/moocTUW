@@ -4,7 +4,8 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
-//use Redirect;
+//Facades
+use Redirect;
 
 class RedirectIfAuthenticated {
 
@@ -37,7 +38,16 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			if($this->auth->user()->role === 'admin')
+			{
+				return redirect('admin');
+			}
+			elseif($this->auth->user()->role === 'teacher')
+			{
+				return Redirect::route('teachers.show', $this->auth->user()->id);
+			}else{
+				return new RedirectResponse(url('/home'));
+			}
 		}
 
 		return $next($request);

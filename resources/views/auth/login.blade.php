@@ -1,4 +1,4 @@
-@extends('layouts._form')
+@extends('forms._form')
 
 @section('form_title')
 	<h4>{{ Lang::get('auth.login_panel_title') }}</h4>

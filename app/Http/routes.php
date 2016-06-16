@@ -29,11 +29,15 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
 	Route::get('logout', ['uses' => 'AuthController@getLogout', 'as' => 'logout']);
 });
 
+/*
+|---------------------------------------------------------------------------
+|Rutas del controlador de Administrador
+|---------------------------------------------------------------------------
+*/
 
+Route::get('admin', 'AdminController@showPanelAdmin');
 
-/*Route::get('home', 'HomeController@index');
-
-Route::controllers([
+/*Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);*/
