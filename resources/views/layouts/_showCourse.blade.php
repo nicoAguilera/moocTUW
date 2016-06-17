@@ -28,12 +28,14 @@
                                 </div>
                                 <!-- /Titulo -->
 
-                                <!-- Boton Agregar -->
+                                <!-- Boton Agregar recurso (solamente para los profesores)-->
+                                @if(Auth::check() && Auth::user()->role === 'teacher')
                                 <div class="col">
                                     <a href="@yield('resource_route')" class="waves-effect waves-light btn">
                                         {{ Lang::get('course.create_resource_call_to_action') }}
                                     </a>
                                 </div>
+                                @endif
                                 <!-- /Boton Agregar -->
                             
                             </div>

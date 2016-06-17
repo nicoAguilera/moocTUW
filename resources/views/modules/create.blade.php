@@ -1,13 +1,13 @@
 @extends('forms._form')
 
 @section('breadcrumb')
-	<a href="{{ URL::route('courses.index') }}">
+	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
 		{{ Lang::get('course.breadcrumb_name') }}
 	</a>
-	<a href="{{ URL::route('courses.show', $course->id) }}">
+	<a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
 		{{ $course->name }}
 	</a>
-	<a href="">
+	<a href="" class="breadcrumb">
 		{{ Lang::get('module.create_breadcrumb') }}
 	</a>
 @stop
