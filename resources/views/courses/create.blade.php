@@ -5,6 +5,9 @@
 @stop
 
 @section('breadcrumb')
+	<a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
+		{{ Lang::get('admin.breadcrumb_name') }}
+	</a>
 	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
 		{{ Lang::get('course.breadcrumb_name') }}
 	</a>

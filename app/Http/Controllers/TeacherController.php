@@ -7,19 +7,39 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
 use Illuminate\Support\Facades\Crypt;
+//Facades
+use Lang;
+use View;
 
+//Models
+use App\Models\Course;
 use App\Models\User;
 
 class TeacherController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('is.admin', ['only' => ['create', 'store'] ]);
+	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($courseId)
 	{
-		//
+		$title = Lang::get('teachers.index_browser_title');
+
+		$course = Course::findOrFail($courseId);
+		$teachers = User::where('role', '=', 'teacher')->paginate(5);
+		//$teachers = User::paginate(2);
+
+		return View::make('teachers.index', [
+			'title'		=>	$title,
+			'course'	=>	$course,
+			'teachers'	=> 	$teachers
+		]);
 	}
 
 	/**
@@ -27,9 +47,13 @@ class TeacherController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($courseId)
 	{
-		return view('teachers.create');
+		$course = Course::findOrFail($courseId);
+
+		$title = Lang::get('teachers.create_browser_title');
+
+		return View::make('teachers.create', ['title' => $title, 'course' => $course]);
 	}
 
 	/**

@@ -10,11 +10,11 @@
                         @yield('title')
 
                         <p>
-                            <span class="secondary-text">{{ Lang::get('course.show_description_label') }} </span>
+                            <span class="secondary-text">{{ Lang::get('courses.show_description_label') }} </span>
                             @yield('description')<br>
-                			<span class="secondary-text">{{ Lang::get('course.show_start_date_label') }} </span>
+                			<span class="secondary-text">{{ Lang::get('courses.show_start_date_label') }} </span>
                             @yield('start_date')<br>
-                			<span class="secondary-text">{{ Lang::get('course.show_end_date_label') }} </span>
+                			<span class="secondary-text">{{ Lang::get('courses.show_end_date_label') }} </span>
                             @yield('end_date')
                 		</p><br><br>
 
@@ -32,7 +32,7 @@
                                 @if(Auth::check() && Auth::user()->role === 'teacher')
                                 <div class="col">
                                     <a href="@yield('resource_route')" class="waves-effect waves-light btn">
-                                        {{ Lang::get('course.create_resource_call_to_action') }}
+                                        {{ Lang::get('courses.create_resource_call_to_action') }}
                                     </a>
                                 </div>
                                 @endif

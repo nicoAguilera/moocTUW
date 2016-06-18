@@ -7,8 +7,11 @@
 @section('content')
 
 	@section('breadcrumb')
+		<a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
+			{{ Lang::get('admin.breadcrumb_name') }}
+		</a>
 		<a href="" class="breadcrumb">
-	        {{ Lang::get('course.breadcrumb_name') }}
+	        {{ Lang::get('courses.breadcrumb_name') }}
 	    </a>
 	@stop
 
@@ -16,7 +19,7 @@
 		<div class="row">
 			<div class="card col s12 l10 offset-l1">
 				<div class="card-content">
-					<h3>{{ Lang::get('course.index_panel_title') }}</h3>
+					<h3>{{ Lang::get('courses.index_panel_title') }}</h3>
 
 					<div class="collection">
 						@foreach($courses as $course)
@@ -36,7 +39,7 @@
 						@endforeach
 					</div>
 
-					<a href="{{ URL::route('courses.create') }}">{{ Lang::get('course.create_call_to_action') }}</a>
+					<a href="{{ URL::route('courses.create') }}">{{ Lang::get('courses.create_call_to_action') }}</a>
 				</div>
 			</div>
 		</div>

@@ -85,3 +85,8 @@ label {
 .input-field label.active{
     font-size: 1.0rem;
 }
+
+/* Agregar profesores */
+.btn_add{
+    margin-top: 2rem;
+}

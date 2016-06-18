@@ -121,8 +121,25 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 |----------------------------------------------------------------------------
 */
 
-Route::resource('teachers', 'TeacherController');
+Route::get('courses/{id}/teachers/add', [
+		'uses'	=>	'TeacherController@index',
+		'as'	=>	'teachers.index'
+	]);
 
+Route::get('courses/{id}/teachers/create', [
+		'uses'	=>	'TeacherController@create',
+		'as'	=>	'teachers.create'
+	]);
+
+Route::post('teachers', [
+		'uses'	=>	'TeacherController@store',
+		'as'	=>	'teachers.store'
+	]);
+
+Route::get('teachers/{id}',[
+		'uses'	=>	'TeacherController@show',
+		'as'	=>	'teachers.show'
+	]);
 /*
 |----------------------------------------------------------------------------
 |Rutas del controlador de cursos

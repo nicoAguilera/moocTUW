@@ -10,37 +10,8 @@
 			'method'	=>'post',
 			'class'		=>'col s12'
 	]) !!}
-		<!-- Email -->
-		<div class="input-field">
-			{!! Form::label('email', Lang::get('auth.email_label')) !!}
-			{!! Form::email('email', old('email'), [
-				'class'			=> 'validate',
-			]) !!}
 
-			@if ($errors->has('email'))
-				<p class="red-text text-darken-2">
-					<i class="fa fa-exclamation-circle"></i>
-					{{ $errors->first('email') }}
-				</p>
-			@endif
-		</div>
-		<!-- /Email-->
-
-		<!-- Password -->
-		<div class="input-field">
-			{!! Form::label('password', Lang::get('auth.password_label')) !!}
-			{!! Form::password('password', old('password'), [
-				'class'			=> 'validate',
-			]) !!}
-
-			@if ($errors->has('password'))
-				<p class="red-text text-darken-2">
-					<i class="fa fa-exclamation-circle"></i>
-					{{ $errors->first('password') }}
-				</p>
-			@endif
-		</div>
-		<!-- /Password -->
+		@include('auth.partials._fields_login')
 
 		<!-- Remember me -->
 		<input type="checkbox" class="filled-in" name="remember_me" id="remember_me" value="true">
@@ -54,7 +25,7 @@
 		<!-- /Remember me -->
 
 		<!-- Boton para iniciar sesión -->
-		<button type="submit" class="btn btn-primary col s12 m4 offset-m8">
+		<button type="submit" class="btn btn-primary col s12">
 			{{ Lang::get('auth.login_btn') }}
 		</button>
 		<!-- /Boton para iniciar sesión -->

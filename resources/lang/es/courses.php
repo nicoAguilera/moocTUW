@@ -7,8 +7,8 @@ return [
 
 	//index
 	'index_browser_title'				=>	'Cursos',
+	'index_breadcrumb'					=>	'Cursos',
 	'index_panel_title'					=>	'Listado de cursos',
-
 	'create_call_to_action'				=>	'Crear nuevo curso',
 	
 	//create
@@ -20,22 +20,15 @@ return [
 	'create_start_date_label'			=>	'Fecha y hora de inicio (Formato: Año-Mes-Día Hora-Minuto-Segundo)',
 	'create_end_date_label'				=>	'Fecha y hora de finalización (Formato: Año-Mes-Día Hora-Minuto-Segundo)',
 	'create_submit_btn'					=>	'Crear curso',
-
 	'create_success_alert'				=>	'El curso se ha creado correctamente.',
 
 	//show
 	'show_description_label'			=>	'Descripción:',
 	'show_start_date_label'				=>	'Fecha y hora de inicio:',
 	'show_end_date_label'				=>	'Fecha y hora de finalización:',
-
 	'show_modules_title'				=>	'Modulos',
 	'create_resource_call_to_action'	=>	'Agregar',
-
-	'create_teacher_call_to_action'		=>	'Agregar profesor',
 	'edit_call_to_action'				=>	'Modificar datos del curso',
-
-	//breadcrumb
-	'breadcrumb_name'					=>	'Cursos',
 
 	//edit
 	'edit_browser_title'				=>	'Editar curso',
@@ -48,4 +41,7 @@ return [
 
 	//update of module failed
 	'update_module_failed_danger_alert'	=>	'La actualización sobre el modulo solicitado no puede llevarse a cabo.',
+
+	//teacher
+	'add_teacher_call_to_action'		=>	'Agregar profesor al curso',
 ];

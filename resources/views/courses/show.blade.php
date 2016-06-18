@@ -1,17 +1,25 @@
 @extends('layouts._showCourse')
 
+
 @section('menu')
     @if(Auth::check() && Auth::user()->role === 'admin' )
         @include('admin._menu')
     @endif
 @stop
 
+
 @section('breadcrumb')
+    @if(Auth::check() && Auth::user()->role === 'admin' )
+        <a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
+            {{ Lang::get('admin.breadcrumb_name') }}
+        </a>
+    @endif
     <a href="{{ URL::route('courses.index') }}" class="breadcrumb">
-        {{ Lang::get('course.breadcrumb_name') }}
+        {{ Lang::get('courses.index_breadcrumb') }}
     </a>
     <a href="" class="breadcrumb">{{ $course->name }}</a>
 @stop
+
 
 @section('title')
     <h4>{{$course->name}}</h4>
@@ -29,8 +37,9 @@
     {{$course->end_date}}
 @stop
 
+
 @section('resource_title')
-    {{ Lang::get('course.show_modules_title') }}
+    {{ Lang::get('courses.show_modules_title') }}
 @stop
 
 @section('resource_route')
@@ -47,16 +56,17 @@
     @endforeach
 @stop
 
+
 @section('action')
     @if(Auth::check() && Auth::user()->role === 'admin')
-    <a href="{{ URL::route('teachers.create') }}">
-        {{ Lang::get('course.create_teacher_call_to_action') }}
+    <a href="{{ URL::route('teachers.index', $course->id) }}">
+        {{ Lang::get('courses.add_teacher_call_to_action') }}
     </a>
     @endif
 
     @if(Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'teacher') )
     <a href="{{ URL::route('courses.edit', $course->id) }}">
-        {{ Lang::get('course.edit_call_to_action') }}
+        {{ Lang::get('courses.edit_call_to_action') }}
     </a>
     @endif
 @stop

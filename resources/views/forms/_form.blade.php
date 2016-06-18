@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col s12 m8 l6 offset-m2 offset-l3">
 				<div class="card">
