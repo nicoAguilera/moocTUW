@@ -11,7 +11,7 @@
 			{{ Lang::get('admin.breadcrumb_name') }}
 		</a>
 		<a href="" class="breadcrumb">
-	        {{ Lang::get('courses.breadcrumb_name') }}
+	        {{ Lang::get('courses.index_breadcrumb') }}
 	    </a>
 	@stop
 

@@ -33,7 +33,7 @@ class CourseController extends Controller {
 	 */
 	public function index()
 	{
-		$title = Lang::get('course.index_browser_title');
+		$title = Lang::get('courses.index_browser_title');
 
 		$courses = Course::all();
 		return view('courses.index', ['title' => $title, 'courses' => $courses]);
@@ -46,7 +46,7 @@ class CourseController extends Controller {
 	 */
 	public function create()
 	{
-		$title = Lang::get('course.create_browser_title');
+		$title = Lang::get('courses.create_browser_title');
 
 		return view('courses.create', compact('title'));
 	}
@@ -61,7 +61,7 @@ class CourseController extends Controller {
 	{
 		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
 
-		return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('course.create_success_alert'));
+		return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('courses.create_success_alert'));
 	}
 
 	/**
@@ -88,7 +88,7 @@ class CourseController extends Controller {
 	{
 		$course = Course::findOrFail($id);
 
-		$title = Lang::get('course.edit_browser_title');
+		$title = Lang::get('courses.edit_browser_title');
 
 		return view('courses.edit', ['course' => $course, 'title' => $title]);
 	}
@@ -106,9 +106,9 @@ class CourseController extends Controller {
 		$result = $course->update($request->only('name', 'description', 'start_date', 'end_date'));
 		
 		if($result === true){
-			return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('course.update_success_alert'));
+			return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('courses.update_success_alert'));
 		}else{
-			return Redirect::route('courses.edit', $course->id)->with('alert.danger', Lang::get('course.update_danger_alert'));
+			return Redirect::route('courses.edit', $course->id)->with('alert.danger', Lang::get('courses.update_danger_alert'));
 		}
 	}
 

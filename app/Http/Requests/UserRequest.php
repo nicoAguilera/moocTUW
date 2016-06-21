@@ -28,7 +28,8 @@ class UserRequest extends Request {
 	{
 		$currentRoute = Route::currentRouteName();
 
-		if($currentRoute === 'signup'){
+		if($currentRoute === 'signup' || $currentRoute === 'teachers.store')
+		{
 			$rules = [
 				'name' 	=>	[
 					'required',
@@ -50,7 +51,8 @@ class UserRequest extends Request {
 				],
 			];
 		}
-		elseif($currentRoute === 'login'){
+		elseif($currentRoute === 'login')
+		{
 			$rules = [
 				'email'	=>	[
 					'required',

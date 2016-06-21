@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
-use Illuminate\Support\Facades\Crypt;
 //Facades
 use Lang;
+use Redirect;
 use View;
 
 //Models
@@ -63,13 +63,27 @@ class TeacherController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-		$teacher = User::create([
-				'name'		=>	$request['name'],
-				'surname'	=>	$request['surname'],
-				'email'		=>	$request['email'],
-				'password'	=>	Crypt::encrypt($request['password'])
-			]);
-		return $teacher;
+		$user = User::create([
+						'name'		=> $request['name'],
+						'email'		=> $request['email'],
+						'password'	=> $request['password'],
+						'role'		=> 'teacher',
+					]);
+
+
+		if(isset($request['courseId']))
+		{
+			return Redirect::route('teachers.index', $request['courseId'])
+							->with('alert.success', Lang::get('teachers.create_success_alert'));
+		}
+		else
+		{
+			//debería ser opcional el parametro de course id y vericarlo en el metodo index
+			return Redirect::route('teachers.index')
+							->with('alert.success', Lang::get('teachers.create_success_alert'));
+		}
+
+		
 	}
 
 	/**

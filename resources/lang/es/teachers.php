@@ -14,6 +14,7 @@ return [
 	'create_panel_title'							=>	'Nuevo profesor',
 	'create_submit_btn'								=>	'Crear profesor',
 	'create_call_to_action'							=>	'Nuevo profesor',
+	'create_success_alert'							=>	'El profesor fue creado correctamente.',
 
 	//add
 	'add_breadcrumb'								=>	'Agregar profesor',

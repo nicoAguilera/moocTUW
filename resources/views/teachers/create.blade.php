@@ -18,7 +18,9 @@
 			'role'		=>	'search'
 	]) !!}
 			
-		@include('auth.partials._fields_signup_without_password_confirmation')
+		@include('auth.partials._fields_signup')
+
+		<input type="hidden" name="courseId" value="{{$course->id}}">
 
 		<button type="submit" class="btn waves-effect waves-light col s12">
 			{{ Lang::get('teachers.create_submit_btn') }}
