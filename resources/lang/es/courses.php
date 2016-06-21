@@ -29,6 +29,7 @@ return [
 	'show_modules_title'				=>	'Modulos',
 	'create_resource_call_to_action'	=>	'Agregar',
 	'edit_call_to_action'				=>	'Modificar datos del curso',
+	'show_teacher_dictate_course_success_alert'	=>	'El profesor fue agregado correctamente al curso.',
 
 	//edit
 	'edit_browser_title'				=>	'Editar curso',

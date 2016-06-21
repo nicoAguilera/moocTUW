@@ -140,6 +140,11 @@ Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'uses'	=>	'TeacherController@show',
 		'as'	=>	'teachers.show'
 	]);
+
+Route::get('courses/{courseId}/teachers/{teacherId}/dictate', [
+		'uses'	=>	'TeacherController@teacherDictateCourse',
+		'as'	=>	'teachers.dictate'
+	]);
 /*
 |----------------------------------------------------------------------------
 |Rutas del controlador de cursos

@@ -63,7 +63,7 @@ class TeacherController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-		$user = User::create([
+		$teacher = User::create([
 						'name'		=> $request['name'],
 						'email'		=> $request['email'],
 						'password'	=> $request['password'],
@@ -73,7 +73,7 @@ class TeacherController extends Controller {
 
 		if(isset($request['courseId']))
 		{
-			return Redirect::route('teachers.index', $request['courseId'])
+			return Redirect::route('teachers.show', [$request['courseId'], $teacher->id])
 							->with('alert.success', Lang::get('teachers.create_success_alert'));
 		}
 		else
@@ -140,4 +140,18 @@ class TeacherController extends Controller {
 		//
 	}
 
+	/**
+	 * Realaciona un profesor con un curso
+	 * @param int $courseId, $teacherId
+	 * @return
+	 */
+	public function teacherDictateCourse($courseId, $teacherId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$teacher->courses()->attach($courseId);
+
+		return Redirect::route('courses.show', $courseId)
+						->with('alert.success', Lang::get('courses.show_teacher_dictate_course_success_alert'));
+	}
 }

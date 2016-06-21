@@ -28,7 +28,9 @@
 						<a href="{{ URL::route('teachers.show', [$course->id, $teacher->id]) }}" class="">
 							{{$teacher->name}}
 						</a>
-						<a class="waves-effect waves-teal btn-flat">{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}</a>
+						<a href="{{ URL::route('teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-teal btn-flat">
+							{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
+						</a>
 					</div>
 				@endforeach
 			</div>

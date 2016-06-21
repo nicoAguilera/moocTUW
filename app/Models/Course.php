@@ -28,4 +28,12 @@ class Course extends Model {
 	{
 		return $this->hasMany('App\Models\Module');
 	}
+
+	/*
+	 *	Inverse of relations teachers_dictate_courses
+	 */
+	public function teachers()
+	{
+		return $this->belongsToMany('App\Models\User', 'teachers_dictate');
+	}
 }

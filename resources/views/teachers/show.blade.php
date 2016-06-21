@@ -14,7 +14,9 @@
 			<div class="row">
 				<h3>{{ $teacher->name }}</h3>
 				<p>{{ $teacher->email }}</p>
-				<a class="waves-effect waves-light btn">{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}</a>
+				<a href="{{ URL::route('teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-light btn">
+					{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
+				</a>
 			</div>
 
 		</div>
