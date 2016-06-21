@@ -136,7 +136,7 @@ Route::post('teachers', [
 		'as'	=>	'teachers.store'
 	]);
 
-Route::get('teachers/{id}',[
+Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'uses'	=>	'TeacherController@show',
 		'as'	=>	'teachers.show'
 	]);

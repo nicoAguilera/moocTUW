@@ -89,12 +89,22 @@ class TeacherController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $courseId, $teacherId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($courseId, $teacherId)
 	{
-		//
+		$course = Course::findOrFail($courseId);
+
+		$teacher = User::findOrFail($teacherId);
+
+		$title = $teacher->name;
+
+		return View::make('teachers.show', [
+							'title'		=> $title,
+							'course'	=> $course,
+							'teacher'	=> $teacher
+						]);
 	}
 
 	/**

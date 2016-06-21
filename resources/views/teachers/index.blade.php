@@ -25,10 +25,10 @@
 			<div class="listado_profesores">
 				@foreach($teachers as $teacher)
 					<div class="row">
-						<a href="{{ URL::route('teachers.show', $teacher->id) }}" class="">
+						<a href="{{ URL::route('teachers.show', [$course->id, $teacher->id]) }}" class="">
 							{{$teacher->name}}
 						</a>
-						<a class="waves-effect waves-teal btn-flat">{{ Lang::get('teachers.index_teacher_dictate_course_call_to_action') }}</a>
+						<a class="waves-effect waves-teal btn-flat">{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}</a>
 					</div>
 				@endforeach
 			</div>

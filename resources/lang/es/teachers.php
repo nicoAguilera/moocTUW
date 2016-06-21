@@ -6,7 +6,6 @@ return [
 	'index_browser_title'							=>	'Profesores',
 	'index_breadcrumb'								=>	'Profesores',
 	'index_title'									=>	'Listado de profesores',
-	'index_teacher_dictate_course_call_to_action'	=>	'Agregar a curso',
 
 	//create
 	'create_browser_title'							=>	'Nuevo profesor',
@@ -18,4 +17,7 @@ return [
 
 	//add
 	'add_breadcrumb'								=>	'Agregar profesor',
+
+	//dictar curso
+	'teacher_dictate_course_call_to_action'	=>	'Agregar a curso',
 ];
