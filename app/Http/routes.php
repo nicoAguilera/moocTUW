@@ -34,51 +34,79 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
 |Rutas del controlador de Administrador
 |---------------------------------------------------------------------------
 */
-
-Route::get('admin',[
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::get('/',[
 		'uses'	=>	'AdminController@showPanelAdmin',
 		'as'	=>	'admin.panel_admin'
 	]);
 
-Route::get('admin/courses', [
+	Route::get('courses', [
 		'uses'	=>	'AdminController@coursesIndex',
 		'as'	=>	'admin.courses.index'
 	]);
 
-Route::get('admin/courses/create',[
+	Route::get('courses/create',[
 		'uses'	=>	'AdminController@coursesCreate',
 		'as'	=>	'admin.courses.create'
 	]);
 
-Route::get('admin/courses/{id}', [
+	Route::get('courses/{id}', [
 		'uses'	=>	'AdminController@coursesShow',
 		'as'	=>	'admin.courses.show'
 	]);
 
-Route::get('admin/courses/{id}/teachers/add', [
+	Route::get('courses/{id}/edit', [
+		'uses'	=>	'CourseController@edit',
+		'as'	=>	'admin.courses.edit'
+	]);
+
+	Route::patch('courses/{id}', [
+		'uses'	=>	'CourseController@update',
+		'as'	=>	'admin.courses.update'
+	]);
+
+	Route::get('courses/{id}/teachers/add', [
 		'uses'	=>	'AdminController@addTeachersCourse',
 		'as'	=>	'admin.courses.teachers.add'
 	]);
 
-Route::get('admin/courses/{id}/teachers/create', [
+	Route::get('courses/{id}/teachers/create', [
 		'uses'	=>	'AdminController@teachersCreateAndAddCourse',
 		'as'	=>	'admin.courses.teachers.create'
 	]);
 
-Route::get('admin/teachers', [
+	Route::get('courses/{courseId}/teachers/{teacherId}',[
+		'uses'	=>	'AdminController@coursesTeachersShow',
+		'as'	=>	'admin.courses.teachers.show'
+	]);
+
+	Route::get('courses/{courseId}/teachers/{teacherId}/dictate', [
+		'uses'	=>	'AdminController@teacherDictateCourse',
+		'as'	=>	'admin.courses.teachers.dictate'
+	]);
+
+	Route::delete('courses/{courseId}/teachers/{teacherId}', [
+		'uses'	=>	'AdminController@destroyTeacherDictateCourse',
+		'as'	=>	'admin.courses.teachers.destroy'
+	]);
+
+	Route::get('teachers', [
 		'uses'	=>	'AdminController@teachersIndex',
 		'as'	=>	'admin.teachers.index'
 	]);
 
-Route::get('admin/teachers/create', [
+	Route::get('teachers/create', [
 		'uses'	=>	'AdminController@teachersCreate',
 		'as'	=>	'admin.teachers.create'
 	]);
 
-Route::get('admin/teachers/{id}', [
+	Route::get('teachers/{id}', [
 		'uses'	=>	'AdminController@teachersShow',
 		'as'	=>	'admin.teachers.show'
 	]);
+});
+
 /*Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -176,17 +204,14 @@ Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'as'	=>	'teachers.show'
 	]);
 
-Route::get('courses/{courseId}/teachers/{teacherId}/dictate', [
-		'uses'	=>	'TeacherController@teacherDictateCourse',
-		'as'	=>	'teachers.dictate'
-	]);
+
 /*
 |----------------------------------------------------------------------------
 |Rutas del controlador de cursos
 |----------------------------------------------------------------------------
 */
 
-Route::resource('courses', 'CourseController');
+/*Route::resource('courses', 'CourseController');*/
 
 /*
 |----------------------------------------------------------------------------

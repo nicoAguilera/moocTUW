@@ -9,7 +9,7 @@
 	@section('breadcrumb')
 		<!-- breadcrumb courses_show -->
 	    <a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
-	        {{ Lang::get('admin.breadcrumb_name') }}
+	        {{ Lang::get('admin.panel_admin_breadcrumb') }}
 	    </a>
 
 	    <a href="{{ URL::route('admin.courses.index') }}" class="breadcrumb">
@@ -41,21 +41,28 @@
 			
 
 			<div class="listado_profesores">
-				@foreach($teachers as $teacher)
-					<div class="row">
-						<a href="{{ URL::route('teachers.show', [$course->id, $teacher->id]) }}" class="">
-							{{$teacher->name}}
-						</a>
-
-						@if(!$teacher->courses->contains($course->id))
-						<a href="{{ URL::route('teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-teal btn-flat">
-							{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
-						</a>
-						@else
-						<span>Profesor responsable</span>
-						@endif
-					</div>
-				@endforeach
+				<table>
+					@foreach($teachers as $teacher)
+						<tr>
+							<td>
+								<a 	href="{{ URL::route('admin.courses.teachers.show', [$course->id, $teacher->id]) }}" 
+									class="">
+									{{$teacher->name}}
+								</a>
+							</td>
+							@if(!$teacher->courses->contains($course->id))
+								<td>
+									<a 	href="{{ URL::route('admin.courses.teachers.dictate', [$course->id, $teacher->id]) }}" 
+										class="waves-effect waves-teal btn-flat">
+										{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
+									</a>
+								</td>
+							@else
+								<td>{{ Lang::get('admin.teacher_dictate_course') }}</td>
+							@endif
+						</tr>
+					@endforeach
+				</table>
 			</div>
 
 			{!! str_replace('/?', '?', $teachers->render()) !!}

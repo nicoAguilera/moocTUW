@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 //Facades
 use Lang;
+use Redirect;
 use View;
 
 //Models
@@ -17,7 +18,7 @@ class AdminController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('is.admin', ['only' => 'showPanelAdmin']);
+		$this->middleware('is.admin');
 	}
 
 	public function showPanelAdmin()
@@ -78,6 +79,43 @@ class AdminController extends Controller {
 		$title = Lang::get('teachers.create_browser_title');
 
 		return View::make('admin.courses_teachers_create', ['title' => $title, 'course' => $course]);
+	}
+
+	public function coursesTeachersShow($courseId, $teacherId)
+	{
+		$course = Course::findOrFail($courseId);
+
+		$teacher = User::findOrFail($teacherId);
+
+		$title = $teacher->name;
+
+		return View::make('admin.courses_teachers_show', [
+							'title'		=> $title,
+							'course'	=> $course,
+							'teacher'	=> $teacher
+						]);
+	}
+
+	/**
+	 * Realaciona un profesor con un curso
+	 * @param int $courseId, $teacherId
+	 * @return
+	 */
+	public function teacherDictateCourse($courseId, $teacherId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$teacher->courses()->attach($courseId);
+
+		return Redirect::route('admin.courses.show', $courseId)
+						->with('alert.success', Lang::get('courses.show_teacher_dictate_course_success_alert'));
+	}
+
+	public function destroyTeacherDictateCourse($courseId, $teacherId)
+	{
+		$result = User::findOrFail($teacherId)->courses()->detach($courseId);
+
+		dd($result);
 	}
 
 	public function teachersIndex()

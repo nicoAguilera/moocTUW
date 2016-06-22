@@ -106,9 +106,9 @@ class CourseController extends Controller {
 		$result = $course->update($request->only('name', 'description', 'start_date', 'end_date'));
 		
 		if($result === true){
-			return Redirect::route('courses.show', $course->id)->with('alert.success', Lang::get('courses.update_success_alert'));
+			return Redirect::route('admin.courses.show', $course->id)->with('alert.success', Lang::get('courses.update_success_alert'));
 		}else{
-			return Redirect::route('courses.edit', $course->id)->with('alert.danger', Lang::get('courses.update_danger_alert'));
+			return Redirect::route('admin.courses.edit', $course->id)->with('alert.danger', Lang::get('courses.update_danger_alert'));
 		}
 	}
 

@@ -139,19 +139,4 @@ class TeacherController extends Controller {
 	{
 		//
 	}
-
-	/**
-	 * Realaciona un profesor con un curso
-	 * @param int $courseId, $teacherId
-	 * @return
-	 */
-	public function teacherDictateCourse($courseId, $teacherId)
-	{
-		$teacher = User::findOrFail($teacherId);
-
-		$teacher->courses()->attach($courseId);
-
-		return Redirect::route('courses.show', $courseId)
-						->with('alert.success', Lang::get('courses.show_teacher_dictate_course_success_alert'));
-	}
 }

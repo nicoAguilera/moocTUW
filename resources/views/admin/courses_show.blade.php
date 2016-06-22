@@ -11,7 +11,7 @@
 @section('breadcrumb')
     <!-- breadcrumb courses_index -->
     <a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
-        {{ Lang::get('admin.breadcrumb_name') }}
+        {{ Lang::get('admin.panel_admin_breadcrumb') }}
     </a>
 
     <a href="{{ URL::route('admin.courses.index') }}" class="breadcrumb">
@@ -26,32 +26,45 @@
 
 
 @section('content')
-    <h4>{{$course->name}}</h4>
+    <div class="container">
 
+        <section class="course">
+            <h2>{{$course->name}}</h2>
 
+            <h3>Descripción</h3>
+            <p>{{$course->description}}</p>
 
-    {{$course->description}}
+            <h5>Fecha de inicio</h5>
+            <p>{{$course->start_date}}</p>
 
+            <h5>Fecha de finalización</h5>
+            <p>{{$course->end_date}}</p>
 
+            <a href="{{ URL::route('admin.courses.edit', $course->id) }}">
+                {{ Lang::get('courses.edit_call_to_action') }}
+            </a>
+        </section>
 
-    {{$course->start_date}}
+        <section class="teachers">
+            <h3>Profesores</h3>
+            <table>
+            @foreach($teachers as $teacher)
+                <!-- Lo debería enlazar a los datos personales del profesor -->
+                <tr>
+                    <td>{{$teacher->name}}</td>
+                    <td>
+                        <a href="{{ URL::route('admin.courses.teachers.destroy', [$course->id, $teacher->id]) }}">
+                            {{ Lang::get('admin.courses_show_teachers_delete') }}
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+            </table>
 
+            <a href="{{ URL::route('admin.courses.teachers.add', $course->id) }}">
+                {{ Lang::get('courses.add_teacher_call_to_action') }}
+            </a>
+        </section>
 
-
-    {{$course->end_date}}
-
-
-    <h5>Profesores</h5>
-    @foreach($teachers as $teacher)
-        <!-- Lo debería enlazar a los datos personales del profesor -->
-        <p>{{$teacher->name}}</p>
-    @endforeach
-
-    <a href="{{ URL::route('admin.courses.teachers.add', $course->id) }}">
-        {{ Lang::get('courses.add_teacher_call_to_action') }}
-    </a>
-
-    <a href="{{ URL::route('courses.edit', $course->id) }}">
-        {{ Lang::get('courses.edit_call_to_action') }}
-    </a>
+    </div>
 @stop
