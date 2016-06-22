@@ -56,6 +56,7 @@
     @endforeach
 @stop
 
+<h5>Profesores</h5>
 
 @section('action')
     @if(Auth::check() && Auth::user()->role === 'admin')

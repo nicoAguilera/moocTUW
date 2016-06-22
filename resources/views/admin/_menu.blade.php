@@ -12,12 +12,12 @@
 <!-- /Panel de administración -->
 
 <!-- Cursos -->
-@if(Route::currentRouteName() === 'courses.index')
+@if(Route::currentRouteName() === 'admin.courses.index')
 	<li class="bold indigo">
 		<a href="" class="waves-effect waves-teal white-text">
 @else
 	<li class="bold">
-		<a href="{{ URL::route('courses.index') }}" class="waves-effect waves-teal">
+		<a href="{{ URL::route('admin.courses.index') }}" class="waves-effect waves-teal">
 @endif
 		{{ Lang::get('admin.item_menu_courses') }}
 	</a>
@@ -25,12 +25,12 @@
 <!-- /Cursos -->
 
 <!-- Crear curso -->
-@if(Route::currentRouteName() === 'courses.create')
+@if(Route::currentRouteName() === 'admin.courses.create')
 	<li class="bold indigo">
 		<a href="" class="waves-effect waves-teal white-text">
 @else
 	<li class="bold">
-		<a href="{{ URL::route('courses.create') }}" class="waves-effect waves-teal">
+		<a href="{{ URL::route('admin.courses.create') }}" class="waves-effect waves-teal">
 @endif
 		{{ Lang::get('admin.item_menu_create_course') }}
 	</a>
@@ -38,12 +38,12 @@
 <!-- /Crear curso -->
 
 <!-- Profesores -->
-@if(Route::currentRouteName() === 'teachers.index')
+@if(Route::currentRouteName() === 'admin.teachers.index')
 	<li class="bold indigo">
 		<a href="" class="waves-effect waves-teal white-text">
 @else
 	<li class="bold">
-		<a href="{{ URL::route('teachers.index') }}" class="waves-effect waves-teal">
+		<a href="{{ URL::route('admin.teachers.index') }}" class="waves-effect waves-teal">
 @endif
 		{{ Lang::get('admin.item_menu_teachers') }}
 	</a>

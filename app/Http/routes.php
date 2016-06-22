@@ -40,6 +40,45 @@ Route::get('admin',[
 		'as'	=>	'admin.panel_admin'
 	]);
 
+Route::get('admin/courses', [
+		'uses'	=>	'AdminController@coursesIndex',
+		'as'	=>	'admin.courses.index'
+	]);
+
+Route::get('admin/courses/create',[
+		'uses'	=>	'AdminController@coursesCreate',
+		'as'	=>	'admin.courses.create'
+	]);
+
+Route::get('admin/courses/{id}', [
+		'uses'	=>	'AdminController@coursesShow',
+		'as'	=>	'admin.courses.show'
+	]);
+
+Route::get('admin/courses/{id}/teachers/add', [
+		'uses'	=>	'AdminController@addTeachersCourse',
+		'as'	=>	'admin.courses.teachers.add'
+	]);
+
+Route::get('admin/courses/{id}/teachers/create', [
+		'uses'	=>	'AdminController@teachersCreateAndAddCourse',
+		'as'	=>	'admin.courses.teachers.create'
+	]);
+
+Route::get('admin/teachers', [
+		'uses'	=>	'AdminController@teachersIndex',
+		'as'	=>	'admin.teachers.index'
+	]);
+
+Route::get('admin/teachers/create', [
+		'uses'	=>	'AdminController@teachersCreate',
+		'as'	=>	'admin.teachers.create'
+	]);
+
+Route::get('admin/teachers/{id}', [
+		'uses'	=>	'AdminController@teachersShow',
+		'as'	=>	'admin.teachers.show'
+	]);
 /*Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -121,10 +160,6 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 |----------------------------------------------------------------------------
 */
 
-Route::get('courses/{id}/teachers/add', [
-		'uses'	=>	'TeacherController@index',
-		'as'	=>	'teachers.index'
-	]);
 
 Route::get('courses/{id}/teachers/create', [
 		'uses'	=>	'TeacherController@create',
