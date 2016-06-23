@@ -70,20 +70,17 @@ class TeacherController extends Controller {
 						'role'		=> 'teacher',
 					]);
 
-
 		if(isset($request['courseId']))
 		{
-			return Redirect::route('teachers.show', [$request['courseId'], $teacher->id])
+			return Redirect::route('admin.courses.teachers.show', [$request['courseId'], $teacher->id])
 							->with('alert.success', Lang::get('teachers.create_success_alert'));
 		}
 		else
 		{
 			//debería ser opcional el parametro de course id y vericarlo en el metodo index
-			return Redirect::route('teachers.index')
+			return Redirect::route('admin.teachers.show', $teacher->id)
 							->with('alert.success', Lang::get('teachers.create_success_alert'));
 		}
-
-		
 	}
 
 	/**

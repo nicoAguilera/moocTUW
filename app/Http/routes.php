@@ -118,6 +118,11 @@ Route::group(['prefix' => 'admin'], function()
 		'as'	=>	'admin.teachers.create'
 	]);
 
+	Route::post('teachers', [
+		'uses'	=>	'TeacherController@store',
+		'as'	=>	'admin.teachers.store'
+	]);
+
 	Route::get('teachers/{id}', [
 		'uses'	=>	'AdminController@teachersShow',
 		'as'	=>	'admin.teachers.show'
@@ -212,10 +217,7 @@ Route::get('courses/{id}/teachers/create', [
 		'as'	=>	'teachers.create'
 	]);
 
-Route::post('teachers', [
-		'uses'	=>	'TeacherController@store',
-		'as'	=>	'teachers.store'
-	]);
+
 
 Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'uses'	=>	'TeacherController@show',

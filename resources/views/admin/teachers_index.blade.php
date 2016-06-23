@@ -8,7 +8,7 @@
 
 	@section('breadcrumb')
 		<a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
-	        {{ Lang::get('admin.breadcrumb_name') }}
+	        {{ Lang::get('admin.panel_admin_breadcrumb') }}
 	    </a>
 
 	    <a href="{{ URL::route('admin.teachers.index') }}" class="breadcrumb">

@@ -28,7 +28,7 @@ class UserRequest extends Request {
 	{
 		$currentRoute = Route::currentRouteName();
 
-		if($currentRoute === 'signup' || $currentRoute === 'teachers.store')
+		if($currentRoute === 'signup' || $currentRoute === 'admin.teachers.store')
 		{
 			$rules = [
 				'name' 	=>	[

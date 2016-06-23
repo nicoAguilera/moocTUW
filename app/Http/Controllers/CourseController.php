@@ -61,7 +61,8 @@ class CourseController extends Controller {
 	{
 		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
 
-		return Redirect::route('admin.courses.show', $course->id)->with('alert.success', Lang::get('courses.create_success_alert'));
+		return Redirect::route('admin.courses.show', $course->id)
+				->with('alert.success', Lang::get('courses.create_success_alert'));
 	}
 
 	/**
