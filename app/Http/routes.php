@@ -41,6 +41,12 @@ Route::group(['prefix' => 'admin'], function()
 		'as'	=>	'admin.panel_admin'
 	]);
 
+	/* 
+	|----------------------------------------------------------------------
+	|COURSES 
+	|----------------------------------------------------------------------
+	*/
+
 	Route::get('courses', [
 		'uses'	=>	'AdminController@coursesIndex',
 		'as'	=>	'admin.courses.index'
@@ -49,6 +55,11 @@ Route::group(['prefix' => 'admin'], function()
 	Route::get('courses/create',[
 		'uses'	=>	'AdminController@coursesCreate',
 		'as'	=>	'admin.courses.create'
+	]);
+
+	Route::post('courses', [
+		'uses'	=>	'CourseController@store',
+		'as'	=>	'admin.courses.store'
 	]);
 
 	Route::get('courses/{id}', [
@@ -90,6 +101,12 @@ Route::group(['prefix' => 'admin'], function()
 		'uses'	=>	'AdminController@destroyTeacherDictateCourse',
 		'as'	=>	'admin.courses.teachers.destroy'
 	]);
+
+	/* 
+	|----------------------------------------------------------------------
+	|TEACHERS
+	|----------------------------------------------------------------------
+	*/
 
 	Route::get('teachers', [
 		'uses'	=>	'AdminController@teachersIndex',
@@ -182,6 +199,7 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 		'uses'	=>	'ActivityController@update',
 		'as'	=>	'activities.update'
 	]);
+
 /*
 |----------------------------------------------------------------------------
 |Rutas del controlador de profesores
@@ -204,14 +222,6 @@ Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'as'	=>	'teachers.show'
 	]);
 
-
-/*
-|----------------------------------------------------------------------------
-|Rutas del controlador de cursos
-|----------------------------------------------------------------------------
-*/
-
-/*Route::resource('courses', 'CourseController');*/
 
 /*
 |----------------------------------------------------------------------------

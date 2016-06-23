@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
 	<a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
-		{{ Lang::get('admin.breadcrumb_name') }}
+		{{ Lang::get('admin.panel_admin_breadcrumb') }}
 	</a>
 	<a href="{{ URL::route('admin.courses.index') }}" class="breadcrumb">
 		{{ Lang::get('courses.index_breadcrumb') }}
@@ -22,7 +22,7 @@
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	'courses.store',
+			'route' 	=> 	'admin.courses.store',
 			'method'	=>	'post',
 			'class'		=>	'col s12',
 			'role'		=>	'search'
