@@ -86,7 +86,7 @@ Route::group(['prefix' => 'admin'], function()
 		'as'	=>	'admin.courses.teachers.dictate'
 	]);
 
-	Route::delete('courses/{courseId}/teachers/{teacherId}', [
+	Route::get('courses/{courseId}/teachers/{teacherId}/delete', [
 		'uses'	=>	'AdminController@destroyTeacherDictateCourse',
 		'as'	=>	'admin.courses.teachers.destroy'
 	]);

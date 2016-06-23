@@ -28,4 +28,6 @@ return [
 
 	//courses_show
 	'courses_show_teachers_delete'			=>	'Eliminar del curso',
+	'destroy_teacher_dictate_course_alert'	=>	'El profesor se elimino correctamente del curso.',
+	'failed_destroy_teacher_dictate_course_alert'	=>	'La solicitud de eliminar el profesor del curso no puede llevarse a cabo.',
 ];

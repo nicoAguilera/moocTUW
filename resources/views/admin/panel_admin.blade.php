@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
 	<a href="">
-		{{ Lang::get('admin.breadcrumb_name') }}
+		{{ Lang::get('admin.panel_admin_breadcrumb') }}
 	</a>
 @stop
 

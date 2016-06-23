@@ -115,7 +115,16 @@ class AdminController extends Controller {
 	{
 		$result = User::findOrFail($teacherId)->courses()->detach($courseId);
 
-		dd($result);
+		if($result === 1)
+		{
+			return Redirect::route('admin.courses.show', $courseId)
+						->with('alert.success', Lang::get('admin.destroy_teacher_dictate_course_alert'));
+		}
+		else
+		{
+			return Redirect::route('admin.courses.show', $courseId)
+						->with('alert.danger', Lang::get('admin.failed_destroy_teacher_dictate_course_alert'));
+		}
 	}
 
 	public function teachersIndex()

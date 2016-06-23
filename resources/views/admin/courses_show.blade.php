@@ -2,9 +2,7 @@
 
 
 @section('menu')
-    @if(Auth::check() && Auth::user()->role === 'admin' )
-        @include('admin._menu')
-    @endif
+    @include('admin._menu')
 @stop
 
 
