@@ -2,6 +2,8 @@
 
 return [
 	//labels
+	'name_label'						=>	'Nombre',
+	'description_label'					=>	'Descripción',
 	'start_date_label'					=> 	'Fecha y hora de inicio',
 	'end_date_label'					=>	'Fecha y hora de finalización',
 
@@ -21,6 +23,12 @@ return [
 	'create_end_date_label'				=>	'Fecha y hora de finalización (Formato: Año-Mes-Día Hora-Minuto-Segundo)',
 	'create_submit_btn'					=>	'Crear curso',
 	'create_success_alert'				=>	'El curso se ha creado correctamente.',
+
+	//mensajes de error personalizados
+	'start_date_min_error'				=>	'La fecha de inicio debe ser por lo menos de una semana a partir del día de hoy',
+	'start_date_max_error'				=>	'La fecha de inicio puede ser como máximo seis (6) meses a partir del día de hoy',
+	'end_date_min_error'				=>	'La fecha de finalización debe ser como mínimo 1 mes posterior a la fecha de inicio',
+	'end_date_max_error'				=>	'La fecha de finalización debe ser como máximo 3 meses posterior a la fecha de inicio',
 
 	//show
 	'show_description_label'			=>	'Descripción:',

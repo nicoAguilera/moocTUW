@@ -72,6 +72,7 @@ class AdminController extends Controller {
 		]);
 	}
 
+	/* Refactorizar con el metodo create de TeacherController */
 	public function teachersCreateAndAddCourse($courseId)
 	{
 		$course = Course::findOrFail($courseId);
@@ -81,6 +82,7 @@ class AdminController extends Controller {
 		return View::make('admin.courses_teachers_create', ['title' => $title, 'course' => $course]);
 	}
 
+	/* Refactorizar con el metodo show de TeacherController */
 	public function coursesTeachersShow($courseId, $teacherId)
 	{
 		$course = Course::findOrFail($courseId);
@@ -139,6 +141,7 @@ class AdminController extends Controller {
 		]);
 	}
 
+	/* Refactorizar con el metodo create de TeacherController */
 	public function teachersCreate()
 	{
 		$title = Lang::get('teachers.create_browser_title');
@@ -146,6 +149,7 @@ class AdminController extends Controller {
 		return View::make('admin.teachers_create', compact('title'));
 	}
 
+	/* Refactorizar con el metodo show de TeacherController */
 	public function teachersShow($teacherId)
 	{
 		$teacher = User::findOrFail($teacherId);

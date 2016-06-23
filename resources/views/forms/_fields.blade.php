@@ -16,6 +16,13 @@
 <div class="input-field">
 	{!! Form::label('description', Lang::get('courses.create_description_label')) !!}
 	{!! Form::text('description', old('description')) !!}
+
+	@if ($errors->has('description'))
+		<p class="red-text text-darken-2">
+			<i class="fa fa-exclamation-circle"></i>
+			{{ $errors->first('description') }}
+		</p>
+	@endif
 </div>
 <!-- /Descripción -->
 

@@ -205,14 +205,17 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 		'as'	=>	'activities.update'
 	]);
 
-/*
+/**
 |----------------------------------------------------------------------------
-|Rutas del controlador de profesores
+|Refactorizar rutas de TeacherController con las respectivas de AdminController
+| En vez de 4 metodos en Admin utilizo los 2 por defecto de Teacher (create y show)
+| y analizo las opciones redirijiendo o mostrando según el lugar desde donde se
+| invoca
 |----------------------------------------------------------------------------
 */
 
 
-Route::get('courses/{id}/teachers/create', [
+/*Route::get('courses/{id}/teachers/create', [
 		'uses'	=>	'TeacherController@create',
 		'as'	=>	'teachers.create'
 	]);
@@ -222,7 +225,7 @@ Route::get('courses/{id}/teachers/create', [
 Route::get('courses/{courseId}/teachers/{teacherId}',[
 		'uses'	=>	'TeacherController@show',
 		'as'	=>	'teachers.show'
-	]);
+	]);*/
 
 
 /*
