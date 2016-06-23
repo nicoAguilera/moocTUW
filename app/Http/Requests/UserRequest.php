@@ -71,21 +71,6 @@ class UserRequest extends Request {
 	}
 
 	/**
-	 * Translate the names of the attributes
-	 *
-	 * @return array
-	 */
-	public function attributes()
-	{
-		return [
-			'name'					=> Lang::get('auth.name_label'),
-			'email'					=> Lang::get('auth.email_label'),
-			'password'				=> Lang::get('auth.password_label'),
-			'password_confirmation'	=> Lang::get('auth.password_confirmation_label'),
-		];
-	}
-
-	/**
 	 * Set the custom messages
 	 *
 	 * @return array

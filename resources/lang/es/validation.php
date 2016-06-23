@@ -102,6 +102,14 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'name'						=>	'Nombre',
+		'description'				=>	'Descripción',
+		'start_date'				=>	'Fecha y hora de inicio',
+		'end_date'					=>	'Fecha y hora de finalización',
+		'email'						=>	'Dirección de Email',
+		'password'					=>	'Contraseña',
+		'password_confirmation'		=>	'Confirmar contraseña',
+	],
 
 ];

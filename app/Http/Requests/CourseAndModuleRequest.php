@@ -54,21 +54,6 @@ class CourseAndModuleRequest extends FormRequest {
 	}
 
 	/**
-	 * Translate the names of the attributes
-	 *
-	 * @return array
-	 */
-	public function attributes()
-	{
-		return [
-			'name'			=> 	Lang::get('courses.name_label'),
-			'description'	=>	Lang::get('courses.description_label'),
-			'start_date'	=>	Lang::get('courses.start_date_label'),
-			'end_date'		=>	Lang::get('courses.end_date_label'),
-		];
-	}
-
-	/**
 	 * Set the custom messages
 	 *
 	 * @return array
@@ -76,7 +61,7 @@ class CourseAndModuleRequest extends FormRequest {
 	public function messages()
 	{
 		return [
-			'start_date.start_date_min'	=>	Lang::get('courses.start_date_min_error'),
+			'start_date.start_date_min'	=>	trans('courses.start_date_min_error'),
 			'start_date.start_date_max'	=>	Lang::get('courses.start_date_max_error'),
 			'end_date.end_date_min'		=>  Lang::get('courses.end_date_min_error'),
 			'end_date.end_date_max'		=>  Lang::get('courses.end_date_max_error'),
