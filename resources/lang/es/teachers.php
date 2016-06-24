@@ -1,6 +1,10 @@
 <?php
 
 return [
+	
+	//menu
+	'item_menu_profile'								=>	'Perfil',
+	'item_menu_courses'								=>	'Cursos',
 
 	//index
 	'index_browser_title'							=>	'Profesores',
@@ -15,9 +19,21 @@ return [
 	'create_call_to_action'							=>	'Nuevo profesor',
 	'create_success_alert'							=>	'El profesor fue creado correctamente.',
 
+	//show
+	'show_profile_breadcrumb'						=>	'Perfil',
+
 	//add
 	'add_breadcrumb'								=>	'Agregar profesor',
 
 	//dictar curso
 	'teacher_dictate_course_call_to_action'	=>	'Agregar a curso',
+
+	//courses_index
+	'courses_index_browser_title'				=>	'Cursos',
+	'courses_index_breadcrumb'					=>	'Cursos',
+	'courses_index_title'						=>	'Cursos a cargo',
+	'courses_index_without_courses'				=>	'No posee cursos a cargo',
+
+	//courses_show
+	'create_modules_call_to_action'				=>	'Agregar modulo',
 ];

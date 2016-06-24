@@ -1,12 +1,16 @@
 @extends('layouts.master')
 
 @section('menu')
-	@include('admin._menu')
+	@include('teachers._menu')
 @stop
 
 @section('content')
 
-	@include('admin._breadcrumb')
+	@section('breadcrumb')
+		<a href="{{ URL::route('teachers.show', $teacher->id) }}" class="breadcrumb">
+			{{ trans('teachers.show_profile_breadcrumb') }}
+		</a>
+	@stop
 
 	<section>
 		<div class="container">
@@ -14,9 +18,6 @@
 			<div class="row">
 				<h3>{{ $teacher->name }}</h3>
 				<p>{{ $teacher->email }}</p>
-				<a href="{{ URL::route('teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-light btn">
-					{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
-				</a>
 			</div>
 
 		</div>

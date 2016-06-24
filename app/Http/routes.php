@@ -214,6 +214,27 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 |----------------------------------------------------------------------------
 */
 
+Route::group(['prefix' => 'teachers'], function(){
+	Route::get('/{teacherId}', [
+		'uses'	=>	'TeacherController@show',
+		'as'	=>	'teachers.show'
+	]);
+
+	Route::get('/{teacherId}/courses', [
+		'uses'	=>	'TeacherController@indexCourses',
+		'as'	=>	'teachers.courses.index'
+	]);
+
+	Route::get('/{teacherId}/courses/{courseId}', [
+		'uses'	=>	'TeacherController@showCourses',
+		'as'	=>	'teachers.courses.show'
+	]);
+
+	Route::get('/{teacherId}/courses/{courseId}/modules/create', [
+		'uses'	=>	'ModuleController@create',
+		'as'	=>	'teachers.courses.modules.create'
+	]);
+});
 
 /*Route::get('courses/{id}/teachers/create', [
 		'uses'	=>	'TeacherController@create',

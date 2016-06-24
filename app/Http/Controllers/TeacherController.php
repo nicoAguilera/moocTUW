@@ -86,20 +86,17 @@ class TeacherController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $courseId, $teacherId
+	 * @param  int  $teacherId
 	 * @return Response
 	 */
-	public function show($courseId, $teacherId)
+	public function show($teacherId)
 	{
-		$course = Course::findOrFail($courseId);
-
 		$teacher = User::findOrFail($teacherId);
 
 		$title = $teacher->name;
 
 		return View::make('teachers.show', [
 							'title'		=> $title,
-							'course'	=> $course,
 							'teacher'	=> $teacher
 						]);
 	}
@@ -135,5 +132,35 @@ class TeacherController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function indexCourses($teacherId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$courses = $teacher->courses;
+
+		$title = trans('teachers.courses_index_browser_title');
+
+		return View::make('teachers.courses_index', [
+									'title'		=> $title,
+									'teacher' 	=> $teacher,
+									'courses' 	=> $courses
+								]);
+	}
+
+	public function showCourses($teacherId, $courseId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$title = $course->name;
+
+		return view('teachers.courses_show', [
+						'title' 	=> 	$title,
+						'teacher'	=>	$teacher,
+						'course' 	=> 	$course
+					]);
 	}
 }
