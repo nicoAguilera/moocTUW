@@ -13,13 +13,16 @@ use View;
 
 //Models
 use App\Models\Course;
+use App\Models\Module;
 use App\Models\User;
 
 class TeacherController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('is.admin', ['only' => ['create', 'store'] ]);
+		$this->middleware('is.admin', ['only' => ['index', 'create', 'store'] ]);
+
+		$this->middleware('is.teacher', ['only' => ['show', 'indexCourses', 'showCourses'] ]);
 	}
 
 	/**
@@ -33,7 +36,6 @@ class TeacherController extends Controller {
 
 		$course = Course::findOrFail($courseId);
 		$teachers = User::where('role', '=', 'teacher')->paginate(5);
-		//$teachers = User::paginate(2);
 
 		return View::make('teachers.index', [
 			'title'		=>	$title,
@@ -162,5 +164,23 @@ class TeacherController extends Controller {
 						'teacher'	=>	$teacher,
 						'course' 	=> 	$course
 					]);
+	}
+
+	public function showModules($teacherId, $courseId, $moduleId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$title = $module->name;
+
+		return view('teachers.courses_modules_show', [
+							'title'		=>	$title,
+							'teacher'	=>	$teacher,
+							'course'	=>	$course,
+							'module'	=>	$module
+						]);
 	}
 }

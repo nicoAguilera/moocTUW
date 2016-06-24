@@ -1,10 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\CourseAndModuleRequest;
+use App\Http\Requests\ModuleRequest;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 
 //Facades
 use Lang;
@@ -14,6 +12,7 @@ use View;
 //Models
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\User;
 
 class ModuleController extends Controller {
 
@@ -30,36 +29,39 @@ class ModuleController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param int $courseId
+	 * @param int $teacherId, $courseId
 	 * @return object View
 	 */
-	public function create($courseId)
+	public function create($teacherId, $courseId)
 	{
+		$teacher = User::findOrFail($teacherId);
+
 		$course = Course::findOrFail($courseId);
 
-		$title = Lang::get('module.create_browser_title');
+		$title = Lang::get('modules.create_browser_title');
 
-		return View::make('modules.create', ['title' => $title, 'course' => $course]);
+		return View::make('teachers.courses_modules_create', [
+								'title'		=> 	$title,
+								'teacher'	=>	$teacher,
+								'course' 	=> 	$course
+							]);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param CourseAndModuleRequest $request
+	 * @param ModuleRequest $request
 	 * @return Redirect
 	 */
-	public function store(CourseAndModuleRequest $request)
+	public function store(ModuleRequest $request, $teacherId, $courseId)
 	{
 		$module = Module::create($request->only(
 									'name', 
-									'description', 
-									'start_date', 
-									'end_date', 
 									'course_id'
 								));
 
-		return Redirect::route('courses.show', $request->only('course_id'))
-							->with('alert.success', Lang::get('module.create_success_alert'));
+		return Redirect::route('teachers.courses.show', [$teacherId, $courseId] )
+							->with('alert.success', Lang::get('modules.create_success_alert'));
 	}
 
 	/**

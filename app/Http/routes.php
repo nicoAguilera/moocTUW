@@ -149,16 +149,6 @@ Route::get('cursos/{id}/contenido', 'CourseController@showEditor');
 |----------------------------------------------------------------------------
 */
 
-Route::get('courses/{id}/modules/create', [
-		'uses'	=> 	'ModuleController@create', 
-		'as'	=> 	'modules.create'
-	]);
-
-Route::post('modules', [
-		'uses'	=>	'ModuleController@store',
-		'as'	=>	'modules.store'
-	]);
-
 Route::get('courses/{courseId}/modules/{moduleId}', [
 		'uses'	=>	'ModuleController@show',
 		'as'	=>	'modules.show'
@@ -220,6 +210,12 @@ Route::group(['prefix' => 'teachers'], function(){
 		'as'	=>	'teachers.show'
 	]);
 
+	/* 
+	|----------------------------------------------------------------------
+	|COURSES
+	|----------------------------------------------------------------------
+	*/
+
 	Route::get('/{teacherId}/courses', [
 		'uses'	=>	'TeacherController@indexCourses',
 		'as'	=>	'teachers.courses.index'
@@ -230,9 +226,25 @@ Route::group(['prefix' => 'teachers'], function(){
 		'as'	=>	'teachers.courses.show'
 	]);
 
+	/* 
+	|----------------------------------------------------------------------
+	|MODULES
+	|----------------------------------------------------------------------
+	*/
+
 	Route::get('/{teacherId}/courses/{courseId}/modules/create', [
 		'uses'	=>	'ModuleController@create',
 		'as'	=>	'teachers.courses.modules.create'
+	]);
+
+	Route::post('{teacherId}/courses/{courseId}/modules', [
+		'uses'	=>	'ModuleController@store',
+		'as'	=>	'teachers.courses.modules.store'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}', [
+		'uses'	=>	'TeacherController@showModules',
+		'as'	=>	'teachers.courses.modules.show'
 	]);
 });
 

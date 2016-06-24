@@ -36,4 +36,7 @@ return [
 
 	//courses_show
 	'create_modules_call_to_action'				=>	'Agregar modulo',
+
+	//courses_modules_show
+	'create_activities_call_to_action'			=>	'Agregar actividad',
 ];
