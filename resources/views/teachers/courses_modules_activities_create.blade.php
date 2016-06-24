@@ -1,38 +1,42 @@
 @extends('forms._form')
 
+@section('menu')
+	@include('teachers._menu')
+@stop
+
 @section('breadcrumb')
 	<!-- Cursos -->
-	<a href="{{ URL::route('courses.index') }}" class="breadcrumb">
-		{{ Lang::get('course.breadcrumb_name') }}
+	<a href="{{ URL::route('teachers.courses.index', $teacher->id) }}" class="breadcrumb">
+		{{ trans('teachers.courses_index_breadcrumb') }}
 	</a>
 	<!-- /Cursos -->
 
 	<!-- Nombre del curso -->
-    <a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
+    <a href="{{ URL::route('teachers.courses.show', [$teacher->id, $course->id]) }}" class="breadcrumb">
     	{{ $course->name }}
     </a>
     <!-- /Nombre del curso -->
 
     <!-- Nombre del modulo -->
-    <a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}" class="breadcrumb">
+    <a href="{{ URL::route('teachers.courses.modules.show', [$teacher->id, $course->id, $module->id]) }}" class="breadcrumb">
     	{{ $module->name }}
     </a>
     <!-- /Nombre del modulo -->
 
     <!-- Agregar actividad -->
     <a href="" class="breadcrumb">
-    	{{ Lang::get('activity.create_breadcrumb_name') }}
+    	{{ Lang::get('activities.create_breadcrumb_name') }}
     </a>
     <!-- Agregar actividad -->
 @stop
 
 @section('form_title')
-	<h4>{!! Lang::get('activity.create_panel_title') !!}</h4>
+	<h4>{!! Lang::get('activities.create_panel_title') !!}</h4>
 @stop
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	'activities.store',
+			'route' 	=> 	['activities.store', $teacher->id, $course->id, $module->id],
 			'method'	=>	'post',
 			'class'		=>	'col s12',
 			'role'		=>	'search'
@@ -40,7 +44,7 @@
 
 		<!-- Titulo de la actividad -->
 		<div class="input-field">
-			{!! Form::label('title', Lang::get('activity.create_name_label')) !!}
+			{!! Form::label('title', Lang::get('activities.create_name_label')) !!}
 			{!! Form::text('title', old('title'), ['class' => 'validate']) !!}
 
 			@if ($errors->has('title'))
@@ -58,7 +62,7 @@
 
 		<!-- Boton de crear actividad -->
 		<button class="btn waves-effect waves-light col s12" type="submit">
-			{{ Lang::get('activity.add_activity_btn')}}
+			{{ Lang::get('activities.add_activity_btn')}}
 		</button>
 		<!-- /Boton de crear actividad -->
 

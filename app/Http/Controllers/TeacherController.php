@@ -12,6 +12,7 @@ use Redirect;
 use View;
 
 //Models
+use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Module;
 use App\Models\User;
@@ -181,6 +182,27 @@ class TeacherController extends Controller {
 							'teacher'	=>	$teacher,
 							'course'	=>	$course,
 							'module'	=>	$module
+						]);
+	}
+
+	public function showActivities($teacherId, $courseId, $moduleId, $activityId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$activity = Activity::findOrFail($activityId);
+
+		$title = $activity->title;
+
+		return view('teachers.courses_modules_activities_show', [
+							'title'		=>	$title,
+							'teacher'	=>	$teacher,
+							'course'	=>	$course,
+							'module'	=>	$module,
+							'activity'	=>	$activity
 						]);
 	}
 }

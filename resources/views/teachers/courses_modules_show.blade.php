@@ -41,7 +41,7 @@
 
                 @if(count($module->activities) < 10)
                     <div class="col">
-                        <a href="{{ URL::route('activities.create', [$course->id, $module->id]) }}"
+                        <a href="{{ URL::route('activities.create', [$teacher->id, $course->id, $module->id]) }}"
                             class="waves-effect waves-light btn btn_add">
                             {{ trans('teachers.create_activities_call_to_action') }}
                         </a>
@@ -52,7 +52,7 @@
             <ul>
                 @foreach($module->activities as $activity)
                     <li>
-                        <a href="{{ URL::route('activities.show', [$course->id, $module->id, $activity->id]) }}">
+                        <a href="{{ URL::route('teachers.courses.modules.activities.show', [$teacher->id, $course->id, $module->id, $activity->id]) }}">
                             {{ $activity->title }}
                         </a>
                     </li>

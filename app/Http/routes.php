@@ -170,15 +170,7 @@ Route::patch('courses/{courseId}/modules/{moduleId}', [
 |----------------------------------------------------------------------------
 */
 
-Route::get('courses/{courseId}/modules/{moduleId}/activities/create', [
-		'uses'	=>	'ActivityController@create',
-		'as'	=>	'activities.create'
-	]);
 
-Route::post('activities', [
-		'uses'	=>	'ActivityController@store',
-		'as'	=>	'activities.store'
-	]);
 
 Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
 		'uses'	=>	'ActivityController@show',
@@ -201,6 +193,12 @@ Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 | En vez de 4 metodos en Admin utilizo los 2 por defecto de Teacher (create y show)
 | y analizo las opciones redirijiendo o mostrando según el lugar desde donde se
 | invoca
+|----------------------------------------------------------------------------
+*/
+
+/*
+|----------------------------------------------------------------------------
+|Rutas del controlador de Profesores
 |----------------------------------------------------------------------------
 */
 
@@ -245,6 +243,27 @@ Route::group(['prefix' => 'teachers'], function(){
 	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}', [
 		'uses'	=>	'TeacherController@showModules',
 		'as'	=>	'teachers.courses.modules.show'
+	]);
+
+	/* 
+	|----------------------------------------------------------------------
+	|ACTIVITIES
+	|----------------------------------------------------------------------
+	*/
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/activities/create', [
+		'uses'	=>	'ActivityController@create',
+		'as'	=>	'activities.create'
+	]);
+
+	Route::post('{teacherId}/courses/{courseId}/modules/{moduleId}/activities', [
+		'uses'	=>	'ActivityController@store',
+		'as'	=>	'activities.store'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
+		'uses'	=>	'TeacherController@showActivities',
+		'as'	=>	'teachers.courses.modules.activities.show'
 	]);
 });
 

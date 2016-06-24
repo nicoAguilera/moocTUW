@@ -15,6 +15,7 @@ use View;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\User;
 
 class ActivityController extends Controller {
 
@@ -34,19 +35,21 @@ class ActivityController extends Controller {
 	 * @param int $courseId, $moduleId
 	 * @return Response
 	 */
-	public function create($courseId, $moduleId)
+	public function create($teacherId, $courseId, $moduleId)
 	{
+		$teacher = User::findOrFail($teacherId);
 
 		$course = Course::findOrFail($courseId);
 
 		$module = Module::findOrFail($moduleId);
 
-		$title = Lang::get('activity.create_browser_title');	
+		$title = Lang::get('activities.create_browser_title');	
 		
-		return View::make('activities.create', [
-									'title' 	=> $title,
-									'course' 	=> $course,
-									'module' 	=> $module
+		return View::make('teachers.courses_modules_activities_create', [
+									'title' 	=> 	$title,
+									'teacher'	=>	$teacher,
+									'course' 	=> 	$course,
+									'module' 	=> 	$module
 									]);
 	}
 
@@ -56,15 +59,15 @@ class ActivityController extends Controller {
 	 * @param ActivityRequest $request
 	 * @return Redirect
 	 */
-	public function store(ActivityRequest $request)
+	public function store(ActivityRequest $request, $teacherId, $courseId, $moduleId)
 	{
 		$activity = Activity::create($request->only('title', 'module_id'));
 
-		$module = Module::findOrFail($request->only('module_id'))->first();
+		//$module = Module::findOrFail($request->only('module_id'))->first();
 
-		$courseId = $module->course->id;
+		//$courseId = $module->course->id;
 
-		return Redirect::route('activities.show', [$courseId, $module->id, $activity->id])
+		return Redirect::route('activities.show', [$teacherId, $courseId, $moduleId, $activity->id])
 							->with('alert.success', Lang::get('activity.create_success_alert'));
 	}
 

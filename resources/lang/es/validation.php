@@ -110,6 +110,7 @@ return [
 		'email'						=>	'Dirección de Email',
 		'password'					=>	'Contraseña',
 		'password_confirmation'		=>	'Confirmar contraseña',
+		'title'						=>	'Título',
 	],
 
 ];
