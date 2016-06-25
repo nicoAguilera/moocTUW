@@ -19,32 +19,36 @@
         </a>
         <!-- /breadcrumb courses_modules_show -->
 
-        <a href="" class="breadcrumb">
+        <a href="{{ URL::route('teachers.courses.modules.activities.show', [$teacher->id, $course->id, $module->id, $activity->id]) }}" class="breadcrumb">
             {{ $activity->title }}
         </a>
     @stop
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col s12">
-                <h4>{{ $activity->title }}</h4>
-
-                <!-- Contenido de la actividad -->
-                <div class="container-fluid">
-                    <div class="row">
-                    
-                    </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h4>{{ $activity->title }}</h4>
                 </div>
-                <!-- /Contenido de la actividad-->
-
-                <a href="{{ URL::route('activities.edit', [$course->id, $module->id, $activity->id]) }}">
-                    {{ Lang::get('activities.edit_call_to_action') }}
-                </a><br>
-                <a href="">
-                    {{ Lang::get('activities.show_call_to_action_editor') }}
-                </a>
+                <div class="col">
+                    <a href="{{ URL::route('activities.edit', [$course->id, $module->id, $activity->id]) }}">
+                        {{ Lang::get('activities.edit_call_to_action') }}
+                    </a>                   
+                </div>
             </div>
+
+            <!-- Contenido de la actividad -->
+            <div class="container-fluid">
+                <div class="row">
+                    Plantilla por defecto o editada
+                </div>
+            </div>
+
+            <a href="">
+                {{ Lang::get('activities.show_call_to_action_editor') }}
+            </a>
+            <!-- /Contenido de la actividad-->
         </div>
-    </div>
+    </section>
     
 @stop

@@ -86,6 +86,10 @@ label {
     font-size: 1.0rem;
 }
 
+select {
+    display: inline-block;
+}
+
 /* Agregar profesores */
 .btn_add{
     margin-top: 2rem;

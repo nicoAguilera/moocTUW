@@ -24,12 +24,10 @@ class ActivityRequest extends Request {
 	 */
 	public function rules()
 	{
-		$rules = [
-			'title'			=>	[
-				'required'
-			],
+		return [
+			'type'	=>	'required|in:content,test',
+			'title'	=>	'required',
 		];
-		return $rules;
 	}
 
 	/**

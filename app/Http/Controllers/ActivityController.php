@@ -63,12 +63,8 @@ class ActivityController extends Controller {
 	{
 		$activity = Activity::create($request->only('title', 'module_id'));
 
-		//$module = Module::findOrFail($request->only('module_id'))->first();
-
-		//$courseId = $module->course->id;
-
-		return Redirect::route('activities.show', [$teacherId, $courseId, $moduleId, $activity->id])
-							->with('alert.success', Lang::get('activity.create_success_alert'));
+		return Redirect::route('teachers.courses.modules.activities.show', [$teacherId, $courseId, $moduleId, $activity->id])
+							->with('alert.success', Lang::get('activities.create_success_alert'));
 	}
 
 	/**

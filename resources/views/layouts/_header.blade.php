@@ -31,9 +31,6 @@
 							</a>
 							<ul id="dropdownLogout" class="dropdown-content">
 								<li>
-									<a href="#">Ver perfil</a>
-								</li>
-								<li>
 									<a href="{{ URL::route('logout') }}">
 										{{ Lang::get('navbar.logout_btn') }}
 									</a>
@@ -70,11 +67,6 @@
 					</a>
 				</li>
 			@else
-				<li class="bold">
-					<a href="#" class="waves-effect waves-teal">
-						{{ Auth::user()->name }}
-					</a>
-				</li>
 				<li class="bold">
 					<a href="{{ URL::route('logout') }}">
 						{{ Lang::get('navbar.logout_btn') }}

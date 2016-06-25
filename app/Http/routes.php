@@ -54,12 +54,12 @@ Route::group(['prefix' => 'admin'], function()
 
 	Route::get('courses/create',[
 		'uses'	=>	'AdminController@coursesCreate',
-		'as'	=>	'admin.courses.create'
+		'as'	=>	'courses.create'
 	]);
 
 	Route::post('courses', [
 		'uses'	=>	'CourseController@store',
-		'as'	=>	'admin.courses.store'
+		'as'	=>	'courses.store'
 	]);
 
 	Route::get('courses/{id}', [
@@ -69,22 +69,22 @@ Route::group(['prefix' => 'admin'], function()
 
 	Route::get('courses/{id}/edit', [
 		'uses'	=>	'CourseController@edit',
-		'as'	=>	'admin.courses.edit'
+		'as'	=>	'courses.edit'
 	]);
 
 	Route::patch('courses/{id}', [
 		'uses'	=>	'CourseController@update',
-		'as'	=>	'admin.courses.update'
+		'as'	=>	'courses.update'
 	]);
 
 	Route::get('courses/{id}/teachers/add', [
 		'uses'	=>	'AdminController@addTeachersCourse',
-		'as'	=>	'admin.courses.teachers.add'
+		'as'	=>	'courses.teachers.add'
 	]);
 
 	Route::get('courses/{id}/teachers/create', [
 		'uses'	=>	'AdminController@teachersCreateAndAddCourse',
-		'as'	=>	'admin.courses.teachers.create'
+		'as'	=>	'courses.teachers.create'
 	]);
 
 	Route::get('courses/{courseId}/teachers/{teacherId}',[
@@ -94,12 +94,12 @@ Route::group(['prefix' => 'admin'], function()
 
 	Route::get('courses/{courseId}/teachers/{teacherId}/dictate', [
 		'uses'	=>	'AdminController@teacherDictateCourse',
-		'as'	=>	'admin.courses.teachers.dictate'
+		'as'	=>	'courses.teachers.dictate'
 	]);
 
 	Route::get('courses/{courseId}/teachers/{teacherId}/delete', [
 		'uses'	=>	'AdminController@destroyTeacherDictateCourse',
-		'as'	=>	'admin.courses.teachers.destroy'
+		'as'	=>	'teachers.destroy'
 	]);
 
 	/* 
@@ -115,12 +115,12 @@ Route::group(['prefix' => 'admin'], function()
 
 	Route::get('teachers/create', [
 		'uses'	=>	'AdminController@teachersCreate',
-		'as'	=>	'admin.teachers.create'
+		'as'	=>	'teachers.create'
 	]);
 
 	Route::post('teachers', [
 		'uses'	=>	'TeacherController@store',
-		'as'	=>	'admin.teachers.store'
+		'as'	=>	'teachers.store'
 	]);
 
 	Route::get('teachers/{id}', [
@@ -177,15 +177,7 @@ Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
 		'as'	=>	'activities.show'
 	]);
 
-Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}/edit',[
-		'uses'	=>	'ActivityController@edit',
-		'as'	=>	'activities.edit'
-	]);
 
-Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
-		'uses'	=>	'ActivityController@update',
-		'as'	=>	'activities.update'
-	]);
 
 /**
 |----------------------------------------------------------------------------
@@ -232,12 +224,12 @@ Route::group(['prefix' => 'teachers'], function(){
 
 	Route::get('/{teacherId}/courses/{courseId}/modules/create', [
 		'uses'	=>	'ModuleController@create',
-		'as'	=>	'teachers.courses.modules.create'
+		'as'	=>	'modules.create'
 	]);
 
 	Route::post('{teacherId}/courses/{courseId}/modules', [
 		'uses'	=>	'ModuleController@store',
-		'as'	=>	'teachers.courses.modules.store'
+		'as'	=>	'modules.store'
 	]);
 
 	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}', [
@@ -264,6 +256,16 @@ Route::group(['prefix' => 'teachers'], function(){
 	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
 		'uses'	=>	'TeacherController@showActivities',
 		'as'	=>	'teachers.courses.modules.activities.show'
+	]);
+
+	Route::get('courses/{courseId}/modules/{moduleId}/activities/{activityId}/edit',[
+		'uses'	=>	'ActivityController@edit',
+		'as'	=>	'activities.edit'
+	]);
+
+	Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
+		'uses'	=>	'ActivityController@update',
+		'as'	=>	'activities.update'
 	]);
 });
 

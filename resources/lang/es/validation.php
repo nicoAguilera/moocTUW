@@ -38,7 +38,7 @@ return [
 	"filled"               => "The :attribute field is required.",
 	"exists"               => "El campo :attribute no es válido.",
 	"image"                => "The :attribute must be an image.",
-	"in"                   => "The selected :attribute is invalid.",
+	"in"                   => "El :attribute seleccionado es inválido.",
 	"integer"              => "The :attribute must be an integer.",
 	"ip"                   => "The :attribute must be a valid IP address.",
 	"max"                  => [
@@ -111,6 +111,7 @@ return [
 		'password'					=>	'Contraseña',
 		'password_confirmation'		=>	'Confirmar contraseña',
 		'title'						=>	'Título',
+		'type'						=>	'Tipo de actividad',
 	],
 
 ];

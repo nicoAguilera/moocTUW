@@ -42,9 +42,27 @@
 			'role'		=>	'search'
 	]) !!}
 
+		<!-- Tipo de actividad -->
+		<div class="">
+			{!! Form::label('type', trans('teachers.type_activity_label')) !!}
+			<select name="type">
+		      	<option value="" disabled selected>Seleccionar</option>
+				<option value="content">Contenido</option>
+				<option value="test">Evaluación</option>
+		    </select>
+
+		    @if ($errors->has('type'))
+				<p class="red-text text-darken-2">
+					<i class="fa fa-exclamation-circle"></i>
+					{{ $errors->first('type') }}
+				</p>
+			@endif
+		</div>
+		<!-- /Tipo de actividad -->
+
 		<!-- Titulo de la actividad -->
 		<div class="input-field">
-			{!! Form::label('title', Lang::get('activities.create_name_label')) !!}
+			{!! Form::label('title', trans('activities.create_name_label')) !!}
 			{!! Form::text('title', old('title'), ['class' => 'validate']) !!}
 
 			@if ($errors->has('title'))

@@ -35,8 +35,12 @@ return [
 	'courses_index_without_courses'				=>	'No posee cursos a cargo',
 
 	//courses_show
+	'section_course_program_title'				=>	'Programa del curso',
 	'create_modules_call_to_action'				=>	'Agregar modulo',
 
 	//courses_modules_show
 	'create_activities_call_to_action'			=>	'Agregar actividad',
+
+	//courses_modules_activities_create
+	'type_activity_label'						=>	'Tipo de actividad',
 ];

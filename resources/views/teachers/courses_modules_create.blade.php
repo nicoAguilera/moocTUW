@@ -24,7 +24,7 @@
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	['teachers.courses.modules.store', $teacher->id, $course->id],
+			'route' 	=> 	['modules.store', $teacher->id, $course->id],
 			'method'	=>	'post',
 			'class'		=>	'col s12',
 			'role'		=>	'search'
