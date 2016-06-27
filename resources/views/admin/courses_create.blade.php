@@ -22,7 +22,7 @@
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	'admin.courses.store',
+			'route' 	=> 	'courses.store',
 			'method'	=>	'post',
 			'class'		=>	'col s12',
 			'role'		=>	'search'

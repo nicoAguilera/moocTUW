@@ -23,7 +23,7 @@
 
 					<div class="collection">
 						@foreach($courses as $course)
-							@if($course->active === NULL)
+							@if($course->active === 0)
 							<a href="{{ URL::route('admin.courses.show', $course->id) }}" class="collection-item">
 								<span class="secondary-text">{{$course->name}}</span>
 								<span class="new badge red darken-2">INACTIVO</span>
@@ -39,7 +39,7 @@
 						@endforeach
 					</div>
 
-					<a href="{{ URL::route('admin.courses.create') }}">{{ Lang::get('courses.create_call_to_action') }}</a>
+					<a href="{{ URL::route('courses.create') }}">{{ Lang::get('courses.create_call_to_action') }}</a>
 				</div>
 			</div>
 		</div>

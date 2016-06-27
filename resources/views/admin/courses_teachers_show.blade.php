@@ -20,7 +20,7 @@
 	        {{ $course->name }}
 	    </a>
 
-	    <a href="{{ URL::route('admin.courses.teachers.add', $course->id) }}" class="breadcrumb">
+	    <a href="{{ URL::route('courses.teachers.add', $course->id) }}" class="breadcrumb">
 	    	{{ Lang::get('admin.add_teachers_course_bradcrumb') }}
 	    </a>
 	    <!-- /breadcrumb add_teachers_course -->
@@ -37,7 +37,7 @@
 				<h3>{{ $teacher->name }}</h3>
 				<p>{{ $teacher->email }}</p>
 				@if(!$teacher->courses->contains($course->id))
-					<a href="{{ URL::route('admin.courses.teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-light btn">
+					<a href="{{ URL::route('courses.teachers.dictate', [$course->id, $teacher->id]) }}" class="waves-effect waves-light btn">
 						{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
 					</a>
 				@else

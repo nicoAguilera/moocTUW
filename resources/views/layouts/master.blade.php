@@ -34,7 +34,9 @@
       @include ('layouts._header')
       <main>
         
-        @include('layouts._breadcrumbs')
+        @if(!Route::currentRouteNamed('welcome') && !Route::currentRouteNamed('login') && !Route::currentRouteNamed('signup'))
+          @include('layouts._breadcrumbs')
+        @endif
 
         @include ('layouts._alerts')
 
@@ -52,8 +54,8 @@
       <!-- Font Awesome -->
       <script src="https://use.fontawesome.com/0f001b167c.js"></script>
 
-      <!-- Vue versión de desarrollo -->
-      <!--script type="text/javascript" src="{{asset(js/vue.js)}}"></script-->
+      <!-- Vue.js versión de desarrollo -->
+      <!--script type="text/javascript" src=""></script-->
 
       <!-- Vue versión de producción Incluir cdn al momento de mandar de hacer el deploy y eliminar la versión de desarrollo -->
 

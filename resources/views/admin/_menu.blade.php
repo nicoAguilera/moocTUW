@@ -25,12 +25,12 @@
 <!-- /Cursos -->
 
 <!-- Crear curso -->
-@if(Route::currentRouteName() === 'admin.courses.create')
+@if(Route::currentRouteName() === 'courses.create')
 	<li class="bold indigo">
 		<a href="" class="waves-effect waves-teal white-text">
 @else
 	<li class="bold">
-		<a href="{{ URL::route('admin.courses.create') }}" class="waves-effect waves-teal">
+		<a href="{{ URL::route('courses.create') }}" class="waves-effect waves-teal">
 @endif
 		{{ Lang::get('admin.item_menu_create_course') }}
 	</a>

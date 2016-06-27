@@ -38,7 +38,7 @@
             <h5>Fecha de finalización</h5>
             <p>{{$course->end_date}}</p>
 
-            <a href="{{ URL::route('admin.courses.edit', $course->id) }}">
+            <a href="{{ URL::route('courses.edit', $course->id) }}">
                 {{ Lang::get('courses.edit_call_to_action') }}
             </a>
         </section>
@@ -51,7 +51,7 @@
                 <tr>
                     <td>{{$teacher->name}}</td>
                     <td>
-                        <a href="{{ URL::route('admin.courses.teachers.destroy', [$course->id, $teacher->id]) }}">
+                        <a href="{{ URL::route('teachers.destroy', [$course->id, $teacher->id]) }}">
                             {{ Lang::get('admin.courses_show_teachers_delete') }}
                         </a>
                     </td>
@@ -59,7 +59,7 @@
             @endforeach
             </table>
 
-            <a href="{{ URL::route('admin.courses.teachers.add', $course->id) }}">
+            <a href="{{ URL::route('courses.teachers.add', $course->id) }}">
                 {{ Lang::get('courses.add_teacher_call_to_action') }}
             </a>
         </section>

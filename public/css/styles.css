@@ -8,6 +8,11 @@ body{
     } 
 }
 
+/* Welcome */
+.card .card-content p.secondary-text{
+    color: #727272;
+}
+
 /* Breadcrumb */
 
 .breadcrumb:before{

@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+//Models
+use App\Models\Course;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +33,11 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$courses = Course::where('active', '=', 1)->get();
+
+		//dd($courses);
+
+		return view('welcome', compact('courses'));
 	}
 
 }

@@ -23,7 +23,7 @@
 					<h3>{{ Lang::get('teachers.index_title') }}</h3>
 				</div>
 				<div class="col btn_add">
-					<a href="{{ URL::route('admin.teachers.create') }}" class="waves-effect waves-light btn">
+					<a href="{{ URL::route('teachers.create') }}" class="waves-effect waves-light btn">
 						{{ Lang::get('teachers.create_call_to_action') }}
 					</a>
 				</div>

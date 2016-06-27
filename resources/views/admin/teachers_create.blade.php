@@ -15,7 +15,7 @@
     </a>
     <!-- /breadcrumb teachers_index -->
 
-    <a href="{{ URL::route('admin.teachers.create') }}" class="breadcrumb">
+    <a href="{{ URL::route('teachers.create') }}" class="breadcrumb">
     	{{ Lang::get('admin.teachers_create_breadcrumb') }}
     </a>
 @stop
@@ -26,7 +26,7 @@
 
 @section('form')
 	{!! Form::open([
-			'url' 		=> 	URL::route('admin.teachers.store'),
+			'url' 		=> 	URL::route('teachers.store'),
 			'method'	=>	'post', 
 			'class'		=>	'col s12',
 			'role'		=>	'search'

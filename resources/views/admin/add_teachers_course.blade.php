@@ -21,7 +21,7 @@
 	    </a>
 	    <!-- /breadcrumb courses_show -->
 
-	    <a href="{{ URL::route('admin.courses.teachers.add', $course->id) }}" class="breadcrumb">
+	    <a href="{{ URL::route('courses.teachers.add', $course->id) }}" class="breadcrumb">
 	    	{{ Lang::get('admin.add_teachers_course_bradcrumb') }}
 	    </a>
 	@stop
@@ -33,7 +33,7 @@
 					<h3>{{ Lang::get('teachers.index_title') }}</h3>
 				</div>
 				<div class="col btn_add">
-					<a href="{{ URL::route('admin.courses.teachers.create', $course->id) }}" class="waves-effect waves-light btn">
+					<a href="{{ URL::route('teachers.create', $course->id) }}" class="waves-effect waves-light btn">
 						{{ Lang::get('teachers.create_call_to_action') }}
 					</a>
 				</div>
@@ -52,7 +52,7 @@
 							</td>
 							@if(!$teacher->courses->contains($course->id))
 								<td>
-									<a 	href="{{ URL::route('admin.courses.teachers.dictate', [$course->id, $teacher->id]) }}" 
+									<a 	href="{{ URL::route('courses.teachers.dictate', [$course->id, $teacher->id]) }}" 
 										class="waves-effect waves-teal btn-flat">
 										{{ Lang::get('teachers.teacher_dictate_course_call_to_action') }}
 									</a>
