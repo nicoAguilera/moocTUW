@@ -11,7 +11,7 @@ class Course extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'description', 'start_date', 'end_date'];
+	protected $fillable = ['name', 'description', 'start_date', 'end_date', 'active'];
 
 	/**
 	* The attributes that be mutated to dates
@@ -19,6 +19,13 @@ class Course extends Model {
 	* @var string
 	*/
 	protected $dates = ['start_at', 'end_date'];
+
+	/**
+	 * The attributes excluded from the model's JSON form. 
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['active'];
 
 
 	/**

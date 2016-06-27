@@ -124,6 +124,24 @@ class CourseController extends Controller {
 		//
 	}
 
+	public function publishingCourse(Request $request)
+	{
+		$course = Course::findOrFail($request->only('courseId'))->first();
+
+		$result = $course->update(["active" => 1]);
+
+		/*if($result === true)
+		{
+			return Redirect::route('teachers.show', (int)$request["teacherId"])
+						->with('alert.succes', 'El curso '.$course->name.' se publico correctamente.');
+		}
+		else
+		{
+			return Redirect::route('teachers.courses.index', $request["teacherId"])
+						->with('alert.danger', 'No se realizo la publicación del curso');
+		}*/
+	}
+
 	public function showEditor($id)
 	{
 		$course = Course::find($id);

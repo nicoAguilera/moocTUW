@@ -216,6 +216,12 @@ Route::group(['prefix' => 'teachers'], function(){
 		'as'	=>	'teachers.courses.show'
 	]);
 
+	// No cumple con el formato de ruta de restful
+	Route::patch('courses/publish', [
+		'uses'	=>	'CourseController@publishingCourse',
+		'as'	=>	'courses.publish'
+	]);
+
 	/* 
 	|----------------------------------------------------------------------
 	|MODULES

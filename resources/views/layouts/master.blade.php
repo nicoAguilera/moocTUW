@@ -31,9 +31,8 @@
 
     <body>
       
-
+      @include ('layouts._header')
       <main>
-        @include ('layouts._header')
         
         @include('layouts._breadcrumbs')
 
@@ -59,6 +58,8 @@
           $(".button-collapse").sideNav();
         });
       </script>
+
+      @yield('script')
       <!-- /SCRIPT -->
 
     </body>

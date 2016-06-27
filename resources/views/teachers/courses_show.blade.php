@@ -51,7 +51,7 @@
         		@endif
         	</div>
         	        	
-        	<ul>
+        	<ul id="sortable">
 	        	@foreach($course->modules as $module)
 			        <li>
 			            <a href="{{ URL::route('teachers.courses.modules.show', [$teacher->id, $course->id, $module->id]) }}">
@@ -61,8 +61,19 @@
 			    @endforeach
 		    </ul>
 
+		    <p><strong>Nota:</strong> Para cambiar el orden de los modulos haga click sobre el modulo deseado y manteniendo presionado arrastre hacia abajo o hacia arriba a la posición deseada.</p>
         </section>
 
 	</div>
+@stop
 
+@section('script')
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+	$("#sortable").sortable({
+		change: function( event, ui){
+			console.log(ui);
+		}
+	});
+	</script>
 @stop
