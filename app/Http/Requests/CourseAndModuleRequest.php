@@ -37,14 +37,12 @@ class CourseAndModuleRequest extends FormRequest {
 			'start_date'	=>	[
 				'required',
 				'date',
-				'date_format:' .Config::get('course.date_format'),
 				'start_date_min',
 				'start_date_max',
 			],
 			'end_date'		=>	[
 				'required',
 				'date',
-				'date_format:' .Config::get('course.date_format'),
 				'end_date_min:' .Request::input('start_date'),
 				'end_date_max:' .Request::input('start_date'),
 			]

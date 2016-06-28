@@ -27,7 +27,7 @@
 								<td><span class="secondary-text">Inicia: </span>
 								{{\Carbon\Carbon::createFromFormat(Config::get('course.date_format'), $course->start_date)->toDateString()}}
 								</td>
-								@if($course->active === NULL)
+								@if($course->active === 0)
 									<td>
 										@if(count($course->modules) > 0 )
 										<button value="{{$course->id}}" id="publish">
