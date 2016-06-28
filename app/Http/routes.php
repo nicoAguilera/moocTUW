@@ -144,6 +144,17 @@ Route::post('cursos/guardar', 'CourseController@saveChanges');
 Route::get('cursos/{id}/contenido', 'CourseController@showEditor');
 
 /*
+|---------------------------------------------------------------------------
+|Rutas del controlador de modulos
+|---------------------------------------------------------------------------
+*/
+
+Route::get('courses/{id}', [
+	'uses'	=>	'CourseController@show',
+	'as'	=>	'courses.show'
+]);
+
+/*
 |----------------------------------------------------------------------------
 |Rutas del controlador de modulos
 |----------------------------------------------------------------------------

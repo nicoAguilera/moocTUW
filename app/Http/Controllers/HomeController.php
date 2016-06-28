@@ -3,6 +3,9 @@
 //Facades
 use Lang;
 
+//Models
+use App\Models\Course;
+
 class HomeController extends Controller {
 
 	/*
@@ -35,7 +38,9 @@ class HomeController extends Controller {
 	{
 		$title = Lang::get('auth.home_browser_title');
 
-		return view('home', compact('title'));
+		$courses = Course::where('active', '=', 1)->get();
+
+		return view('home', ['title' => $title, 'courses' => $courses] );
 	}
 
 }

@@ -1,73 +1,69 @@
-@extends('layouts._showCourse')
-
-
-@section('menu')
-    @if(Auth::check() && Auth::user()->role === 'admin' )
-        @include('admin._menu')
-    @endif
-@stop
+@extends('layouts.master')
 
 
 @section('breadcrumb')
-    @if(Auth::check() && Auth::user()->role === 'admin' )
-        <a href="{{ URL::route('admin.panel_admin') }}" class="breadcrumb">
-            {{ Lang::get('admin.breadcrumb_name') }}
-        </a>
-    @endif
-    <a href="{{ URL::route('courses.index') }}" class="breadcrumb">
-        {{ Lang::get('courses.index_breadcrumb') }}
+
+    <a href="{{ URL::route('welcome') }}" class="breadcrumb">
+        Cursos
     </a>
-    <a href="" class="breadcrumb">{{ $course->name }}</a>
-@stop
 
-
-@section('title')
-    <h4>{{$course->name}}</h4>
-@stop
-
-@section('description')
-    {{$course->description}}
-@stop
-
-@section('start_date')
-    {{$course->start_date}}
-@stop
-
-@section('end_date')
-    {{$course->end_date}}
-@stop
-
-
-@section('resource_title')
-    {{ Lang::get('courses.show_modules_title') }}
-@stop
-
-@section('resource_route')
-    {{ URL::route('modules.create', $course->id) }}
-@stop
-
-@section('list')
-    @foreach($course->modules as $module)
-        <li>
-            <a href="{{ URL::route('modules.show', [$course->id, $module->id]) }}">
-                {{ $module->name }}
-            </a>
-        </li>
-    @endforeach
-@stop
-
-<h5>Profesores</h5>
-
-@section('action')
-    @if(Auth::check() && Auth::user()->role === 'admin')
-    <a href="{{ URL::route('teachers.index', $course->id) }}">
-        {{ Lang::get('courses.add_teacher_call_to_action') }}
+    <a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
+        {{ $course->name }}
     </a>
-    @endif
 
-    @if(Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'teacher') )
-    <a href="{{ URL::route('courses.edit', $course->id) }}">
-        {{ Lang::get('courses.edit_call_to_action') }}
-    </a>
-    @endif
+@stop
+
+
+@section('content')
+    <div class="container">
+
+        <section class="course">
+
+            <h1>{{$course->name}}</h1>
+
+            @if(Auth::guest())
+                <p><strong>Nota:</strong> Para poder inscribirte en el curso debes registrarte.</p>
+                <a href="{{URL::route('signup')}}" class="waves-effect waves-light btn">REGÍSTRATE</a>
+            @else
+                <a href="" class="waves-effect waves-light btn">INSCRÍBITE</a>
+            @endif
+
+            <h3>Descripción</h3>
+            <p>{{$course->description}}</p>
+
+            <h5>Fecha de inicio</h5>
+            <p>{{$course->start_date}}</p>
+
+            <h5>Fecha de finalización</h5>
+            <p>{{$course->end_date}}</p>
+
+        </section>
+
+        <section class="modules">
+            <h3>Programa del curso</h3>
+            <ul>
+                @foreach($course->modules as $module)
+                    <li>
+                        {{ $module->name }}
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+
+        <section class="teachers">
+            <h3>Profesores</h3>
+            <ul>
+                @foreach($course->teachers as $teacher)
+                    <li>{{$teacher->name}}</li>
+                @endforeach
+            </ul>
+        </section>
+
+        @if(Auth::guest())
+            <p><strong>Nota:</strong> Para poder inscribirte en el curso debes registrarte.</p>
+            <a href="{{URL::route('signup')}}"  class="waves-effect waves-light btn">REGÍSTRATE</a>
+        @else
+            <a href="" class="waves-effect waves-light btn">INSCRÍBITE</a>
+        @endif
+    </div>
 @stop
