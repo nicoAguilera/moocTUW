@@ -304,5 +304,28 @@ Route::get('courses/{courseId}/teachers/{teacherId}',[
 |Rutas del controlador de alumnos
 |----------------------------------------------------------------------------
 */
+Route::group(['prefix' => 'students'], function(){
+
+	Route::get('{studentId}/courses/{courseId}', [
+		'uses'	=>	'StudentController@coursesShow',
+		'as'	=>	'students.courses.show'
+	]);
+
+	Route::get('{studentId}/courses/{courseId}/enrolling', [
+		'uses'	=>	'StudentController@enrolling',
+		'as'	=>	'students.enrolling'
+	]);
+
+	Route::get('{studentId}/courses/{courseId}/unsubscribe', [
+		'uses'	=>	'StudentController@unsubscribe',
+		'as'	=>	'students.unsubscribe'
+	]);
+
+	Route::get('{id}/history', [
+		'uses'	=>	'StudentController@history',
+		'as'	=>	'students.history'
+	]);
+
+});
 
 Route::resource('students', 'StudentController');

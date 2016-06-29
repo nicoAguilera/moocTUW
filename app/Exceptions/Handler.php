@@ -3,6 +3,7 @@
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 
 class Handler extends ExceptionHandler {
 
@@ -38,17 +39,16 @@ class Handler extends ExceptionHandler {
 	public function render($request, Exception $e)
 	{
 		if($e instanceof ModelNotFoundException)
-		{
 			abort(404);
-		}
+
 		if ($this->isHttpException($e))
-        {
             return $this->renderHttpException($e);
-        }
+
+        if ($e instanceof QueryException)
+        	abort(400);
+        
         else
-        {
             return parent::render($request, $e);
-        }
 	}
 
 }

@@ -57,7 +57,7 @@ class CourseController extends Controller {
 	 * @param CourseRequest $request
 	 * @return Redirect
 	 */
-	public function store(CourseAndModuleRequest $request)
+	public function store(CourseRequest $request)
 	{
 		$course = Course::create($request->only('name', 'description', 'start_date', 'end_date'));
 
@@ -100,7 +100,7 @@ class CourseController extends Controller {
 	 * @param  int  $id, CourseRequest $request
 	 * @return Response
 	 */
-	public function update($id, CourseAndModuleRequest $request)
+	public function update($id, CourseRequest $request)
 	{
 		$course = Course::findOrFail($id);
 

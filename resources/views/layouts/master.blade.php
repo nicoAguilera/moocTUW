@@ -34,7 +34,7 @@
       @include ('layouts._header')
       <main>
         
-        @if(!Route::currentRouteNamed('welcome') && !Route::currentRouteNamed('login') && !Route::currentRouteNamed('signup'))
+        @if(!Route::currentRouteNamed('welcome') && !Route::currentRouteNamed('login') && !Route::currentRouteNamed('signup') && !Route::currentRouteNamed('home'))
           @include('layouts._breadcrumbs')
         @endif
 

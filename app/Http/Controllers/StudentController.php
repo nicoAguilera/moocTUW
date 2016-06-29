@@ -5,7 +5,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\Models\Student;
+//Facades
+use Redirect;
+
+//Models
+use App\Models\Course;
+use App\Models\User;
 
 class StudentController extends Controller {
 
@@ -83,4 +88,52 @@ class StudentController extends Controller {
 		//
 	}
 
+	public function coursesShow($studentId, $courseId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$course = Course::findOrFail($courseId);
+
+		$title = $course->name;
+
+		return view('students.courses_show', [
+					'title'		=>	$title,
+					'student'	=>	$student,
+					'course'	=>	$course
+			]);
+	}
+
+	public function enrolling($studentId, $courseId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$result = $student->enrolling()->attach($courseId);
+
+		if($result === null)
+		{
+			return Redirect::route('students.courses.show', [$student->id, $courseId])
+								->with('alert.success', 'La inscripción se realizo correctamente.');
+		}
+		else{
+			return Redirect::route('students.courses.show', [$student->id, $courseId])
+								->with('alert.danger', 'La inscripción no se realizo correctamente.');
+		}
+	}
+
+	public function unsubscribe($studentId, $courseId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$result = $student->enrolling()->detach($courseId);
+
+		if($result === 1)
+		{
+			return Redirect::route('students.courses.show', [$student->id, $courseId])
+								->with('alert.success', 'La suscripción al curso a sido eliminada correctamente.');
+		}
+		else{
+			return Redirect::route('students.courses.show', [$student->id, $courseId])
+								->with('alert.danger', 'No se pudo realizar la eliminación de la suscripción al curso.');
+		}
+	}
 }

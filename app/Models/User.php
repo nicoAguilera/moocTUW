@@ -72,4 +72,12 @@ class User extends Model implements AuthenticatableContract {
 	{
 		return $this->belongsToMany('App\Models\Course', 'teachers_dictate');
 	}
+
+	/*
+	 * Relación n:m "enrolling to student in the course"
+	 */
+	public function enrolling()
+	{
+		return $this->belongsToMany('App\Models\Course', 'enrolling_to_students');
+	}
 }

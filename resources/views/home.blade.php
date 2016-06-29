@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('menu')
+	@include('students._menu')
+@stop
+
 @section('content')
 	<div class="container-fluid">
 		<section class="courses">
@@ -10,7 +14,9 @@
 							<div class="card-content" style="padding-bottom:60px;">
 								<h2 class="card-title primary-text">{{$course->name}}</h2>
 								<p class="secondary-text" style="padding-bottom:20px;">{{$course->description}}</p>
-								<a href="{{ URL::route('courses.show', $course->id) }}" class="btn waves-effect waves-light col s12">Ver curso</a>
+								<a href="{{ URL::route('students.courses.show', [Auth::user()->id, $course->id]) }}" class="btn waves-effect waves-light col s12">
+									Ver curso
+								</a>
 							</div>
 						</div>
 					</div>
