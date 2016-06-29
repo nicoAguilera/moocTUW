@@ -136,4 +136,16 @@ class StudentController extends Controller {
 								->with('alert.danger', 'No se pudo realizar la eliminación de la suscripción al curso.');
 		}
 	}
+
+	public function history($studentId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$title = "Historial";
+
+		return view('students.history', [
+				'title'		=>	$title,
+				'student'	=>	$student
+			]);
+	}
 }
