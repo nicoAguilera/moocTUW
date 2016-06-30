@@ -24,11 +24,11 @@
         </a>
     @stop
 
-    <section>
-        <div class="container">
+    <div class="container">
+        <section class="title">
             <div class="row">
                 <div class="col">
-                    <h4>{{ $activity->title }}</h4>
+                    <h1>{{ $activity->title }}</h1>
                 </div>
                 <div class="col">
                     <a href="{{ URL::route('activities.edit', [$course->id, $module->id, $activity->id]) }}">
@@ -36,19 +36,22 @@
                     </a>                   
                 </div>
             </div>
+        </section>
 
-            <!-- Contenido de la actividad -->
-            <div class="container-fluid">
-                <div class="row">
-                    Plantilla por defecto o editada
-                </div>
-            </div>
+        <section class="content">
+            @if($activity->content === 0)
+                <h3>Plantilla por defecto</h3>
+                <a href="{{ URL::route('activities.edit.content', [$teacher->id, $course->id, $module->id, $activity->id]) }}">
+                    {{ Lang::get('activities.show_call_to_action_editor') }}
+                </a>
+                @include('teachers._template_activity')
+            @else
+                {!!$activity->contents()->orderBy('created_at', 'desc')->first()->content!!}
+            @endif
 
             <a href="{{ URL::route('activities.edit.content', [$teacher->id, $course->id, $module->id, $activity->id]) }}">
                 {{ Lang::get('activities.show_call_to_action_editor') }}
             </a>
-            <!-- /Contenido de la actividad-->
-        </div>
-    </section>
-    
+        </section>
+    </div>
 @stop

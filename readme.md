@@ -44,9 +44,9 @@ El submódulo de seguimiento será el encargado de mantener el estado del alumno
 
 ## Procedimiento para ejecutar el proyecto en local ##
 
-Si desea clonar este proyecto y ejecutarlo de forma local en su máquina, siga estos pasos:
+Si desea probar este proyecto y ejecutarlo de forma local en su máquina, siga estos pasos:
 
-* Clonar el proyecto al directorio deseado
+* Clonar o descargar en formato zip el proyecto al directorio deseado
 * Desde la linea de comandos posicionarse en el directorio raiz del proyecto y ejecutar el comando:
 
 ```

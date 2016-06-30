@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model {
+class Content extends Model {
 
 	protected $guarded = ['id'];
 
@@ -11,19 +11,14 @@ class Activity extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'module_id'];
+	protected $fillable = ['content', 'activity_id'];
 
 	/**
 	 * Inverse of the relationship one to many
 	 */	
-	public function course()
+	public function activity()
 	{
-		return $this->belongsTo('App\Models\Module');
-	}
-
-	public function contents()
-	{
-		return $this->hasMany('App\Models\Content');
+		return $this->belongsTo('App\Models\Activity');
 	}
 
 }

@@ -134,14 +134,6 @@ Route::group(['prefix' => 'admin'], function()
 	'password' => 'Auth\PasswordController',
 ]);*/
 
-/*
-|---------------------------------------------------------------------------
-|Rutas adiconales
-|---------------------------------------------------------------------------
-*/
-Route::post('courses/guardar', 'CourseController@saveChanges');
-
-
 
 /*
 |---------------------------------------------------------------------------
@@ -288,6 +280,11 @@ Route::group(['prefix' => 'teachers'], function(){
 	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/activities/{activityId}/editContent', [
 		'uses'	=>	'ActivityController@showEditor',
 		'as'	=>	'activities.edit.content'
+	]);
+
+	Route::post('activities/{id}/saveContent', [
+		'uses'	=>	'ActivityController@saveChanges',
+		'as'	=>	'activities.save.content'
 	]);
 });
 

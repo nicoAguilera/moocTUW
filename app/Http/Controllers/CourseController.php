@@ -141,22 +141,4 @@ class CourseController extends Controller {
 						->with('alert.danger', 'No se realizo la publicación del curso');
 		}*/
 	}
-
-	public function saveChanges(Request $request)
-	{
-		/*return response()->json([
-				"mje" => Request::input('main-content')
-			]);*/
-		/*if($request->ajax()){
-			return response()->json([
-					"mensaje" => $request->all()
-				]);
-		}else{
-			return response()->json([
-					"mensaje" => $request
-				]);
-		}*/
-		return response()->json(['response'=> $request->all()]);
-		//return Request::input('main-content');
-	}
 }

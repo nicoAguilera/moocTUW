@@ -13,6 +13,7 @@ use View;
 
 //Models
 use App\Models\Activity;
+use App\Models\Content;
 use App\Models\Course;
 use App\Models\Module;
 use App\Models\User;
@@ -167,5 +168,19 @@ class ActivityController extends Controller {
 						'module'	=>	$module,
 						'activity'	=>	$activity
 					]);
+	}
+
+	public function saveChanges(Request $request, $activityId)
+	{
+		$activity = Activity::findOrFail($activityId);
+
+		$content = Content::create(['content' => $request['content'], 'activity_id' => $activityId]);
+
+		if($activity->content === 0)
+		{
+			$activity->content = 1;
+			$activity->save();
+		}
+		//return response()->json(['response'=> $request['content']]);
 	}
 }
