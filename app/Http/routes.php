@@ -139,9 +139,9 @@ Route::group(['prefix' => 'admin'], function()
 |Rutas adiconales
 |---------------------------------------------------------------------------
 */
-Route::post('cursos/guardar', 'CourseController@saveChanges');
+Route::post('courses/guardar', 'CourseController@saveChanges');
 
-Route::get('cursos/{id}/contenido', 'CourseController@showEditor');
+
 
 /*
 |---------------------------------------------------------------------------
@@ -283,6 +283,11 @@ Route::group(['prefix' => 'teachers'], function(){
 	Route::patch('courses/{courseId}/modules/{moduleId}/activities/{activityId}',[
 		'uses'	=>	'ActivityController@update',
 		'as'	=>	'activities.update'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/activities/{activityId}/editContent', [
+		'uses'	=>	'ActivityController@showEditor',
+		'as'	=>	'activities.edit.content'
 	]);
 });
 

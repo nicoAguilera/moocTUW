@@ -13,6 +13,8 @@
       <!-- Estilos para todo el proyecto -->
       <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
+      @yield('css')
+
       <title>
         @if (Route::currentRouteNamed('welcome'))
           {{ $app_name }} | {{ $app_description }}

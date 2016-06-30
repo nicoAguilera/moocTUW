@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <a href="">
+            <a href="{{ URL::route('activities.edit.content', [$teacher->id, $course->id, $module->id, $activity->id]) }}">
                 {{ Lang::get('activities.show_call_to_action_editor') }}
             </a>
             <!-- /Contenido de la actividad-->

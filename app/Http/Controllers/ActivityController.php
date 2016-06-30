@@ -148,4 +148,24 @@ class ActivityController extends Controller {
 		//
 	}
 
+	public function showEditor($teacherId, $courseId, $moduleId, $activityId)
+	{
+		$teacher = User::findOrFail($teacherId);
+		
+		$course	= Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$activity = Activity::findOrFail($activityId);
+
+		$title = "Editor de contenido de actividades";
+
+		return view('teachers.activities_show_template_editor', [
+						'title'		=> 	$title,
+						'teacher'	=>	$teacher,
+						'course'	=> 	$course,
+						'module'	=>	$module,
+						'activity'	=>	$activity
+					]);
+	}
 }

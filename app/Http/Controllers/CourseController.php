@@ -142,12 +142,6 @@ class CourseController extends Controller {
 		}*/
 	}
 
-	public function showEditor($id)
-	{
-		$course = Course::find($id);
-		return view('courses.showEditor', $course);
-	}
-
 	public function saveChanges(Request $request)
 	{
 		/*return response()->json([
