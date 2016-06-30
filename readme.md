@@ -1,5 +1,78 @@
 # Aplicación MOOC #
 
+* [Descripción de la aplicación](#descripcion-de-la-aplicacion)
+* Procedimiento para ejecutar el proyecto en local
+
+## Descripción de la aplicación ##
+
+Una nueva empresa en el mercado del rubro educación necesita de una plataforma Online que permita gestionar Cursos Online Masivos y Abiertos (en inglés MOOC). Algunas de las características de esta plataforma son: 
+*	Acceso masivo de cientos de miles de estudiantes de todo el mundo.
+*	Acceso libre, abierto, pues no requiere una prueba de conocimientos previos ni ser alumno de la institución que ofrece el Mooc.
+*	Acceso gratuito ya que no requiere pago por el acceso a los contenidos y a la plataforma que realiza el curso. No obstante, podría estar arancelado el acceso a tutorías, evaluaciones, recursos bibliográficos o acreditaciones.
+*	Desarrollo completamente en línea que permite utilizar la potencialidad de internet (audio, texto, vídeo, animación).
+*	Interacción (asincrónica o sincrónica) en línea entre los alumnos a través de foros o herramientas de videoconferencia (hangouts, por ejemplo). Es importante que exista algún tipo de interacción estudiante-estudiante y estudiantes-profesores, aunque esta esté mediada por la tecnología. 
+*	Se trata de una acción formativa diseñada y orientada al aprendizaje. Posee una serie de pruebas que acreditan haber adquirido el conocimiento.
+*	Realizarse en línea, compartiendo características de la formación a distancia mediada a través de Internet tales como: programación y planificación de actividades, tutorización de estudiantes, evaluación de aprendizajes, etc.
+
+## Requerimientos implementados ##
+
+Módulo de Gestión de Cursos
+* Gestión de Cursos
+
+Módulo de Gestión de Usuarios/Alumnos
+* Gestión de Usuarios
+* Seguimiento del alumno en cursos tomados
+
+
+### Módulo de Gestión de Cursos ###
+
+La gestión de los cursos involucra la creación, modificación y mantenimiento del curso por los usuarios administrativos y profesores. El personal administrativo podrá crear cursos con un calendario establecido y asignar a este los profesores que dictarán el mismo.
+Los usuarios profesores podrán gestionar el material educativo que dispondrá el curso.
+
+### Módulo de Gestión de Usuarios/Alumnos ###
+La gestión de los alumnos involucra el registro de los usuarios en la plataforma y la inscripción de los mismos al curso que deseen tomar.
+El submódulo de seguimiento será el encargado de mantener el estado del alumno en un curso activo como así también llevar un historial de los cursos tomados por el alumnado.
+
+
+
+## Procedimiento para ejecutar el proyecto en local ##
+
+Si desea clonar este proyecto y ejecutarlo de forma local en su máquina, siga estos pasos:
+
+* Clonar el proyecto al directorio deseado
+* Desde la linea de comandos posicionarse en el directorio raiz del proyecto y ejecutar el comando:
+
+```
+composer install
+```
+Este comando instalara las dependencias necesarias para el proyecto dentro de la carpeta vendor en la raiz
+del proyecto.
+* Crear una base de datos mysql llamada 'mooc'.
+* Modificar el archivo `.env` que se  encuentra en la carpeta raíz del proyecto modificando las variables de entorno locales `DB_DATABASE`, `DB_USERNAME` y `DB_PASSWORD` con los siguientes valores:
+
+```
+DB_DATABASE=mooc
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+*Ejecutar el siguiente comando:
+
+```
+php artisan migrate
+```
+
+Este comando ejecutara las migraciones que se encuentran en la carpeta `database/migrations` generando todas las tablas necesarias para la aplicacion
+
+*Ejecutar el siguiente comando para poblar la base de datos con los valores iniciales de prueba para la
+aplicación:
+
+```
+php artisan db:seed
+```
+
+
+
 # Laravel 5.0 on OpenShift #
 [Laravel](http://laravel.com/) is a free, open source PHP web application framework, 
 designed for the development of model–view–controller (MVC) web applications.
