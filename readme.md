@@ -4,8 +4,11 @@
 * [Procedimiento para ejecutar el proyecto en local](#procedimiento-para-ejecutar-el-proyecto-en-local)
 * [Requerimientos implementados](#requerimientos-implementados)
 * [Roles de los distintos usuarios](#roles-de-los-distintos-usuarios)
+
 * [Laravel 5.0 on OpenShift](#laravel-50-on-openshift)
-** [OpenShift Considerations](#openshift-considerations)
+* [OpenShift Considerations](#openshift-considerations)
+* [Manual Installation](#manual-installation)
+* [Additional Resources](#additional-resources)
 
 ## Descripción de la aplicación ##
 
