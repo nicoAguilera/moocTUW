@@ -1,7 +1,11 @@
 # Aplicación MOOC #
 
-* [Descripción de la aplicación](#descripcion-de-la-aplicacion)
-* Procedimiento para ejecutar el proyecto en local
+* [Descripción de la aplicación](#descripción-de-la-aplicación)
+* [Procedimiento para ejecutar el proyecto en local](#procedimiento-para-ejecutar-el-proyecto-en-local)
+* [Requerimientos implementados](#requerimientos-implementados)
+* [Roles de los distintos usuarios](#roles-de-los-distintos-usuarios)
+* [Laravel 5.0 on OpenShift](#laravel-50-on-openshift)
+** [OpenShift Considerations](#openshift-considerations)
 
 ## Descripción de la aplicación ##
 
@@ -56,7 +60,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-*Ejecutar el siguiente comando:
+* Ejecutar el siguiente comando:
 
 ```
 php artisan migrate
@@ -64,13 +68,14 @@ php artisan migrate
 
 Este comando ejecutara las migraciones que se encuentran en la carpeta `database/migrations` generando todas las tablas necesarias para la aplicacion
 
-*Ejecutar el siguiente comando para poblar la base de datos con los valores iniciales de prueba para la
+* Ejecutar el siguiente comando para poblar la base de datos con los valores iniciales de prueba para la
 aplicación:
 
 ```
 php artisan db:seed
 ```
 
+## Roles de los distintos usuarios ##
 
 
 # Laravel 5.0 on OpenShift #
