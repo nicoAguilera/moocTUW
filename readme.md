@@ -1,8 +1,8 @@
 # Aplicación MOOC #
 
 * [Descripción de la aplicación](#descripción-de-la-aplicación)
-* [Procedimiento para ejecutar el proyecto en local](#procedimiento-para-ejecutar-el-proyecto-en-local)
 * [Requerimientos implementados](#requerimientos-implementados)
+* [Procedimiento para ejecutar el proyecto en local](#procedimiento-para-ejecutar-el-proyecto-en-local)
 * [Roles de los distintos usuarios](#roles-de-los-distintos-usuarios)
 
 * [Laravel 5.0 on OpenShift](#laravel-50-on-openshift)
