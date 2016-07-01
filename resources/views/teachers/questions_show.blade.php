@@ -32,16 +32,17 @@
     <div class="container">
         <section class="">
 
-                <h1>{{ $question->statement }}</h1>
+                <h3>{{ $question->statement }}</h3>
 
-                <a href="{{ URL::route('questions.create', [$teacher->id, $course->id, $module->id, $test->id]) }}">
+                <a href="{{ URL::route('options.create', [$teacher->id, $course->id, $module->id, $test->id, $question->id]) }}">
                     Agregar opción
                 </a>
 
+                <h4>Opciones</h4>
                 <table>
                     @foreach($question->options as $option)
                     <tr>
-                        <td><a href="{{ URL::route('questions.show') }}">{{$option->answer}}</a></td>
+                        <td>{{$option->answer}}</td>
                     </tr>
                     @endforeach
                 </table>

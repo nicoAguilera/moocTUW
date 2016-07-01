@@ -180,6 +180,8 @@ class TeacherController extends Controller {
 
 		$title = $module->name;
 
+		//dd($module->test === null);
+
 		return view('teachers.courses_modules_show', [
 							'title'		=>	$title,
 							'teacher'	=>	$teacher,
@@ -307,5 +309,37 @@ class TeacherController extends Controller {
 					'test'		=>	$test,
 					'question'	=>	$question
 				]);
+	}
+
+	public function createOptions($teacherId, $courseId, $moduleId, $testId, $questionId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$test = Test::findOrFail($testId);
+
+		$question = Question::findOrFail($questionId);
+
+		$title = 'Agregar opción';
+
+		return view('teachers.options_create', [
+					'title'		=>	$title,
+					'teacher'	=>	$teacher,
+					'course'	=>	$course,
+					'module'	=>	$module,
+					'test'		=>	$test,
+					'question'	=>	$question
+				]);
+	}
+
+	public function storeOptions(Request $request, $teacherId, $courseId, $moduleId, $testId, $questionId)
+	{
+		$option = Option::create($request->only('answer', 'question_id'));
+
+		return Redirect::route('questions.show', [$teacherId, $courseId, $moduleId, $testId, $questionId])
+							->with('alert.success', 'La respuesta fue creada correctamente');
 	}
 }

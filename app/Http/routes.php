@@ -333,6 +333,27 @@ Route::group(['prefix' => 'teachers'], function(){
 		'uses'	=>	'TeacherController@showQuestions',
 		'as'	=>	'questions.show'
 	]);
+
+	/* 
+	|----------------------------------------------------------------------
+	|OPTIONS
+	|----------------------------------------------------------------------
+	*/
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions/{questionId}/options/create', [
+		'uses'	=>	'TeacherController@createOptions',
+		'as'	=>	'options.create'
+	]);
+
+	Route::post('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions/{questionId}/options', [
+		'uses'	=>	'TeacherController@storeOptions',
+		'as'	=>	'options.store'
+	]);
+
+	/*Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions/{questionId}/options/{optionId}', [
+		'uses'	=>	'TeacherController@showOptions',
+		'as'	=>	'options.show'
+	]);*/
 });
 
 /*Route::get('courses/{id}/teachers/create', [

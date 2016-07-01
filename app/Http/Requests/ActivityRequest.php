@@ -25,7 +25,6 @@ class ActivityRequest extends Request {
 	public function rules()
 	{
 		return [
-			'type'	=>	'required|in:content,test',
 			'title'	=>	'required',
 		];
 	}

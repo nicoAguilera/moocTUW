@@ -59,10 +59,22 @@
                 @endforeach
             </ul>
 
-            <a href="{{ URL::route('tests.create', [$teacher->id, $course->id, $module->id]) }}"
-                class="waves-effect waves-light btn">
-                Agregar evaluación
-            </a>
+            
+        </section>
+
+        <section class="test">
+            @if($module->test === null)
+                <a href="{{ URL::route('tests.create', [$teacher->id, $course->id, $module->id]) }}"
+                    class="waves-effect waves-light btn">
+                    Agregar evaluación
+                </a>
+            @else
+                <h4>Evaluación</h4>
+
+                <a href="{{ URL::route('tests.show', [$teacher->id, $course->id, $module->id, $module->test->id]) }}">
+                    {{$module->test->title}}
+                </a>
+            @endif
         </section>
     </div>
 

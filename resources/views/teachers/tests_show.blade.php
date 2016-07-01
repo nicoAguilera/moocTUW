@@ -28,13 +28,13 @@
     <div class="container">
         <section class="">
 
-                <h1>{{ $test->title }}</h1>
+                <h3>{{ $test->title }}</h3>
 
                 <a href="{{ URL::route('questions.create', [$teacher->id, $course->id, $module->id, $test->id]) }}">
                     Agregar pregunta
                 </a>
 
-                <h2>Preguntas</h2>
+                <h4>Preguntas</h4>
                 <table>
                     @foreach($test->questions as $question)
                         <tr>
