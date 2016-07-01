@@ -312,6 +312,27 @@ Route::group(['prefix' => 'teachers'], function(){
 		'uses'	=>	'TeacherController@editTests',
 		'as'	=>	'tests.edit'
 	]);
+
+	/* 
+	|----------------------------------------------------------------------
+	|QUESTIONS
+	|----------------------------------------------------------------------
+	*/
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions/create', [
+		'uses'	=>	'TeacherController@createQuestions',
+		'as'	=>	'questions.create'
+	]);
+
+	Route::post('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions', [
+		'uses'	=>	'TeacherController@storeQuestions',
+		'as'	=>	'questions.store'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}/questions/{questionId}', [
+		'uses'	=>	'TeacherController@showQuestions',
+		'as'	=>	'questions.show'
+	]);
 });
 
 /*Route::get('courses/{id}/teachers/create', [

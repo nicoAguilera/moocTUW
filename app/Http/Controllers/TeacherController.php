@@ -15,6 +15,8 @@ use View;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\Option;
+use App\Models\Question;
 use App\Models\Test;
 use App\Models\User;
 
@@ -251,6 +253,59 @@ class TeacherController extends Controller {
 					'course'	=>	$course,
 					'module'	=>	$module,
 					'test'		=>	$test
+				]);
+	}
+
+	public function createQuestions($teacherId, $courseId, $moduleId, $testId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$test = Test::findOrFail($testId);
+
+		$title = 'Agregar pregunta';
+
+		return view('teachers.questions_create', [
+					'title'		=>	$title,
+					'teacher'	=>	$teacher,
+					'course'	=>	$course,
+					'module'	=>	$module,
+					'test'		=>	$test
+				]);
+	}
+
+	public function storeQuestions(Request $request, $teacherId, $courseId, $moduleId, $testId)
+	{
+		$question = Question::create($request->only('statement', 'test_id'));
+
+		return Redirect::route('questions.show', [$teacherId, $courseId, $moduleId, $testId, $question->id])
+							->with('alert.success', 'La pregunta fue creada correctamente');
+	}
+
+	public function showQuestions($teacherId, $courseId, $moduleId, $testId, $questionId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$test = Test::findOrFail($testId);
+
+		$question = Question::findOrFail($questionId);
+
+		$title = $question->statement;
+
+		return view('teachers.questions_show', [
+					'title'		=>	$title,
+					'teacher'	=>	$teacher,
+					'course'	=>	$course,
+					'module'	=>	$module,
+					'test'		=>	$test,
+					'question'	=>	$question
 				]);
 	}
 }

@@ -23,33 +23,28 @@
             class="breadcrumb">
             {{ $test->title }}
         </a>
+
+        <a href="" class="breadcrumb">
+            {{ $question->statement }}
+        </a>
     @stop
 
     <div class="container">
         <section class="">
 
-                <h1>{{ $test->title }}</h1>
+                <h1>{{ $question->statement }}</h1>
 
                 <a href="{{ URL::route('questions.create', [$teacher->id, $course->id, $module->id, $test->id]) }}">
-                    Agregar pregunta
+                    Agregar opción
                 </a>
 
-                <h2>Preguntas</h2>
                 <table>
-                    @foreach($test->questions as $question)
-                        <tr>
-                            <td>
-                                <a href="{{ URL::route('questions.show', [$teacher->id, $course->id, $module->id, $test->id, $question->id]) }}">
-                                    {{$question->statement}}
-                                </a>
-                            </td>
-                        </tr>
+                    @foreach($question->options as $option)
+                    <tr>
+                        <td><a href="{{ URL::route('questions.show') }}">{{$option->answer}}</a></td>
+                    </tr>
                     @endforeach
                 </table>
-        </section>
-
-        <section class="content">
-
         </section>
     </div>
 @stop
