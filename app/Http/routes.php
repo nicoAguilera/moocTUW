@@ -286,6 +286,32 @@ Route::group(['prefix' => 'teachers'], function(){
 		'uses'	=>	'ActivityController@saveChanges',
 		'as'	=>	'activities.save.content'
 	]);
+
+	/* 
+	|----------------------------------------------------------------------
+	|TESTS
+	|----------------------------------------------------------------------
+	*/
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/create', [
+		'uses'	=>	'TeacherController@createTests',
+		'as'	=>	'tests.create'
+	]);
+
+	Route::post('{teacherId}/courses/{courseId}/modules/{moduleId}/tests', [
+		'uses'	=>	'TeacherController@storeTests',
+		'as'	=>	'tests.store'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/{testId}', [
+		'uses'	=>	'TeacherController@showTests',
+		'as'	=>	'tests.show'
+	]);
+
+	Route::get('{teacherId}/courses/{courseId}/modules/{moduleId}/tests/edit', [
+		'uses'	=>	'TeacherController@editTests',
+		'as'	=>	'tests.edit'
+	]);
 });
 
 /*Route::get('courses/{id}/teachers/create', [

@@ -15,6 +15,7 @@ use View;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\Test;
 use App\Models\User;
 
 class TeacherController extends Controller {
@@ -204,5 +205,52 @@ class TeacherController extends Controller {
 							'module'	=>	$module,
 							'activity'	=>	$activity
 						]);
+	}
+
+	public function createTests($teacherId, $courseId, $moduleId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$title = 'Agregar evaluación';
+
+		return view('teachers.tests_create', [
+					'title'		=>	$title,
+					'teacher'	=>	$teacher,
+					'course'	=>	$course,
+					'module'	=>	$module,
+				]);
+	}
+
+	public function storeTests(Request $request, $teacherId, $courseId, $moduleId)
+	{
+		$test = Test::create($request->only('title', 'module_id'));
+
+		return Redirect::route('tests.show', [$teacherId, $courseId, $moduleId, $test->id])
+							->with('alert.success', 'La evaluación fue creada correctamente');
+	}
+
+	public function showTests($teacherId, $courseId, $moduleId, $testId)
+	{
+		$teacher = User::findOrFail($teacherId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$test = Test::findOrFail($testId);
+
+		$title = $test->title;
+
+		return view('teachers.tests_show', [
+					'title'		=>	$title,
+					'teacher'	=>	$teacher,
+					'course'	=>	$course,
+					'module'	=>	$module,
+					'test'		=>	$test
+				]);
 	}
 }

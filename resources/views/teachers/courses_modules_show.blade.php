@@ -58,6 +58,11 @@
                     </li>
                 @endforeach
             </ul>
+
+            <a href="{{ URL::route('tests.create', [$teacher->id, $course->id, $module->id]) }}"
+                class="waves-effect waves-light btn">
+                Agregar evaluación
+            </a>
         </section>
     </div>
 

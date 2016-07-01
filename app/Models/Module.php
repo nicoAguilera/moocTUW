@@ -38,4 +38,8 @@ class Module extends Model
 		return $this->hasMany('App\Models\Activity');
 	}
 
+	public function test()
+	{
+		return $this->hasOne('App\Models\Test');
+	}
 }

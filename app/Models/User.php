@@ -80,4 +80,9 @@ class User extends Model implements AuthenticatableContract {
 	{
 		return $this->belongsToMany('App\Models\Course', 'enrolling_to_students');
 	}
+
+	public function tests()
+	{
+		return $this->hasMany('App\Models\Test', 'student_performs');
+	}
 }

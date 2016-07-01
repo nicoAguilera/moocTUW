@@ -23,26 +23,26 @@
     </a>
     <!-- /Nombre del modulo -->
 
-    <!-- Agregar actividad -->
+    <!-- Agregar evaluación -->
     <a href="" class="breadcrumb">
-    	{{ Lang::get('activities.create_breadcrumb_name') }}
+    	Agregar evaluación
     </a>
-    <!-- Agregar actividad -->
+    <!-- Agregar evaluación -->
 @stop
 
 @section('form_title')
-	<h4>{!! Lang::get('activities.create_panel_title') !!}</h4>
+	<h4>Agregar evaluación</h4>
 @stop
 
 @section('form')
 	{!! Form::open([
-			'route' 	=> 	['activities.store', $teacher->id, $course->id, $module->id],
+			'route' 	=> 	['tests.store', $teacher->id, $course->id, $module->id],
 			'method'	=>	'post',
 			'class'		=>	'col s12',
 			'role'		=>	'search'
 	]) !!}
 
-		<!-- Titulo de la actividad -->
+		<!-- Titulo de la evaluación -->
 		<div class="input-field">
 			{!! Form::label('title', trans('activities.create_name_label')) !!}
 			{!! Form::text('title', old('title'), ['class' => 'validate']) !!}
@@ -54,17 +54,17 @@
 				</p>
 			@endif
 		</div>
-		<!-- /Titulo de la actividad -->
+		<!-- /Titulo de la evaluación -->
 
 		<!-- Id del modulo al que corresponde -->
 		<input type="hidden" name="module_id" value="{{ $module->id }}">
 		<!-- /Id del modulo al que corresponde -->
 
-		<!-- Boton de crear actividad -->
+		<!-- Boton de crear evaluación -->
 		<button class="btn waves-effect waves-light col s12" type="submit">
-			{{ Lang::get('activities.add_activity_btn')}}
+			CREAR EVALUACIÓN
 		</button>
-		<!-- /Boton de crear actividad -->
+		<!-- /Boton de crear evaluación -->
 
 	{!! Form::close() !!}
 @stop
