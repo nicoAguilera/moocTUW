@@ -179,9 +179,7 @@ class TeacherController extends Controller {
 		$module = Module::findOrFail($moduleId);
 
 		$title = $module->name;
-
-		//dd($module->test === null);
-
+		
 		return view('teachers.courses_modules_show', [
 							'title'		=>	$title,
 							'teacher'	=>	$teacher,

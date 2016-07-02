@@ -6,11 +6,11 @@
 
 @section('breadcrumb')
 
-    <a href="{{ URL::route('welcome') }}" class="breadcrumb">
+    <a href="{{ URL::route('home') }}" class="breadcrumb">
         Cursos
     </a>
 
-    <a href="{{ URL::route('courses.show', $course->id) }}" class="breadcrumb">
+    <a href="{{ URL::route('students.courses.show', [$student->id, $course->id]) }}" class="breadcrumb">
         {{ $course->name }}
     </a>
 
@@ -57,13 +57,20 @@
 
         <section class="modules">
             <h3>Programa del curso</h3>
-            <ul>
+            <table>
                 @foreach($course->modules as $module)
-                    <li>
-                        {{ $module->name }}
-                    </li>
+                    <tr>
+                        <td>
+                            {{ $module->name }}
+                        </td>
+                        @if($student->enrolling->contains($course->id) && $module->start_date <= \Carbon\Carbon::today()->toDateTimeString())
+                        <td>
+                            <a href="{{ URL::route('students.modules.show', [$student->id, $course->id, $module->id]) }}">Ver actividades</a>
+                        </td>
+                        @endif
+                    </tr>
                 @endforeach
-            </ul>
+            </table>
         </section>
 
         <section class="teachers">

@@ -396,6 +396,15 @@ Route::group(['prefix' => 'students'], function(){
 		'as'	=>	'students.history'
 	]);
 
+	Route::get('{studentId}/courses/{courseId}/modules/{moduleId}', [
+		'uses'	=>	'StudentController@showModules',
+		'as'	=>	'students.modules.show'
+	]);
+
+	Route::get('{studentId}/courses/{courseId}/modules/{moduleId}/activities/{activityId}', [
+		'uses'	=>	'StudentController@showActivities',
+		'as'	=>	'students.activities.show'
+	]);
 });
 
 Route::resource('students', 'StudentController');

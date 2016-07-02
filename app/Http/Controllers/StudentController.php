@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use Redirect;
 
 //Models
+use App\Models\Activity;
 use App\Models\Course;
+use App\Models\Module;
 use App\Models\User;
 
 class StudentController extends Controller {
@@ -96,6 +98,8 @@ class StudentController extends Controller {
 
 		$title = $course->name;
 
+		//dd($course->modules()->get()->first()->start_date);
+
 		return view('students.courses_show', [
 					'title'		=>	$title,
 					'student'	=>	$student,
@@ -147,5 +151,44 @@ class StudentController extends Controller {
 				'title'		=>	$title,
 				'student'	=>	$student
 			]);
+	}
+
+	public function showModules($studentId, $courseId, $moduleId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$title = $module->name;
+
+		return view('students.modules_show', [
+					'title'		=>	$title,
+					'student'	=>	$student,
+					'course'	=>	$course,
+					'module'	=>	$module
+				]);
+	}
+
+	public function showActivities($studentId, $courseId, $moduleId, $activityId)
+	{
+		$student = User::findOrFail($studentId);
+
+		$course = Course::findOrFail($courseId);
+
+		$module = Module::findOrFail($moduleId);
+
+		$activity = Activity::findOrFail($activityId);
+
+		$title = $activity->title;
+
+		return view('students.activities_show', [
+					'title'		=>	$title,
+					'student'	=>	$student,
+					'course'	=>	$course,
+					'module'	=>	$module,
+					'activity'	=>	$activity
+				]);
 	}
 }
